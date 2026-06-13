@@ -517,6 +517,93 @@ p {
   margin-bottom: 24px;
 }
 
+.speaker-positioning {
+  padding-top: 0;
+}
+
+.speaking-lists,
+.media-placeholder {
+  display: grid;
+  grid-template-columns: 0.86fr 1.14fr;
+  gap: clamp(28px, 6vw, 72px);
+  align-items: start;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.numbered-list {
+  display: grid;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  counter-reset: talks;
+}
+
+.numbered-list li {
+  position: relative;
+  padding: 18px 18px 18px 58px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 8px;
+  background: rgba(17, 24, 39, 0.62);
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  counter-increment: talks;
+}
+
+.numbered-list li::before {
+  position: absolute;
+  left: 18px;
+  color: var(--color-soft-gold);
+  content: counter(talks, decimal-leading-zero);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.format-fit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.format-fit-grid article {
+  padding: clamp(24px, 4vw, 40px);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 8px;
+  background: rgba(8, 17, 31, 0.68);
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.tag-list li {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 999px;
+  color: var(--color-text-secondary);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.media-placeholder {
+  align-items: center;
+  padding: clamp(32px, 6vw, 64px);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 8% 12%, rgba(34, 211, 238, 0.14), transparent 18rem),
+    rgba(17, 24, 39, 0.68);
+}
+
+.media-placeholder p:not(.eyebrow) {
+  margin-bottom: 18px;
+}
+
 .site-footer {
   display: grid;
   grid-template-columns: minmax(260px, 1fr) 1.5fr;
@@ -592,7 +679,9 @@ p {
   .section-split,
   .founder-preview,
   .story-timeline,
-  .about-current-work {
+  .about-current-work,
+  .speaking-lists,
+  .media-placeholder {
     grid-template-columns: 1fr;
   }
 
@@ -613,6 +702,10 @@ p {
   }
 
   .belief-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .format-fit-grid {
     grid-template-columns: 1fr;
   }
 }
