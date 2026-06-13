@@ -1,34 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# bdonaldharris.com
 
-## Getting Started
+Static personal authority site for B Donald Harris.
 
-First, run the development server:
+Positioning:
+
+> Founder. Builder. Technologist. Ecosystem Architect.
+
+The site connects B Donald Harris, NotableBIT, HindSite, BitVoices Network, BIT Voices Podcast, speaking, ideas/writing, media, and contact paths.
+
+## Stack
+
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Static content files under `content/`
+- Reusable UI under `components/`
+
+## Run
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Validate
 
-## Learn More
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+In restricted Codex runtimes where `npm` is not on `PATH`, run scripts through the bundled Node binary or local package binaries.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Content Rules
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Keep Black builders, Black technologists, and Black tech ownership explicit where relevant.
+- Keep faith integrated but balanced.
+- Use current-stage honest language.
+- Do not overclaim product maturity, community outcomes, or unavailable media assets.
+- Do not add authentication, user accounts, databases, dashboards, or CMS features to the first static build.
