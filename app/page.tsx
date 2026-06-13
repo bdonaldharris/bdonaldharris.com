@@ -1,7 +1,11 @@
-export default function Home() {
+import { PlaceholderPage } from "@/components/layout/placeholder-page";
+
+export default function HomePage() {
   return (
-    <main>
-      <div>Hello world!</div>
-    </main>
+    <PlaceholderPage
+      eyebrow="Founder • Builder • Technologist • Ecosystem Architect"
+      title="Building tools, platforms, and conversations for Black builders in the AI era."
+      body="The redesigned homepage narrative is planned for the next implementation issue."
+    />
   );
 }
