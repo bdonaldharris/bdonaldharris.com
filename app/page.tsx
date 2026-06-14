@@ -21,7 +21,10 @@ export default function HomePage() {
       <section className="section home-hero">
         <div className="home-hero-copy">
           <p className="eyebrow">Founder • Builder • Technologist • Ecosystem Architect</p>
-          <h1>Building tools, platforms, and conversations for Black builders in the AI era.</h1>
+          <h1>
+            Building tools, platforms, and conversations for{" "}
+            <span className="text-accent">Black builders</span> in the AI era.
+          </h1>
           <p>
             I’m B Donald Harris — founder of NotableBIT, creator of HindSite,
             and host of BIT Voices. I build at the intersection of software,

@@ -23,7 +23,12 @@ export default function ContactPage() {
     <main className="page-shell">
       <PageHero
         eyebrow="Contact"
-        title="A clear path for aligned invitations and collaborations."
+        title={
+          <>
+            Let&rsquo;s connect around{" "}
+            <span className="text-accent">aligned work</span>.
+          </>
+        }
         body="For speaking, media, partnership, or strategic technology inquiries, use the form below. I read every message, but I prioritize requests connected to speaking, product work, Black tech ecosystem building, AI-era workflows, and aligned collaborations."
         primaryCta={{ href: "#contact-form", label: "Start Inquiry" }}
         secondaryCta={{ href: "/speaking", label: "Speaking Topics" }}

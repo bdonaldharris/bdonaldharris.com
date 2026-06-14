@@ -2,7 +2,7 @@ import { EyebrowLabel } from "@/components/ui/eyebrow-label";
 
 type SectionHeadingProps = {
   eyebrow?: string;
-  title: string;
+  title: React.ReactNode;
   body?: string;
 };
 

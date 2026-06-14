@@ -16,7 +16,12 @@ export default function AboutPage() {
     <main className="page-shell">
       <PageHero
         eyebrow="About B Donald Harris"
-        title="I build where technology, purpose, community, and ownership meet."
+        title={
+          <>
+            I build where technology, purpose, community, and{" "}
+            <span className="text-accent">ownership</span> meet.
+          </>
+        }
         body="My work sits at the intersection of software engineering, founder leadership, ministry-shaped formation, media, community, and the lived experience of seeing systems in layers."
         primaryCta={{ href: "/projects", label: "Explore Projects" }}
         secondaryCta={{ href: "/speaking", label: "Invite Me to Speak" }}

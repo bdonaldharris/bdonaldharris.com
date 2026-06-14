@@ -18,7 +18,12 @@ export default function ProjectsPage() {
     <main className="page-shell">
       <PageHero
         eyebrow="Projects"
-        title="A connected body of work across software, media, community, and AI-era building."
+        title={
+          <>
+            A connected body of work across software, media, community, and{" "}
+            <span className="text-accent">AI-era building</span>.
+          </>
+        }
         body="The projects are aligned vehicles rather than disconnected ideas: company work, workflow intelligence, community/media infrastructure, and public conversations serving a shared builder-centered mission."
         primaryCta={{ href: "/contact", label: "Collaborate" }}
         secondaryCta={{ href: "/ideas", label: "Read the Ideas" }}

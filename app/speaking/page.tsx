@@ -23,7 +23,12 @@ export default function SpeakingPage() {
     <main className="page-shell">
       <PageHero
         eyebrow="Speaking"
-        title="Speaking on AI, Black tech ownership, builder workflows, community ecosystems, and purpose-driven technology."
+        title={
+          <>
+            Speaking on AI, <span className="text-accent">Black tech ownership</span>,
+            and the future of builder-led technology.
+          </>
+        }
         body="B Donald brings a grounded mix of engineering, founder work, ministry-shaped leadership, media, and community-building perspective to conversations about what it takes to build with clarity in the AI era."
         primaryCta={{ href: "/contact", label: "Invite Me to Speak" }}
         secondaryCta={{ href: "/media", label: "View Media" }}

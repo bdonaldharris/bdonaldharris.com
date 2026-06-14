@@ -3,7 +3,7 @@ import { EyebrowLabel } from "@/components/ui/eyebrow-label";
 
 type PageHeroProps = {
   eyebrow: string;
-  title: string;
+  title: React.ReactNode;
   body: string;
   primaryCta?: {
     href: string;

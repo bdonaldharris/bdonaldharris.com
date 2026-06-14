@@ -20,8 +20,13 @@ export default function IdeasPage() {
     <main className="page-shell">
       <PageHero
         eyebrow="Ideas / Writing"
-        title="A premium editorial home for the ideas shaping the work."
-        body="These are public thinking lanes for essays, reflections, talks, and future writing around AI-era building, Black tech ownership, workflow intelligence, community, purpose, and lived systems thinking."
+        title={
+          <>
+            Ideas for builders navigating the{" "}
+            <span className="text-accent">AI era</span>.
+          </>
+        }
+        body="Thinking out loud about AI, ownership, community, and the work of building — essays, reflections, and talks on Black tech ownership, workflow intelligence, purpose, and systems thinking."
         primaryCta={{ href: "/speaking", label: "Speaking Topics" }}
         secondaryCta={{ href: "/projects", label: "Explore Projects" }}
       />
@@ -44,7 +49,7 @@ export default function IdeasPage() {
         <SectionHeading
           eyebrow="Categories"
           title="The lanes of public thinking"
-          body="The page is structured for future writing without pretending that unpublished articles already exist."
+          body="The themes I keep returning to as I build, write, and speak about the work."
         />
         <ul className="category-list" id="idea-categories">
           {ideaCategories.map((category) => (
@@ -55,12 +60,12 @@ export default function IdeasPage() {
 
       <section className="section" aria-labelledby="idea-grid-heading">
         <SectionHeading
-          eyebrow="Archive"
-          title="Initial idea cards"
-          body="Short editorial seeds that can become essays, talks, podcast segments, or project notes."
+          eyebrow="Notes"
+          title="Ideas in progress"
+          body="Short reflections that grow into essays, talks, and podcast conversations."
         />
         <span id="idea-grid-heading" className="sr-only">
-          Initial idea cards
+          Ideas in progress
         </span>
         <ContentGrid variant="three">
           {restIdeas.map((idea) => (
