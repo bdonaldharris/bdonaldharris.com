@@ -815,10 +815,6 @@ p {
 
 /* ---------- About page ---------- */
 
-.about-intro {
-  padding-top: 0;
-}
-
 /* About story aside: heading + editorial founder-at-work portrait */
 .story-aside {
   position: sticky;
@@ -961,32 +957,6 @@ p {
   max-width: 58ch;
 }
 
-.belief-section {
-  border-top: 1px solid var(--color-border-subtle);
-}
-
-.belief-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.belief-card {
-  display: grid;
-  align-items: start;
-  padding: 18px;
-  border: 1px solid var(--color-border-subtle);
-  border-radius: 10px;
-  background: rgba(20, 28, 44, 0.4);
-}
-
-.belief-card h3 {
-  margin: 0;
-  font-size: clamp(0.98rem, 1.3vw, 1.1rem);
-  font-weight: 650;
-  line-height: 1.4;
-}
-
 .about-current-work p {
   margin-bottom: 22px;
   max-width: 56ch;
@@ -1094,8 +1064,11 @@ p {
   max-width: 20ch;
 }
 
-/* Keep stacked in-flow panels from sitting flush against each other */
-.media-placeholder + .cta-section {
+/* Robust panel rhythm: any two adjacent in-flow panels (which override the
+   default .section padding) get consistent separation instead of sitting
+   flush. Add new full-width panel classes to both lists to keep this working. */
+:is(.warm-section, .cta-section, .media-placeholder, .featured-podcast)
+  + :is(.warm-section, .cta-section, .media-placeholder, .featured-podcast) {
   margin-top: var(--section-space);
 }
 
@@ -1105,18 +1078,6 @@ p {
 }
 
 /* ---------- Ideas page ---------- */
-
-.featured-idea {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: clamp(28px, 5vw, 64px);
-  border-top: 1px solid var(--color-border-subtle);
-  align-items: start;
-}
-
-.featured-idea h2 {
-  max-width: 16ch;
-}
 
 .featured-reflection {
   display: grid;
@@ -1549,29 +1510,6 @@ p {
   padding-top: 0;
 }
 
-.press-kit-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.press-kit-grid article {
-  padding: 22px;
-  border: 1px solid var(--color-border-subtle);
-  border-radius: 10px;
-  background: rgba(20, 28, 44, 0.4);
-}
-
-.press-kit-grid h3 {
-  margin-bottom: 10px;
-}
-
-.press-kit-grid p {
-  margin: 0;
-  font-size: 0.96rem;
-  line-height: 1.6;
-}
-
 /* ---------- Contact page ---------- */
 
 .contact-layout {
@@ -1627,18 +1565,6 @@ p {
   line-height: 1.65;
 }
 
-.contact-note {
-  padding: 22px;
-  border: 1px solid var(--color-border-subtle);
-  border-radius: 10px;
-  background: rgba(20, 28, 44, 0.36);
-}
-
-.contact-note h3 {
-  margin-bottom: 12px;
-}
-
-.contact-note ul,
 .alternate-contact ul {
   display: grid;
   gap: 10px;
@@ -1647,7 +1573,6 @@ p {
   list-style: none;
 }
 
-.contact-note li,
 .alternate-contact li {
   color: var(--color-text-secondary);
 }
@@ -1862,7 +1787,6 @@ p {
   .about-current-work,
   .speaking-lists,
   .media-placeholder,
-  .featured-idea,
   .connection-section,
   .featured-podcast,
   .contact-layout {
@@ -1903,10 +1827,6 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .belief-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .format-fit-grid {
     grid-template-columns: 1fr;
   }
@@ -1944,10 +1864,6 @@ p {
     gap: 6px;
   }
 
-  .press-kit-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .press-kit-layout {
     grid-template-columns: 1fr;
   }
@@ -1970,16 +1886,8 @@ p {
 }
 
 @media (max-width: 540px) {
-  .belief-grid,
-  .footer-grid,
-  .press-kit-grid {
+  .footer-grid {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (min-width: 861px) and (max-width: 1120px) {
-  .belief-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

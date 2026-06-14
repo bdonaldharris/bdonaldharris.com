@@ -39,9 +39,7 @@ export default function IdeasPage() {
             <div>
               <p>{featuredIdea.excerpt}</p>
               <p className="muted-note">
-                A working reflection — expanding into a fuller essay. No publish
-                date is shown until the writing exists as a finished public
-                piece.
+                A working reflection — expanding into a fuller essay.
               </p>
             </div>
           </div>

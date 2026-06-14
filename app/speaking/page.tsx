@@ -96,12 +96,11 @@ export default function SpeakingPage() {
       <section className="section media-placeholder" aria-labelledby="clips">
         <div>
           <p className="eyebrow">Media Clips</p>
-          <h2 id="clips">Selected clips will live here when approved assets are available.</h2>
+          <h2 id="clips">Talk and panel clips will live here as they are recorded.</h2>
         </div>
         <p>
-          This section is intentionally reserved rather than filled with fake
-          videos, unavailable logos, or invented appearances. For current media
-          and podcast context, visit the Media page.
+          This space is held for clips from real talks and panels. For current
+          conversations and podcast work, visit the Media page.
         </p>
         <Link className="button-secondary" href="/media">
           Visit Media

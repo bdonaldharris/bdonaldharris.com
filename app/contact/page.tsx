@@ -78,8 +78,8 @@ export default function ContactPage() {
         >
           <h2 id="contact-form-heading">Contact form</h2>
           <p className="form-status-note">
-            This form opens your email client. No database or silent fake
-            submission is used in this static build.
+            This opens a pre-filled draft in your email client so your message
+            comes straight to me — nothing is stored or sent in the background.
           </p>
 
           <div className="form-row">

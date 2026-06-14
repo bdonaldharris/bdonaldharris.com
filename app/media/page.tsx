@@ -63,7 +63,7 @@ export default function MediaPage() {
         <SectionHeading
           eyebrow="Recent"
           title="Recent episodes, conversations, and reflections"
-          body="Initial media cards are structured for approved public content and tasteful placeholders only."
+          body="Entry points into the podcast, talks, and writing connected to the work."
         />
         <span id="recent-media" className="sr-only">
           Recent episodes, conversations, and reflections
@@ -86,7 +86,7 @@ export default function MediaPage() {
         <SectionHeading
           eyebrow="Appearances"
           title="Speaking and event appearances"
-          body="This space is held for verified talks, panels, interviews, and clips — added only as real assets become available, never filled with invented credits."
+          body="This space is held for talks, panels, interviews, and clips, added as they happen."
         />
         <div className="reserved-note">
           <span className="reserved-dot" aria-hidden="true" />

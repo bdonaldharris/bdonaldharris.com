@@ -19,9 +19,9 @@ export const mediaItems: MediaItem[] = [
     title: "Speaking clips",
     category: "Video",
     description:
-      "A future home for selected talks, panels, and short clips once approved assets are available.",
+      "A future home for selected talks, panels, and short clips from speaking and media work.",
     href: "/media#speaking-appearances",
-    status: "Placeholder",
+    status: "In progress",
   },
   {
     title: "Founder reflections",
@@ -29,6 +29,6 @@ export const mediaItems: MediaItem[] = [
     description:
       "Selected reflections on AI-era building, workflow intelligence, community, and ownership.",
     href: "/ideas",
-    status: "Seed content",
+    status: "Ongoing",
   },
 ];
