@@ -31,11 +31,19 @@ export default function MediaPage() {
         aria-labelledby="featured-podcast"
       >
         <div className="featured-podcast-mark" aria-hidden="true">
-          <span className="podcast-waveform">
-            {[10, 22, 16, 30, 20, 36, 14, 26, 18, 12].map((h, i) => (
-              <i key={i} style={{ height: `${h}px` }} />
-            ))}
-          </span>
+          <div className="podcast-cover">
+            <span className="podcast-cover-kicker">Podcast</span>
+            <span className="podcast-cover-title">
+              BIT
+              <br />
+              VOICES
+            </span>
+            <span className="podcast-waveform">
+              {[10, 22, 16, 30, 20, 36, 14, 26, 18, 12, 24, 16].map((h, i) => (
+                <i key={i} style={{ height: `${h}px` }} />
+              ))}
+            </span>
+          </div>
         </div>
         <div>
           <p className="eyebrow eyebrow-gold">The Anchor · BIT Voices Podcast</p>

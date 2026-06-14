@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CTASection } from "@/components/sections/cta-section";
+import { PageHero } from "@/components/sections/page-hero";
 import { aboutStorySections, beliefStatements } from "@/content/about";
 
 export const metadata: Metadata = {
@@ -13,37 +14,18 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="page-shell">
-      <section className="section about-hero">
-        <div className="about-hero-copy">
-          <p className="eyebrow">About B Donald Harris</p>
-          <h1>
+      <PageHero
+        eyebrow="About B Donald Harris"
+        title={
+          <>
             I build where technology, purpose, community, and{" "}
             <span className="text-accent">ownership</span> meet.
-          </h1>
-          <p>
-            My work sits at the intersection of software engineering, founder
-            leadership, ministry-shaped formation, media, community, and the
-            lived experience of seeing systems in layers.
-          </p>
-          <div className="button-row">
-            <Link className="button-primary" href="/speaking">
-              Invite Me to Speak
-            </Link>
-            <Link className="button-secondary" href="/projects">
-              Explore Projects
-            </Link>
-          </div>
-        </div>
-        <figure className="about-portrait">
-          <Image
-            src="/images/profile-photo-two-web.jpg"
-            alt="B Donald Harris at work, founder and technologist."
-            fill
-            priority
-            sizes="(max-width: 860px) 92vw, 440px"
-          />
-        </figure>
-      </section>
+          </>
+        }
+        body="My work sits at the intersection of software engineering, founder leadership, ministry-shaped formation, media, community, and the lived experience of seeing systems in layers."
+        primaryCta={{ href: "/speaking", label: "Invite Me to Speak" }}
+        secondaryCta={{ href: "/projects", label: "Explore Projects" }}
+      />
 
       <section className="section about-throughline">
         <figure className="pull-quote pull-quote-wide">
@@ -60,9 +42,17 @@ export default function AboutPage() {
       </section>
 
       <section className="section story-timeline warm-section" aria-labelledby="about-story">
-        <div>
+        <div className="story-aside">
           <p className="eyebrow eyebrow-gold">Story</p>
           <h2 id="about-story">A path shaped by systems, people, and purpose.</h2>
+          <figure className="story-portrait">
+            <Image
+              src="/images/profile-photo-two-web.jpg"
+              alt="B Donald Harris working at his laptop."
+              fill
+              sizes="(max-width: 860px) 92vw, 360px"
+            />
+          </figure>
         </div>
         <div className="timeline-list">
           {aboutStorySections.map((section) => (

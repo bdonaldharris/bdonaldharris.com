@@ -6,8 +6,16 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const layer = /community|media|podcast/i.test(project.category)
+    ? "human"
+    : "tech";
+
   return (
-    <article className="editorial-card project-card" id={project.id}>
+    <article
+      className="editorial-card project-card"
+      id={project.id}
+      data-layer={layer}
+    >
       <p className="card-meta">{project.category}</p>
       <h3>{project.title}</h3>
       <p>{project.description}</p>

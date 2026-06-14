@@ -423,6 +423,41 @@ p {
   color: var(--color-cyan-glow);
 }
 
+/* Project cards: subtle identity tied to the cyan/gold ecosystem layers */
+.project-card {
+  border-top: 2px solid transparent;
+}
+
+.project-card .card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-card .card-meta::before {
+  width: 6px;
+  height: 6px;
+  content: "";
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.project-card[data-layer="tech"] {
+  border-top-color: rgba(34, 211, 238, 0.4);
+}
+
+.project-card[data-layer="tech"] .card-meta {
+  color: var(--color-cyan-glow);
+}
+
+.project-card[data-layer="human"] {
+  border-top-color: rgba(214, 169, 74, 0.4);
+}
+
+.project-card[data-layer="human"] .card-meta {
+  color: var(--color-soft-gold);
+}
+
 /* ---------- CTA band ---------- */
 
 .cta-section {
@@ -784,51 +819,38 @@ p {
   padding-top: 0;
 }
 
-/* About hero with editorial founder portrait */
-.about-hero {
+/* About story aside: heading + editorial founder-at-work portrait */
+.story-aside {
+  position: sticky;
+  top: 96px;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.7fr);
-  gap: clamp(28px, 5vw, 60px);
-  align-items: center;
-  padding-block: clamp(48px, 7vw, 88px) clamp(40px, 6vw, 68px);
+  gap: 22px;
+  align-content: start;
 }
 
-.about-hero-copy {
-  display: grid;
-  gap: 20px;
-}
-
-.about-hero-copy h1 {
-  max-width: 17ch;
-}
-
-.about-hero-copy p:not(.eyebrow) {
-  max-width: 46ch;
-}
-
-.about-portrait {
+.story-portrait {
   position: relative;
-  margin: 0;
-  min-height: clamp(360px, 44vw, 480px);
-  border-radius: 16px;
+  margin: 4px 0 0;
+  aspect-ratio: 5 / 4;
+  border-radius: 14px;
   overflow: hidden;
   border: 1px solid var(--color-border-subtle);
-  box-shadow: 0 0 0 1px rgba(214, 169, 74, 0.06), 0 30px 60px -40px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 24px 50px -38px rgba(0, 0, 0, 0.85);
 }
 
-.about-portrait img {
+.story-portrait img {
   object-fit: cover;
-  object-position: 28% center;
+  object-position: 26% center;
 }
 
-.about-portrait::after {
+.story-portrait::after {
   position: absolute;
   inset: 0;
   content: "";
   pointer-events: none;
   background:
-    linear-gradient(to top, rgba(5, 6, 8, 0.5), transparent 44%),
-    radial-gradient(80% 70% at 100% 0%, rgba(214, 169, 74, 0.12), transparent 60%);
+    linear-gradient(to top, rgba(5, 6, 8, 0.42), transparent 50%),
+    radial-gradient(70% 70% at 100% 0%, rgba(214, 169, 74, 0.14), transparent 62%);
 }
 
 /* About throughline as a wide pull quote */
@@ -1364,23 +1386,52 @@ p {
   border-top: 1px solid var(--color-border-subtle);
 }
 
-/* Featured podcast anchor */
+/* Featured podcast anchor — cover-art-style brand tile */
 .featured-podcast-mark {
   display: grid;
   place-items: center;
-  min-height: 200px;
-  border-radius: 14px;
+}
+
+.podcast-cover {
+  position: relative;
+  display: grid;
+  align-content: space-between;
+  gap: 18px;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1 / 1;
+  padding: 26px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(214, 169, 74, 0.22);
   background:
-    radial-gradient(circle at 50% 50%, rgba(214, 169, 74, 0.16), transparent 62%),
-    rgba(8, 8, 11, 0.5);
-  border: 1px solid var(--color-border-subtle);
+    radial-gradient(120% 90% at 0% 0%, rgba(34, 211, 238, 0.18), transparent 55%),
+    radial-gradient(120% 95% at 100% 100%, rgba(214, 169, 74, 0.22), transparent 55%),
+    linear-gradient(150deg, #0c1018, #08080b);
+  box-shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.9);
+}
+
+.podcast-cover-kicker {
+  color: var(--color-soft-gold);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.podcast-cover-title {
+  color: var(--color-text-primary);
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  font-weight: 820;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
 }
 
 .podcast-waveform {
   display: flex;
-  align-items: center;
-  gap: 6px;
-  height: 56px;
+  align-items: flex-end;
+  gap: 5px;
+  height: 40px;
 }
 
 .podcast-waveform i {
@@ -1388,7 +1439,7 @@ p {
   width: 4px;
   border-radius: 999px;
   background: linear-gradient(to top, var(--color-soft-gold), var(--color-cyan-glow));
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .featured-podcast h2 {
@@ -1784,7 +1835,6 @@ p {
   }
 
   .home-hero,
-  .about-hero,
   .section-split,
   .founder-preview,
   .ideas-feature,
@@ -1804,8 +1854,13 @@ p {
     padding-top: 48px;
   }
 
-  .ideas-feature-lead {
+  .ideas-feature-lead,
+  .story-aside {
     position: static;
+  }
+
+  .story-portrait {
+    max-width: 360px;
   }
 
   .pull-quote blockquote {
