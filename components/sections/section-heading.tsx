@@ -9,7 +9,7 @@ type SectionHeadingProps = {
 
 export function SectionHeading({ eyebrow, title, body, tone }: SectionHeadingProps) {
   return (
-    <div className="section-heading">
+    <div className={`section-heading${body ? " has-body" : ""}`}>
       {eyebrow && <EyebrowLabel tone={tone}>{eyebrow}</EyebrowLabel>}
       <h2>{title}</h2>
       {body && <p>{body}</p>}

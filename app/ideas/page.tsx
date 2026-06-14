@@ -27,6 +27,7 @@ export default function IdeasPage() {
           </>
         }
         body="Thinking out loud about AI, ownership, community, and the work of building — essays, reflections, and talks on Black tech ownership, workflow intelligence, purpose, and systems thinking."
+        motif="threads"
         primaryCta={{ href: "/speaking", label: "Speaking Topics" }}
         secondaryCta={{ href: "/projects", label: "Explore Projects" }}
       />
@@ -82,6 +83,7 @@ export default function IdeasPage() {
         eyebrow="Thought Leadership"
         title="The ideas are meant to become useful conversations."
         body="Invite B Donald to speak, collaborate, or turn one of these themes into a deeper room with your organization or community."
+        motif="threads"
         primaryCta={{ href: "/speaking", label: "Invite Me to Speak" }}
         secondaryCta={{ href: "/contact", label: "Contact Me" }}
       />

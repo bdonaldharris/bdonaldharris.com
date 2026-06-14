@@ -21,6 +21,7 @@ export default function MediaPage() {
         eyebrow="Media"
         title="Conversations, interviews, talks, and stories from the work."
         body="A home for podcast work, public conversations, future speaking clips, and lightweight press context connected to B Donald Harris, NotableBIT, HindSite, BitVoices Network, and BIT Voices Podcast."
+        motif="waveform"
         primaryCta={{ href: "/contact", label: "Media Inquiry" }}
         secondaryCta={{ href: "/speaking", label: "Invite Me to Speak" }}
       />
@@ -150,6 +151,7 @@ export default function MediaPage() {
         eyebrow="Media"
         title="Start with the right context."
         body="For podcast invitations, interviews, media requests, press-kit needs, or speaking clips, use the contact path and include the relevant link."
+        motif="waveform"
         primaryCta={{ href: "/contact", label: "Media Inquiry" }}
         secondaryCta={{ href: "/ideas", label: "Explore Ideas" }}
       />

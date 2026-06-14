@@ -30,6 +30,7 @@ export default function SpeakingPage() {
           </>
         }
         body="B Donald brings a grounded mix of engineering, founder work, ministry-shaped leadership, media, and community-building perspective to conversations about what it takes to build with clarity in the AI era."
+        motif="waveform"
         primaryCta={{ href: "/contact", label: "Invite Me to Speak" }}
         secondaryCta={{ href: "/media", label: "View Media" }}
       />
@@ -111,6 +112,7 @@ export default function SpeakingPage() {
         eyebrow="Booking"
         title="Invite B Donald to speak with your conference, community, podcast, or leadership room."
         body="Use the contact path for speaking invitations, podcast conversations, panels, workshops, and aligned community sessions."
+        motif="waveform"
         primaryCta={{ href: "/contact", label: "Invite Me to Speak" }}
         secondaryCta={{ href: "/projects", label: "Explore the Work" }}
       />

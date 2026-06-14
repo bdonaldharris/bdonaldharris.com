@@ -23,6 +23,7 @@ export default function AboutPage() {
           </>
         }
         body="My work sits at the intersection of software engineering, founder leadership, ministry-shaped formation, media, community, and the lived experience of seeing systems in layers."
+        motif="threads"
         primaryCta={{ href: "/speaking", label: "Invite Me to Speak" }}
         secondaryCta={{ href: "/projects", label: "Explore Projects" }}
       />
@@ -103,6 +104,7 @@ export default function AboutPage() {
         eyebrow="Collaboration"
         title="Build, speak, or partner around work that needs context."
         body="For speaking, media, partnership, or strategic technology inquiries, the Contact page is the best next step."
+        motif="orbit"
         primaryCta={{ href: "/contact", label: "Contact Me" }}
         secondaryCta={{ href: "/speaking", label: "Speaking Topics" }}
       />

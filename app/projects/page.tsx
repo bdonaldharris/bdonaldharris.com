@@ -25,6 +25,7 @@ export default function ProjectsPage() {
           </>
         }
         body="The projects are aligned vehicles rather than disconnected ideas: company work, workflow intelligence, community/media infrastructure, and public conversations serving a shared builder-centered mission."
+        motif="orbit"
         primaryCta={{ href: "/contact", label: "Collaborate" }}
         secondaryCta={{ href: "/ideas", label: "Read the Ideas" }}
       />
@@ -137,6 +138,7 @@ export default function ProjectsPage() {
         eyebrow="Partnership"
         title="Bring context to the work before the work gets bigger."
         body="For aligned partnerships, strategic technology conversations, media inquiries, and speaking invitations, start with the contact path."
+        motif="orbit"
         primaryCta={{ href: "/contact", label: "Contact Me" }}
         secondaryCta={{ href: "/speaking", label: "Invite Me to Speak" }}
       />

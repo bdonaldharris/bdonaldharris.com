@@ -151,6 +151,7 @@ export default function HomePage() {
         eyebrow="Next Step"
         title="Let’s build with clarity, context, and ownership."
         body="Whether you are inviting me to speak, exploring a partnership, or following the work I’m building through NotableBIT, BitVoices, and HindSite — this is the front door."
+        motif="orbit"
         primaryCta={{ href: "/speaking", label: "Invite Me to Speak" }}
         secondaryCta={{ href: "/contact", label: "Contact Me" }}
       />

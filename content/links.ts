@@ -6,9 +6,29 @@ export const ecosystemLinks = [
 ];
 
 export const socialLinks = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/bdonaldharris" },
-  { label: "YouTube", href: "https://www.youtube.com/@bitvoices" },
-  { label: "Instagram", href: "https://www.instagram.com/bdonaldharris" },
-  { label: "X", href: "https://x.com/bdonaldharris" },
-  { label: "Email / Contact", href: "/contact" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/bdonaldharris",
+    description: "Professional connection, speaking, and collaboration.",
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@bitvoices",
+    description: "Media and podcast conversations.",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/bdonaldharris",
+    description: "Public reflections and behind-the-scenes.",
+  },
+  {
+    label: "X",
+    href: "https://x.com/bdonaldharris",
+    description: "Short-form thoughts and updates.",
+  },
+  {
+    label: "Email / Contact",
+    href: "/contact",
+    description: "Formal inquiries and aligned requests.",
+  },
 ];

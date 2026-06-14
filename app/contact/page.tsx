@@ -31,6 +31,7 @@ export default function ContactPage() {
         }
         body="For speaking, media, partnership, or strategic technology inquiries, use the form below. I read every message, but I prioritize requests connected to speaking, product work, Black tech ecosystem building, AI-era workflows, and aligned collaborations."
         tone="gold"
+        motif="orbit"
         primaryCta={{ href: "#contact-form", label: "Start Inquiry" }}
         secondaryCta={{ href: "/speaking", label: "Speaking Topics" }}
       />
@@ -154,13 +155,16 @@ export default function ContactPage() {
       <section className="section alternate-contact" aria-labelledby="alternate-contact">
         <SectionHeading
           eyebrow="Connect"
-          title="Alternate contact and social paths"
-          body="Use the Contact page for formal inquiries. These links are useful for following the work and public conversations."
+          title="Other ways to follow the work"
+          body="The form above is best for formal inquiries. These channels are where the work shows up in public."
         />
-        <ul id="alternate-contact">
+        <ul id="alternate-contact" className="connect-list">
           {socialLinks.map((link) => (
             <li key={link.href}>
-              <Link href={link.href}>{link.label}</Link>
+              <Link href={link.href}>
+                <span className="connect-label">{link.label}</span>
+                <span className="connect-desc">{link.description}</span>
+              </Link>
             </li>
           ))}
         </ul>
