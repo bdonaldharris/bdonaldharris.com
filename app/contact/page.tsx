@@ -82,38 +82,42 @@ export default function ContactPage() {
             submission is used in this static build.
           </p>
 
-          <div className="form-field">
-            <label htmlFor="name">Name</label>
-            <input id="name" name="name" type="text" autoComplete="name" required />
+          <div className="form-row">
+            <div className="form-field">
+              <label htmlFor="name">Name</label>
+              <input id="name" name="name" type="text" autoComplete="name" required />
+            </div>
+
+            <div className="form-field">
+              <label htmlFor="email">Email</label>
+              <input id="email" name="email" type="email" autoComplete="email" required />
+            </div>
           </div>
 
-          <div className="form-field">
-            <label htmlFor="email">Email</label>
-            <input id="email" name="email" type="email" autoComplete="email" required />
-          </div>
+          <div className="form-row">
+            <div className="form-field">
+              <label htmlFor="organization">Organization</label>
+              <input
+                id="organization"
+                name="organization"
+                type="text"
+                autoComplete="organization"
+              />
+            </div>
 
-          <div className="form-field">
-            <label htmlFor="organization">Organization</label>
-            <input
-              id="organization"
-              name="organization"
-              type="text"
-              autoComplete="organization"
-            />
-          </div>
-
-          <div className="form-field">
-            <label htmlFor="inquiry-type">Inquiry type</label>
-            <select id="inquiry-type" name="inquiryType" required defaultValue="">
-              <option value="" disabled>
-                Select an inquiry type
-              </option>
-              {inquiryTypes.map((type) => (
-                <option key={type} value={type}>
-                  {type}
+            <div className="form-field">
+              <label htmlFor="inquiry-type">Inquiry type</label>
+              <select id="inquiry-type" name="inquiryType" required defaultValue="">
+                <option value="" disabled>
+                  Select an inquiry type
                 </option>
-              ))}
-            </select>
+                {inquiryTypes.map((type) => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
           <div className="form-field">
