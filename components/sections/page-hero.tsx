@@ -5,6 +5,7 @@ type PageHeroProps = {
   eyebrow: string;
   title: React.ReactNode;
   body: string;
+  tone?: "cyan" | "gold";
   primaryCta?: {
     href: string;
     label: string;
@@ -19,12 +20,13 @@ export function PageHero({
   eyebrow,
   title,
   body,
+  tone,
   primaryCta,
   secondaryCta,
 }: PageHeroProps) {
   return (
     <section className="section page-hero">
-      <EyebrowLabel>{eyebrow}</EyebrowLabel>
+      <EyebrowLabel tone={tone}>{eyebrow}</EyebrowLabel>
       <h1>{title}</h1>
       <p>{body}</p>
       {(primaryCta || secondaryCta) && (

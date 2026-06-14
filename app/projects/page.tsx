@@ -52,6 +52,27 @@ export default function ProjectsPage() {
           body="B Donald Harris sits at the narrative center. NotableBIT carries the company and studio layer. HindSite, BitVoices Network, and BIT Voices Podcast extend the work into product, community, and media."
         />
         <div className="ecosystem-map" aria-hidden="true">
+          <svg
+            className="ecosystem-traces"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            focusable="false"
+          >
+            <defs>
+              <linearGradient id="trace-cyan" x1="50%" y1="50%" x2="0%" y2="0%">
+                <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#22d3ee" stopOpacity="0.04" />
+              </linearGradient>
+              <linearGradient id="trace-gold" x1="50%" y1="50%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#d6a94a" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#d6a94a" stopOpacity="0.04" />
+              </linearGradient>
+            </defs>
+            <line x1="50" y1="50" x2="21" y2="20" stroke="url(#trace-cyan)" strokeWidth="0.4" />
+            <line x1="50" y1="50" x2="80" y2="21" stroke="url(#trace-cyan)" strokeWidth="0.4" />
+            <line x1="50" y1="50" x2="81" y2="81" stroke="url(#trace-gold)" strokeWidth="0.4" />
+            <line x1="50" y1="50" x2="20" y2="81" stroke="url(#trace-gold)" strokeWidth="0.4" />
+          </svg>
           <div className="ecosystem-node ecosystem-node-center">
             <span>B Donald Harris</span>
             <small>Founder / builder</small>
@@ -59,6 +80,9 @@ export default function ProjectsPage() {
           {projects.map((project, index) => (
             <div
               className={`ecosystem-node ecosystem-node-${index + 1}`}
+              data-layer={
+                index === 0 || index === 1 ? "tech" : "human"
+              }
               key={project.id}
             >
               <span>{project.title}</span>

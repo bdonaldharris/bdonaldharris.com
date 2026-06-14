@@ -30,26 +30,43 @@ export default function ContactPage() {
           </>
         }
         body="For speaking, media, partnership, or strategic technology inquiries, use the form below. I read every message, but I prioritize requests connected to speaking, product work, Black tech ecosystem building, AI-era workflows, and aligned collaborations."
+        tone="gold"
         primaryCta={{ href: "#contact-form", label: "Start Inquiry" }}
         secondaryCta={{ href: "/speaking", label: "Speaking Topics" }}
       />
 
       <section className="section contact-layout" aria-labelledby="contact-form-heading">
         <div className="contact-guidance">
-          <SectionHeading
-            eyebrow="Inquiry"
-            title="Send the right context up front."
-            body="This first version uses an accessible frontend form with a mailto fallback. A production form service can be wired later without changing the information architecture."
-          />
-          <div className="contact-note">
-            <h3>Helpful details</h3>
-            <ul>
-              <li>Event, podcast, or organization name</li>
-              <li>Timeline or target date</li>
-              <li>Audience and format</li>
-              <li>Relevant link for context</li>
-            </ul>
-          </div>
+          <p className="eyebrow eyebrow-gold">Inquiry types</p>
+          <dl className="inquiry-types">
+            <div>
+              <dt>Speaking &amp; panels</dt>
+              <dd>
+                Keynotes, panels, fireside chats, and workshops on AI, Black tech
+                ownership, and builder workflows.
+              </dd>
+            </div>
+            <div>
+              <dt>Media &amp; podcast</dt>
+              <dd>
+                Interviews, podcast conversations, and BIT Voices guest or
+                collaboration ideas.
+              </dd>
+            </div>
+            <div>
+              <dt>Partnership &amp; advisory</dt>
+              <dd>
+                Aligned collaborations and strategic technology conversations
+                across the ecosystem.
+              </dd>
+            </div>
+          </dl>
+          <p className="contact-expectation">
+            I read every message and prioritize requests connected to speaking,
+            product work, Black tech ecosystem building, AI-era workflows, and
+            aligned collaboration. Sharing a timeline and a relevant link helps
+            me route your note.
+          </p>
         </div>
 
         <form

@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArticleCard } from "@/components/cards/article-card";
-import { MediaCard } from "@/components/cards/media-card";
 import { ProjectCard } from "@/components/cards/project-card";
-import { SpeakingTopicCard } from "@/components/cards/speaking-topic-card";
 import { ContentGrid } from "@/components/sections/content-grid";
 import { CTASection } from "@/components/sections/cta-section";
 import { SectionHeading } from "@/components/sections/section-heading";
@@ -12,8 +9,9 @@ import { mediaItems } from "@/content/media";
 import { projects } from "@/content/projects";
 import { speakingTopics } from "@/content/speaking";
 
-const featuredIdeas = ideas.slice(0, 4);
-const featuredTopics = speakingTopics.slice(0, 3);
+const [leadIdea, ...supportingIdeas] = ideas;
+const homeIdeas = supportingIdeas.slice(0, 3);
+const featuredTopics = speakingTopics.slice(0, 4);
 
 export default function HomePage() {
   return (
@@ -40,15 +38,16 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-        <div className="hero-visual" aria-label="Abstract network visual representing connected builder workflows">
+        <figure className="hero-portrait">
+          <div className="hero-portrait-atmosphere" aria-hidden="true" />
           <Image
-            src="/images/architectural-noir-signal.png"
-            alt="Abstract dark editorial network of luminous workflow traces and connected signal nodes."
+            src="/images/profile-photo-one-web.jpg"
+            alt="Portrait of B Donald Harris, founder, builder, and technologist."
             fill
             priority
-            sizes="(max-width: 860px) 100vw, 42vw"
+            sizes="(max-width: 860px) 92vw, 480px"
           />
-        </div>
+        </figure>
       </section>
 
       <section className="section">
@@ -64,34 +63,54 @@ export default function HomePage() {
         </ContentGrid>
       </section>
 
-      <section className="section section-split">
-        <SectionHeading eyebrow="Ideas" title="The ideas shaping the work." />
-        <ContentGrid variant="two">
-          {featuredIdeas.map((idea) => (
-            <ArticleCard key={idea.title} idea={idea} />
-          ))}
-        </ContentGrid>
-      </section>
-
-      <section className="section speaking-preview">
-        <SectionHeading
-          eyebrow="Speaking"
-          title="Speaking on AI, builders, ownership, and the future of Black tech."
-          body="I speak and facilitate conversations on the realities of building in the AI era — from engineering workflows and product strategy to Black tech ownership, community ecosystems, and the human side of innovation."
-        />
-        <ContentGrid variant="three">
-          {featuredTopics.map((topic) => (
-            <SpeakingTopicCard key={topic.title} topic={topic} />
-          ))}
-        </ContentGrid>
-        <div className="section-link">
-          <Link href="/speaking">View speaking topics</Link>
+      <section className="section ideas-feature">
+        <div className="ideas-feature-lead">
+          <p className="eyebrow">Ideas</p>
+          <figure className="pull-quote">
+            <blockquote>{leadIdea.title}</blockquote>
+            <figcaption>{leadIdea.excerpt}</figcaption>
+          </figure>
         </div>
+        <ul className="idea-rows">
+          {homeIdeas.map((idea) => (
+            <li key={idea.title}>
+              <span className="idea-rows-cat">{idea.category}</span>
+              <p className="idea-rows-title">{idea.title}</p>
+              <p className="idea-rows-excerpt">{idea.excerpt}</p>
+            </li>
+          ))}
+          <li className="idea-rows-link">
+            <Link href="/ideas">Read more ideas</Link>
+          </li>
+        </ul>
       </section>
 
-      <section className="section founder-preview">
+      <section className="section speaking-preview section-split">
         <div>
-          <p className="eyebrow">Founder Story</p>
+          <SectionHeading
+            eyebrow="Speaking"
+            title="Speaking on AI, ownership, and the future of Black tech."
+            body="I speak and facilitate conversations on the realities of building in the AI era — engineering workflows, Black tech ownership, community ecosystems, and the human side of innovation."
+          />
+          <div className="button-row">
+            <Link className="button-primary" href="/speaking">
+              Invite Me to Speak
+            </Link>
+          </div>
+        </div>
+        <ul className="topic-rows">
+          {featuredTopics.map((topic) => (
+            <li key={topic.title}>
+              <span className="topic-rows-title">{topic.title}</span>
+              <span className="topic-rows-desc">{topic.description}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="section founder-preview warm-section">
+        <div>
+          <p className="eyebrow eyebrow-gold">Founder Story</p>
           <h2>Built from engineering, ministry, community, and lived experience.</h2>
         </div>
         <div>
@@ -115,11 +134,17 @@ export default function HomePage() {
           title="Recent conversations and reflections."
           body="Selected entry points into the public conversations, podcast work, and reflections connected to the broader ecosystem."
         />
-        <ContentGrid variant="three">
+        <ul className="media-list">
           {mediaItems.map((item) => (
-            <MediaCard key={item.title} item={item} />
+            <li key={item.title}>
+              <Link href={item.href}>
+                <span className="media-list-cat">{item.category}</span>
+                <span className="media-list-title">{item.title}</span>
+                <span className="media-list-desc">{item.description}</span>
+              </Link>
+            </li>
           ))}
-        </ContentGrid>
+        </ul>
       </section>
 
       <CTASection

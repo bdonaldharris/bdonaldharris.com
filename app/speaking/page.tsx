@@ -35,11 +35,18 @@ export default function SpeakingPage() {
       />
 
       <section className="section speaker-positioning">
-        <SectionHeading
-          eyebrow="Positioning"
-          title="Technical enough for builders. Human enough for rooms that need more than tools."
-          body="The strongest conversations connect product reality, engineering judgment, Black tech ownership, community trust, purpose, and the leadership required when AI accelerates output faster than understanding."
-        />
+        <figure className="pull-quote pull-quote-wide">
+          <blockquote>
+            Technical enough for builders. Human enough for rooms that need more
+            than tools.
+          </blockquote>
+          <figcaption>
+            The strongest conversations connect product reality, engineering
+            judgment, Black tech ownership, community trust, purpose, and the
+            leadership required when AI accelerates output faster than
+            understanding.
+          </figcaption>
+        </figure>
       </section>
 
       <section className="section" aria-labelledby="featured-topics">

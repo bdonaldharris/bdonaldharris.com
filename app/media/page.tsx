@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { MediaCard } from "@/components/cards/media-card";
 import { ContentGrid } from "@/components/sections/content-grid";
@@ -29,16 +30,20 @@ export default function MediaPage() {
         id="bit-voices-podcast"
         aria-labelledby="featured-podcast"
       >
-        <div>
-          <p className="eyebrow">Featured Podcast</p>
-          <h2 id="featured-podcast">BIT Voices Podcast</h2>
+        <div className="featured-podcast-mark" aria-hidden="true">
+          <span className="podcast-waveform">
+            {[10, 22, 16, 30, 20, 36, 14, 26, 18, 12].map((h, i) => (
+              <i key={i} style={{ height: `${h}px` }} />
+            ))}
+          </span>
         </div>
         <div>
+          <p className="eyebrow eyebrow-gold">The Anchor · BIT Voices Podcast</p>
+          <h2 id="featured-podcast">Conversations with the people building what comes next.</h2>
           <p>
             BIT Voices Podcast features conversations with Black technologists,
-            founders, builders, and leaders shaping the future. It is one of
-            the media expressions of the broader BitVoices and NotableBIT
-            ecosystem.
+            founders, builders, and leaders shaping the future. It is the media
+            heart of the broader BitVoices and NotableBIT ecosystem.
           </p>
           <Link className="button-secondary" href="/contact">
             Pitch a Conversation
@@ -73,47 +78,63 @@ export default function MediaPage() {
         <SectionHeading
           eyebrow="Appearances"
           title="Speaking and event appearances"
-          body="This section is ready for verified talks, panels, interviews, and clips. It intentionally does not include fake logos, unavailable embeds, or invented credits."
+          body="This space is held for verified talks, panels, interviews, and clips — added only as real assets become available, never filled with invented credits."
         />
-        <div className="empty-state">
-          <h3>Verified media assets can be added here.</h3>
+        <div className="reserved-note">
+          <span className="reserved-dot" aria-hidden="true" />
           <p>
-            Add approved clips, event pages, podcast links, or interview
-            references when they are available.
+            Reserved for confirmed appearances. To list a recent talk, panel, or
+            interview, share it through the contact path.
           </p>
         </div>
       </section>
 
       <section className="section press-kit" aria-labelledby="press-kit-heading">
         <span id="press-kit-heading" className="sr-only">
-          Press Kit Lite
+          Press Kit
         </span>
         <SectionHeading
-          eyebrow="Press Kit Lite"
+          eyebrow="Press Kit"
           title="Helpful context for media and podcast teams"
-          body="A lightweight press kit structure for approved assets and accurate short-form references."
+          body="A lightweight kit for accurate references. High-resolution headshots and logo assets are available on request."
         />
-        <div className="press-kit-grid">
-          <article>
+        <div className="press-kit-layout">
+          <figure className="press-kit-photo">
+            <Image
+              src="/images/profile-photo-one-web.jpg"
+              alt="Headshot of B Donald Harris."
+              fill
+              sizes="(max-width: 860px) 92vw, 320px"
+            />
+          </figure>
+          <div className="press-kit-detail">
             <h3>Short bio</h3>
             <p>
-              B Donald Harris is the founder of NotableBIT, creator of
-              HindSite, and host of BIT Voices. He builds at the intersection
-              of AI, software, Black tech ownership, media, and community.
+              B Donald Harris is the founder of NotableBIT, creator of HindSite,
+              and host of BIT Voices. He builds at the intersection of AI,
+              software, Black tech ownership, media, and community.
             </p>
-          </article>
-          <article>
-            <h3>Headshot</h3>
-            <p>Approved headshot asset needed before publication.</p>
-          </article>
-          <article>
-            <h3>Logos</h3>
-            <p>Approved NotableBIT, BitVoices, and related logo assets needed.</p>
-          </article>
-          <article>
-            <h3>Contact path</h3>
-            <p>Use the Contact page for media, podcast, and speaking inquiries.</p>
-          </article>
+            <dl className="press-kit-facts">
+              <div>
+                <dt>Roles</dt>
+                <dd>Founder, builder, technologist, speaker</dd>
+              </div>
+              <div>
+                <dt>Focus</dt>
+                <dd>
+                  AI-era building, Black tech ownership, workflow intelligence,
+                  community
+                </dd>
+              </div>
+              <div>
+                <dt>Assets</dt>
+                <dd>Headshots and logos available on request</dd>
+              </div>
+            </dl>
+            <Link className="button-secondary" href="/contact">
+              Request Assets
+            </Link>
+          </div>
         </div>
       </section>
 

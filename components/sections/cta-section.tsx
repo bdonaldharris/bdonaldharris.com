@@ -5,6 +5,7 @@ type CTASectionProps = {
   eyebrow?: string;
   title: string;
   body: string;
+  tone?: "cyan" | "gold";
   primaryCta: {
     href: string;
     label: string;
@@ -19,12 +20,13 @@ export function CTASection({
   eyebrow,
   title,
   body,
+  tone = "gold",
   primaryCta,
   secondaryCta,
 }: CTASectionProps) {
   return (
     <section className="section cta-section">
-      <SectionHeading eyebrow={eyebrow} title={title} body={body} />
+      <SectionHeading eyebrow={eyebrow} title={title} body={body} tone={tone} />
       <div className="button-row">
         <Link className="button-primary" href={primaryCta.href}>
           {primaryCta.label}

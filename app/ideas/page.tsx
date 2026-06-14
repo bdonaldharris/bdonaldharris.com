@@ -31,18 +31,21 @@ export default function IdeasPage() {
         secondaryCta={{ href: "/projects", label: "Explore Projects" }}
       />
 
-      <section className="section featured-idea" aria-labelledby="featured-idea">
-        <div>
-          <p className="eyebrow">Featured Reflection</p>
-          <h2 id="featured-idea">{featuredIdea.title}</h2>
-        </div>
-        <div>
-          <p>{featuredIdea.excerpt}</p>
-          <p className="muted-note">
-            Seed content for a future essay. No publish date is shown until the
-            writing exists as a finished public piece.
-          </p>
-        </div>
+      <section className="section" aria-labelledby="featured-idea">
+        <article className="featured-reflection warm-section">
+          <p className="eyebrow eyebrow-gold">Featured Reflection</p>
+          <div className="featured-reflection-body">
+            <h2 id="featured-idea">{featuredIdea.title}</h2>
+            <div>
+              <p>{featuredIdea.excerpt}</p>
+              <p className="muted-note">
+                A working reflection — expanding into a fuller essay. No publish
+                date is shown until the writing exists as a finished public
+                piece.
+              </p>
+            </div>
+          </div>
+        </article>
       </section>
 
       <section className="section ideas-taxonomy" aria-labelledby="idea-categories">
