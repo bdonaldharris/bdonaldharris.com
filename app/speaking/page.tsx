@@ -71,18 +71,17 @@ export default function SpeakingPage() {
         className="section speaking-conversations"
         aria-labelledby="conversations-title"
       >
-        <div className="speaking-section-heading">
-          <h2 id="conversations-title">Conversations B Donald leads</h2>
-          <p>
-            For conferences, panels, podcasts, workshops, leadership rooms, and
-            community gatherings where technology needs context, clarity, and human
-            judgment.
-          </p>
-        </div>
+        <div className="speaking-conversations-main">
+          <div className="speaking-conversations-intro">
+            <h2 id="conversations-title">Conversations B Donald leads</h2>
+            <p>
+              For conferences, panels, podcasts, workshops, leadership rooms, and
+              community gatherings where technology needs context, clarity, and human
+              judgment.
+            </p>
+          </div>
 
-        <div className="speaking-conversation-groups">
-          <section className="speaking-theme-group" aria-labelledby="core-themes-title">
-            <h3 id="core-themes-title">Core themes</h3>
+          <div className="speaking-theme-group">
             <div className="speaking-theme-list">
               {speakingTopics.map((topic) => (
                 <article key={topic.title} className="speaking-theme-row">
@@ -91,42 +90,36 @@ export default function SpeakingPage() {
                 </article>
               ))}
             </div>
+          </div>
+        </div>
+
+        <aside className="speaking-organizer-panel" aria-label="Organizer details">
+          <section className="speaking-organizer-group">
+            <h3>Bookable as</h3>
+            <ul className="speaking-organizer-list speaking-organizer-tags">
+              {speakingFormats.map((format) => (
+                <li key={format}>{format}</li>
+              ))}
+            </ul>
           </section>
 
-          <section className="speaking-talk-group" aria-labelledby="signature-talks-title">
-            <h3 id="signature-talks-title">Signature talks</h3>
-            <ol className="speaking-talk-list">
+          <section className="speaking-organizer-group">
+            <h3>Common rooms</h3>
+            <ul className="speaking-organizer-list speaking-organizer-tags">
+              {audienceFit.map((audience) => (
+                <li key={audience}>{audience}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="speaking-organizer-group">
+            <h3>Sample talk titles</h3>
+            <ol className="speaking-organizer-list speaking-sample-talks">
               {signatureTalks.map((talk) => (
                 <li key={talk}>{talk}</li>
               ))}
             </ol>
           </section>
-        </div>
-
-        <aside className="speaking-fit" aria-labelledby="fit-title">
-          <div className="speaking-fit-intro">
-            <h3 id="fit-title">Where this fits</h3>
-            <p>Useful rooms and formats for these conversations.</p>
-          </div>
-
-          <div className="speaking-fit-lists">
-            <div>
-              <h4>Available for</h4>
-              <ul className="tag-list">
-                {speakingFormats.map((format) => (
-                  <li key={format}>{format}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4>Best fit for</h4>
-              <ul className="tag-list">
-                {audienceFit.map((audience) => (
-                  <li key={audience}>{audience}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
         </aside>
       </section>
 
@@ -143,8 +136,10 @@ export default function SpeakingPage() {
       </section>
 
       <section className="section speaking-final-cta" aria-labelledby="booking-title">
-        <h2 id="booking-title">Invite B Donald to speak.</h2>
-        <p>Bring a grounded builder perspective to your next conversation.</p>
+        <div>
+          <h2 id="booking-title">Invite B Donald to speak.</h2>
+          <p>For conferences, podcasts, leadership rooms, and community conversations.</p>
+        </div>
         <Link className="button-primary" href="/contact#contact-form">
           Invite me to speak
         </Link>

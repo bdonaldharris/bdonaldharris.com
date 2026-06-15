@@ -46,12 +46,12 @@ export const signatureTalks = [
 ];
 
 export const speakingFormats = [
-  "Keynotes",
-  "Panels",
-  "Fireside chats",
-  "Workshops",
-  "Podcasts",
-  "Community sessions",
+  "Keynote",
+  "Panel",
+  "Fireside chat",
+  "Workshop",
+  "Podcast conversation",
+  "Community session",
 ];
 
 export const audienceFit = [
