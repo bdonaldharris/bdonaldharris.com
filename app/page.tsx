@@ -56,7 +56,6 @@ export default function HomePage() {
       </section>
 
       <section className="section ecosystem-section">
-        <p className="eyebrow">Ecosystem</p>
         <div className="ecosystem-home-map">
           <ContentGrid variant="four">
             {homeProjects.map((project) => (
@@ -67,7 +66,6 @@ export default function HomePage() {
       </section>
 
       <section className="section ideas-feature ideas-editorial">
-        <p className="eyebrow">Ideas</p>
         <div className="ideas-feature-lead">
           <figure className="pull-quote">
             <blockquote>{leadIdea.title}</blockquote>
@@ -89,7 +87,6 @@ export default function HomePage() {
       </section>
 
       <section className="section speaking-preview">
-        <p className="eyebrow">Speaking</p>
         <div className="speaking-card">
           <h2>Discussion Topics</h2>
           <p>
@@ -114,7 +111,6 @@ export default function HomePage() {
 
       <section className="section founder-preview warm-section">
         <div className="founder-preview-heading">
-          <p className="eyebrow eyebrow-gold">Founder Story</p>
           <h2>Built from engineering, ministry, community, and lived experience.</h2>
         </div>
         <div className="founder-preview-grid">
@@ -142,7 +138,6 @@ export default function HomePage() {
       </section>
 
       <section className="section media-preview">
-        <p className="eyebrow">Media</p>
         <p className="media-preview-note">
           “Selected entry points into the public conversations, podcast work,
           and reflections connected to the broader ecosystem.”
