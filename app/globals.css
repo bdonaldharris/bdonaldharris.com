@@ -1633,7 +1633,7 @@ p {
 
 @media (min-width: 861px) {
   .speaking-organizer-panel {
-    margin-top: clamp(18px, 2vw, 28px);
+    margin-top: clamp(10px, 1.4vw, 18px);
   }
 }
 
