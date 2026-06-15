@@ -16,15 +16,15 @@ export const mediaItems: MediaItem[] = [
     status: "Featured platform",
   },
   {
-    title: "Speaking clips",
-    category: "Video",
+    title: "Speaking & Conversations",
+    category: "Speaking",
     description:
-      "A future home for selected talks, panels, and short clips from speaking and media work.",
-    href: "/media#speaking-appearances",
-    status: "In progress",
+      "A clear path for invitations, panels, podcasts, workshops, and public conversations.",
+    href: "/speaking",
+    status: "Available for invitations",
   },
   {
-    title: "Founder reflections",
+    title: "Founder Reflections / Ideas",
     category: "Writing",
     description:
       "Selected reflections on AI-era building, workflow intelligence, community, and ownership.",

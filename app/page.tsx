@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import homeHeroImage from "@/assets/originals/home-hero.png";
 import { ProjectCard } from "@/components/cards/project-card";
 import { ContentGrid } from "@/components/sections/content-grid";
-import { CTASection } from "@/components/sections/cta-section";
-import { SectionHeading } from "@/components/sections/section-heading";
 import { ideas } from "@/content/ideas";
 import { mediaItems } from "@/content/media";
 import { projects } from "@/content/projects";
@@ -12,6 +11,15 @@ import { speakingTopics } from "@/content/speaking";
 const [leadIdea, ...supportingIdeas] = ideas;
 const homeIdeas = supportingIdeas.slice(0, 3);
 const featuredTopics = speakingTopics.slice(0, 4);
+const homeProjectOrder = [
+  "notablebit",
+  "bit-voices-podcast",
+  "bitvoices-network",
+  "hindsite",
+];
+const homeProjects = homeProjectOrder
+  .map((id) => projects.find((project) => project.id === id))
+  .filter((project): project is (typeof projects)[number] => Boolean(project));
 
 export default function HomePage() {
   return (
@@ -20,13 +28,11 @@ export default function HomePage() {
         <div className="home-hero-copy">
           <p className="eyebrow">Founder • Builder • Technologist • Ecosystem Architect</p>
           <h1>
-            Building tools, platforms, and conversations for{" "}
-            <span className="text-accent">Black builders</span> in the AI era.
+            Building for <span className="text-accent">Black builders</span> in the AI era.
           </h1>
           <p>
-            I’m B Donald Harris — founder of NotableBIT, creator of HindSite,
-            and host of BIT Voices. I build at the intersection of software,
-            media, community, and practical AI adoption, with a focus on helping
+            I’m B Donald Harris — founder of NotableBIT and host of BIT Voices
+            Podcast. I build software, media, and community systems that help
             Black builders move with clarity, context, and ownership.
           </p>
           <div className="button-row">
@@ -39,33 +45,30 @@ export default function HomePage() {
           </div>
         </div>
         <figure className="hero-portrait">
-          <div className="hero-portrait-atmosphere" aria-hidden="true" />
           <Image
-            src="/images/profile-photo-one-web.jpg"
-            alt="Portrait of B Donald Harris, founder, builder, and technologist."
+            src={homeHeroImage}
+            alt="Portrait of B Donald Harris against a dark cyan and amber editorial background."
             fill
             priority
-            sizes="(max-width: 860px) 92vw, 480px"
+            sizes="(max-width: 860px) 92vw, 1120px"
           />
         </figure>
       </section>
 
-      <section className="section">
-        <SectionHeading
-          eyebrow="Ecosystem"
-          title="The work is connected."
-          body="My work spans products, platforms, media, and community — but the mission is consistent: help builders preserve context, tell better stories, build stronger systems, and create ownership."
-        />
-        <ContentGrid variant="four">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </ContentGrid>
+      <section className="section ecosystem-section">
+        <p className="eyebrow">Ecosystem</p>
+        <div className="ecosystem-home-map">
+          <ContentGrid variant="four">
+            {homeProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </ContentGrid>
+        </div>
       </section>
 
-      <section className="section ideas-feature">
+      <section className="section ideas-feature ideas-editorial">
+        <p className="eyebrow">Ideas</p>
         <div className="ideas-feature-lead">
-          <p className="eyebrow">Ideas</p>
           <figure className="pull-quote">
             <blockquote>{leadIdea.title}</blockquote>
             <figcaption>{leadIdea.excerpt}</figcaption>
@@ -79,19 +82,20 @@ export default function HomePage() {
               <p className="idea-rows-excerpt">{idea.excerpt}</p>
             </li>
           ))}
-          <li className="idea-rows-link">
-            <Link href="/ideas">Read more ideas</Link>
-          </li>
         </ul>
+        <p className="idea-rows-link">
+          <Link href="/ideas">Read More Ideas</Link>
+        </p>
       </section>
 
-      <section className="section speaking-preview section-split">
-        <div>
-          <SectionHeading
-            eyebrow="Speaking"
-            title="Speaking on AI, ownership, and the future of Black tech."
-            body="I speak and facilitate conversations on the realities of building in the AI era — engineering workflows, Black tech ownership, community ecosystems, and the human side of innovation."
-          />
+      <section className="section speaking-preview">
+        <p className="eyebrow">Speaking</p>
+        <div className="speaking-card">
+          <h2>Discussion Topics</h2>
+          <p>
+            Focused conversations on AI-era building, Black tech ownership,
+            workflow intelligence, and community ecosystems.
+          </p>
           <div className="button-row">
             <Link className="button-primary" href="/speaking">
               Invite Me to Speak
@@ -109,31 +113,40 @@ export default function HomePage() {
       </section>
 
       <section className="section founder-preview warm-section">
-        <div>
+        <div className="founder-preview-heading">
           <p className="eyebrow eyebrow-gold">Founder Story</p>
           <h2>Built from engineering, ministry, community, and lived experience.</h2>
         </div>
-        <div>
-          <p>
-            My path has moved through more than two decades of software
-            engineering, nearly three decades of ministry and leadership,
-            founder work, community building, and a late autism diagnosis that
-            gave language to patterns I had carried for years. That combination
-            shapes how I see systems, people, purpose, and the responsibility of
-            building technology that serves more than output.
-          </p>
-          <Link className="button-secondary" href="/about">
-            Read My Story
-          </Link>
+        <div className="founder-preview-grid">
+          <ul className="formed-by-list" aria-label="Formed by">
+            <li>Engineering</li>
+            <li>Ministry and leadership</li>
+            <li>Community building</li>
+            <li>Lived experience</li>
+            <li>Founder work</li>
+          </ul>
+          <div className="founder-preview-copy">
+            <p>
+              My path has moved through more than two decades of software
+              engineering, nearly three decades of ministry and leadership,
+              founder work, community building, and a late autism diagnosis that
+              gave language to patterns I had carried for years. That combination
+              shapes how I see systems, people, purpose, and the responsibility of
+              building technology that serves more than output.
+            </p>
+            <Link className="button-secondary" href="/about">
+              Read My Story
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section className="section">
-        <SectionHeading
-          eyebrow="Media"
-          title="Recent conversations and reflections."
-          body="Selected entry points into the public conversations, podcast work, and reflections connected to the broader ecosystem."
-        />
+      <section className="section media-preview">
+        <p className="eyebrow">Media</p>
+        <p className="media-preview-note">
+          “Selected entry points into the public conversations, podcast work,
+          and reflections connected to the broader ecosystem.”
+        </p>
         <ul className="media-list">
           {mediaItems.map((item) => (
             <li key={item.title}>
@@ -147,14 +160,12 @@ export default function HomePage() {
         </ul>
       </section>
 
-      <CTASection
-        eyebrow="Next Step"
-        title="Let’s build with clarity, context, and ownership."
-        body="Whether you are inviting me to speak, exploring a partnership, or following the work I’m building through NotableBIT, BitVoices, and HindSite — this is the front door."
-        motif="orbit"
-        primaryCta={{ href: "/speaking", label: "Invite Me to Speak" }}
-        secondaryCta={{ href: "/contact", label: "Contact Me" }}
-      />
+      <section className="section closing-contact">
+        <p>Have a speaking invitation, collaboration idea, or thoughtful conversation to start?</p>
+        <Link className="button-primary" href="/contact">
+          Contact Me
+        </Link>
+      </section>
     </main>
   );
 }

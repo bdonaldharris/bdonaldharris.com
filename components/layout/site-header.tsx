@@ -12,39 +12,34 @@ const navItems = [
 export function SiteHeader() {
   return (
     <header className="site-header">
-      <Link className="wordmark" href="/" aria-label="B Donald Harris home">
-        <span>B Donald Harris</span>
-      </Link>
+      <div className="site-header-inner">
+        <Link className="wordmark" href="/" aria-label="B Donald Harris home">
+          <span>B Donald Harris</span>
+        </Link>
 
-      <nav className="desktop-nav" aria-label="Primary navigation">
-        {navItems.map((item) => (
-          <Link key={item.href} href={item.href}>
-            {item.label}
-          </Link>
-        ))}
-      </nav>
-
-      <Link className="header-cta" href="/speaking">
-        Invite Me to Speak
-      </Link>
-
-      <details className="mobile-menu">
-        <summary aria-label="Open navigation menu">
-          <span />
-          <span />
-          <span />
-        </summary>
-        <nav aria-label="Mobile navigation">
+        <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href}>
               {item.label}
             </Link>
           ))}
-          <Link className="mobile-cta" href="/speaking">
-            Invite Me to Speak
-          </Link>
         </nav>
-      </details>
+
+        <details className="mobile-menu">
+          <summary aria-label="Open navigation menu">
+            <span />
+            <span />
+            <span />
+          </summary>
+          <nav aria-label="Mobile navigation">
+            {navItems.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </details>
+      </div>
     </header>
   );
 }
