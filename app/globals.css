@@ -1807,60 +1807,392 @@ p {
 
 /* ---------- Ideas page ---------- */
 
-.featured-reflection {
-  display: grid;
-  gap: 24px;
+/* Page-level rhythm: tighten the boundaries between the lower sections so the
+   page reads as one editorial flow rather than stacked blocks. */
+.ideas-featured-section {
+  padding-block: clamp(64px, 7.5vw, 108px) clamp(26px, 3.2vw, 40px);
 }
 
-.featured-reflection-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(24px, 4vw, 56px);
-  align-items: start;
+.ideas-lanes-section {
+  padding-block: clamp(30px, 3.6vw, 46px) clamp(28px, 3.2vw, 40px);
 }
 
-.featured-reflection h2 {
+.ideas-concepts-section {
+  padding-block: clamp(28px, 3.2vw, 40px) clamp(26px, 3.2vw, 40px);
+}
+
+.ideas-bridge-section {
+  padding-block: clamp(22px, 2.8vw, 36px);
+}
+
+.ideas-cta-section {
+  padding-block: clamp(20px, 2.6vw, 32px) clamp(20px, 2.4vw, 32px);
+}
+
+/* Close the page sooner into the footer (mirrors the Speaking page treatment). */
+.ideas-page + .site-footer {
+  margin-top: clamp(24px, 3vw, 40px);
+}
+
+/* Shared Ideas section header: full-width heading row, full-width description
+   row beneath it — both single-line on desktop, wrapping only when narrow. */
+.ideas-section-head {
+  display: grid;
+  gap: 12px;
+  max-width: none;
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+
+.ideas-section-head h2 {
   margin: 0;
-  max-width: 14ch;
+  max-width: none;
+}
+
+.ideas-section-head p {
+  margin: 0;
+  max-width: none;
+  color: var(--color-text-secondary);
+}
+
+/* Hero: an abstract atmospheric field — thought emerging from darkness into
+   language. No photo, no motif; layered radial glows + faint noise. */
+.ideas-hero {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 22px;
+  isolation: isolate;
+  padding-block: clamp(72px, 10vw, 132px) clamp(48px, 7vw, 96px);
+}
+
+.ideas-hero-field {
+  position: absolute;
+  top: clamp(-120px, -8vw, -60px);
+  bottom: clamp(-72px, -5vw, -36px);
+  left: 50%;
+  z-index: 0;
+  width: 100vw;
+  pointer-events: none;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(120% 130% at 50% 0%, rgba(34, 211, 238, 0.12), transparent 58%),
+    radial-gradient(82% 120% at 84% 96%, rgba(214, 169, 74, 0.09), transparent 60%),
+    radial-gradient(64% 110% at 16% 26%, rgba(59, 130, 246, 0.08), transparent 62%),
+    linear-gradient(118deg, rgba(34, 211, 238, 0.06) 0%, transparent 44%),
+    linear-gradient(
+      90deg,
+      var(--color-deep-black) 0%,
+      rgba(5, 6, 8, 0) 24%,
+      rgba(5, 6, 8, 0) 76%,
+      var(--color-deep-black) 100%
+    );
+}
+
+/* Faint grain so the color field reads as texture, not a flat wash. */
+.ideas-hero-field::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  opacity: 0.5;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+/* A thin emerging hairline that grounds the band into the page. */
+.ideas-hero-field::before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-border-strong) 28%,
+    var(--color-border-strong) 72%,
+    transparent
+  );
+}
+
+.ideas-hero-copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: start;
+  gap: 20px;
+  max-width: 720px;
+}
+
+/* Quiet accent rule above the headline — supports the title without a motif. */
+.ideas-hero-copy::before {
+  width: 56px;
+  height: 2px;
+  margin-bottom: 4px;
+  content: "";
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--color-soft-gold),
+    var(--color-cyan-glow)
+  );
+}
+
+.ideas-hero-copy h1 {
+  max-width: 16ch;
+}
+
+.ideas-hero-copy p {
+  max-width: 54ch;
+  color: rgba(247, 246, 243, 0.82);
+  font-size: clamp(1.05rem, 1.2vw, 1.2rem);
+}
+
+/* Featured reflection: a single-column, centered editorial statement inside a
+   calm atmospheric panel. */
+.ideas-featured {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  max-width: 64ch;
+  margin-inline: auto;
+  padding: clamp(36px, 5vw, 60px) clamp(24px, 4vw, 56px);
+  border-radius: 18px;
+  background:
+    radial-gradient(90% 120% at 50% 0%, rgba(34, 211, 238, 0.06), transparent 62%),
+    rgba(14, 19, 32, 0.42);
+  text-align: center;
+}
+
+.ideas-featured::before {
+  width: 30px;
+  height: 2px;
+  content: "";
+  border-radius: 999px;
+  background: var(--color-soft-gold);
+}
+
+.ideas-featured h2 {
+  margin: 0;
+  max-width: 18ch;
   font-size: clamp(1.8rem, 3.2vw, 2.7rem);
 }
 
-.featured-reflection p {
-  margin: 0 0 14px;
-}
-
-@media (max-width: 860px) {
-  .featured-reflection-body {
-    grid-template-columns: 1fr;
-  }
+.ideas-featured p {
+  margin: 0;
+  max-width: 56ch;
 }
 
 .muted-note {
+  margin-top: 4px;
   color: var(--color-text-muted);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  font-style: italic;
 }
 
-.ideas-taxonomy {
-  padding-bottom: 0;
-}
-
-.category-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+/* Idea lanes: a numbered editorial index of recurring territories — open rows
+   divided by hairlines, not bordered cards. */
+.idea-lanes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(36px, 5vw, 76px);
   padding: 0;
   margin: 0;
   list-style: none;
+  counter-reset: lane;
 }
 
-.category-list li {
-  padding: 10px 14px;
-  border: 1px solid rgba(34, 211, 238, 0.18);
-  border-radius: 8px;
-  background: rgba(20, 28, 44, 0.4);
+.idea-lanes li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(16px, 1.6vw, 22px);
+  align-items: start;
+  padding: clamp(22px, 2.6vw, 30px) 0;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.idea-lanes li::before {
+  counter-increment: lane;
+  content: counter(lane, decimal-leading-zero);
+  padding-top: 0.3em;
+  color: var(--color-soft-gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+}
+
+.idea-lane-copy {
+  display: grid;
+  gap: 7px;
+}
+
+.idea-lanes h3 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: clamp(1.12rem, 1.4vw, 1.32rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.idea-lanes p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+/* Working concepts: an editorial concept deck — named language presented as
+   cards, 3 across then 2. Atmospheric, not generic SaaS cards. */
+.concept-deck {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 20px);
+}
+
+.concept-card {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  min-height: 100%;
+  padding: clamp(24px, 2.6vw, 32px);
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 130% at 0% 0%, rgba(34, 211, 238, 0.06), transparent 56%),
+    rgba(15, 21, 35, 0.46);
+  transition:
+    border-color 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background-color 220ms ease;
+}
+
+/* Short accent rule anchored to the top-left of each card; it extends and
+   brightens on hover/focus. */
+.concept-card::before {
+  width: 26px;
+  height: 2px;
+  content: "";
+  border-radius: 999px;
+  background: var(--color-cyan-glow);
+  transition: width 220ms ease, box-shadow 220ms ease;
+}
+
+/* Decorative micro-label, revealed on hover/focus only. Absolutely positioned
+   so it never shifts the layout, and not needed to understand the card. */
+.concept-card::after {
+  position: absolute;
+  top: clamp(16px, 2vw, 22px);
+  right: clamp(16px, 2vw, 22px);
+  content: "Working concept";
+  color: var(--color-text-muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(-3px);
+  transition: opacity 220ms ease, transform 220ms ease;
+  pointer-events: none;
+}
+
+/* Restrained hover + keyboard focus treatment. Cards are static content, so
+   focus-within only fires if a focusable element is ever nested inside —
+   harmless otherwise. No content is hidden behind these states. */
+.concept-card:hover,
+.concept-card:focus-within {
+  border-color: rgba(34, 211, 238, 0.34);
+  background-color: rgba(18, 25, 41, 0.6);
+  box-shadow: 0 18px 42px -30px rgba(34, 211, 238, 0.5);
+  transform: translateY(-3px);
+}
+
+.concept-card:hover::before,
+.concept-card:focus-within::before {
+  width: 42px;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.55);
+}
+
+.concept-card:hover::after,
+.concept-card:focus-within::after {
+  opacity: 0.72;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .concept-card:hover,
+  .concept-card:focus-within {
+    transform: none;
+  }
+
+  .concept-card:hover::after,
+  .concept-card:focus-within::after {
+    transform: none;
+  }
+}
+
+.concept-card h3 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.concept-card p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+/* Bridge: a quiet full-width band ruled top and bottom, left-aligned — a
+   transition, not a card. */
+.ideas-bridge {
+  display: grid;
+  gap: 14px;
+  padding-block: clamp(30px, 4vw, 48px);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.ideas-bridge h2 {
+  margin: 0;
+  max-width: none;
+}
+
+.ideas-bridge p {
+  margin: 0;
+  max-width: 70ch;
   color: var(--color-text-secondary);
-  font-size: 0.86rem;
-  font-weight: 650;
+}
+
+/* Final CTA: a single grounded closing action with an italic note beneath —
+   echoes the Speaking page CTA. No heading, no card, no motif. */
+.ideas-final-cta {
+  display: grid;
+  justify-items: center;
+  gap: clamp(12px, 1.6vw, 16px);
+  text-align: center;
+}
+
+.ideas-cta-note {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.98rem;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+/* Concept deck collapses to two columns on tablet before stacking on mobile. */
+@media (max-width: 1040px) and (min-width: 861px) {
+  .concept-deck {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* ---------- Projects page ---------- */
@@ -2818,7 +3150,9 @@ p {
   .content-grid,
   .content-grid-two,
   .content-grid-three,
-  .content-grid-four {
+  .content-grid-four,
+  .idea-lanes,
+  .concept-deck {
     grid-template-columns: 1fr;
   }
 
