@@ -5,6 +5,7 @@ export type Project = {
   status: string;
   description: string;
   href: string;
+  logo: string;
 };
 
 export const projects: Project[] = [
@@ -16,24 +17,7 @@ export const projects: Project[] = [
     description:
       "Technology studio and company home for product, strategy, platform work, and aligned ecosystem initiatives.",
     href: "https://notablebit.com",
-  },
-  {
-    id: "hindsite",
-    title: "HindSite",
-    category: "Workflow intelligence",
-    status: "Being built",
-    description:
-      "Workflow intelligence for builders navigating AI-assisted development, comprehension debt, project memory, and accountable review.",
-    href: "/projects#hindsite",
-  },
-  {
-    id: "bitvoices-network",
-    title: "BitVoices Network",
-    category: "Community and media",
-    status: "Growing platform",
-    description:
-      "A platform and media ecosystem amplifying Black excellence in tech and creating visibility, community, and ownership pathways.",
-    href: "https://bitvoices.network",
+    logo: "/images/notablebit-logo.webp",
   },
   {
     id: "bit-voices-podcast",
@@ -43,5 +27,26 @@ export const projects: Project[] = [
     description:
       "Conversations with Black technologists, founders, builders, and leaders shaping what comes next.",
     href: "/media#bit-voices-podcast",
+    logo: "/images/bit-voices-podcast-logo.webp",
+  },
+  {
+    id: "bitvoices-network",
+    title: "BitVoices Network",
+    category: "Community and media",
+    status: "Growing platform",
+    description:
+      "A platform and media ecosystem amplifying Black excellence in tech and creating visibility, community, and ownership pathways.",
+    href: "https://bitvoices.network",
+    logo: "/images/bitvoices-logo.webp",
+  },
+  {
+    id: "hindsite",
+    title: "HindSite",
+    category: "Workflow intelligence",
+    status: "Being built",
+    description:
+      "Workflow intelligence for builders navigating AI-assisted development, comprehension debt, project memory, and accountable review.",
+    href: "/projects#hindsite",
+    logo: "/images/hindsite-logo.webp",
   },
 ];
