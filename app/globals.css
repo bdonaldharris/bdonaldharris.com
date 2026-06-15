@@ -1477,10 +1477,10 @@ p {
   position: relative;
   z-index: 3;
   display: grid;
-  gap: 22px;
+  gap: clamp(34px, 3.2vw, 46px);
   max-width: 760px;
   padding:
-    clamp(72px, 8vw, 118px)
+    clamp(64px, 7.2vw, 104px)
     clamp(28px, 8vw, 118px)
     clamp(180px, 15vw, 240px)
     clamp(28px, 8vw, 118px);
@@ -1491,6 +1491,7 @@ p {
   margin: 0;
   font-size: clamp(2.65rem, 4.35vw, 4.15rem);
   letter-spacing: -0.03em;
+  transform: translateY(-8px);
 }
 
 .speaking-keep-together {
@@ -1628,6 +1629,12 @@ p {
   background:
     linear-gradient(180deg, rgba(214, 169, 74, 0.07), transparent 32%),
     rgba(17, 24, 39, 0.38);
+}
+
+@media (min-width: 861px) {
+  .speaking-organizer-panel {
+    margin-top: clamp(18px, 2vw, 28px);
+  }
 }
 
 .speaking-organizer-group {
@@ -2716,12 +2723,14 @@ p {
   }
 
   .speaking-hero-copy {
-    padding: 66px 20px 154px;
+    gap: 30px;
+    padding: 58px 20px 154px;
   }
 
   .speaking-hero-copy h1 {
     max-width: 12ch;
     font-size: clamp(2.32rem, 9vw, 3.35rem);
+    transform: translateY(-4px);
   }
 
   .speaking-keep-together {
