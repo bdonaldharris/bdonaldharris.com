@@ -5,39 +5,34 @@ export type SpeakingTopic = {
 
 export const speakingTopics: SpeakingTopic[] = [
   {
-    title: "AI and the Future of Black Engineers",
+    title: "AI and the Future of Black Builders",
     description:
-      "How Black engineers can lead, evaluate, and shape the AI-era systems being built around them.",
+      "How AI is reshaping careers, ownership, hiring, and builder opportunity.",
   },
   {
     title: "Consumers to Builders in the AI-Powered Economy",
     description:
-      "A practical frame for moving from tool consumption to product ownership and creative agency.",
-  },
-  {
-    title: "Agentic Development Requires Builder Leadership",
-    description:
-      "Why AI-generated output still needs context, review, memory, and accountable technical judgment.",
+      "Moving from usage to creation, ownership, and leverage.",
   },
   {
     title: "Black Tech Visibility, Ownership, and Ecosystem Building",
     description:
-      "The work of moving beyond representation into durable platforms, communities, and opportunity paths.",
+      "Why representation is not enough without platforms, networks, and economic infrastructure.",
   },
   {
     title: "Community Is Culture, Not Features",
     description:
-      "What builders and leaders miss when they treat community as software mechanics alone.",
+      "Why trust, safety, visibility, and shared purpose matter more than platform mechanics.",
   },
   {
     title: "Building Products with Context, Memory, and Accountability",
     description:
-      "How workflow intelligence can help builders reduce comprehension debt and preserve decision history.",
+      "What AI workflows reveal about comprehension debt, product judgment, and responsible building.",
   },
   {
     title: "Faith, Purpose, and Technology Leadership",
     description:
-      "A grounded conversation about vocation, responsibility, execution, and people-centered technology.",
+      "A grounded conversation about vocation, service, stewardship, and people-centered technology.",
   },
 ];
 
@@ -48,7 +43,6 @@ export const signatureTalks = [
   "Community Is Culture, Not Features",
   "From Visibility to Ownership: The Next Chapter of Black Tech",
   "Comprehension Debt: The Hidden Cost of AI-Generated Software",
-  "Building with Context: Why AI Workflows Need Memory, Review, and Accountability",
 ];
 
 export const speakingFormats = [
@@ -64,7 +58,14 @@ export const audienceFit = [
   "Tech conferences",
   "Black tech organizations",
   "Founder communities",
-  "Churches / faith leadership groups",
   "AI events",
   "Business conferences",
+  "Universities",
+  "Faith and leadership gatherings",
+];
+
+export const speakingClipPlaceholders = [
+  "AI & the Future of Black Engineers",
+  "Builder Ownership in the AI Era",
+  "Community, Culture, and Technology",
 ];
