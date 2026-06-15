@@ -29,14 +29,6 @@ export default function SpeakingPage() {
             about technology, culture, ownership, and the future of work in the AI
             era.
           </p>
-          <div className="button-row">
-            <Link className="button-primary" href="/contact#contact-form">
-              Invite me to speak
-            </Link>
-            <Link className="button-secondary" href="#conversations">
-              View conversations
-            </Link>
-          </div>
         </div>
 
         <div className="speaking-hero-image" aria-hidden="true">
@@ -71,16 +63,16 @@ export default function SpeakingPage() {
         className="section speaking-conversations"
         aria-labelledby="conversations-title"
       >
-        <div className="speaking-conversations-main">
-          <div className="speaking-conversations-intro">
-            <h2 id="conversations-title">Conversations B Donald leads</h2>
-            <p>
-              For conferences, panels, podcasts, workshops, leadership rooms, and
-              community gatherings where technology needs context, clarity, and human
-              judgment.
-            </p>
-          </div>
+        <header className="speaking-conversations-intro">
+          <h2 id="conversations-title">Conversations B Donald leads</h2>
+          <p>
+            For conferences, panels, podcasts, workshops, leadership rooms, and
+            community gatherings where technology needs context, clarity, and human
+            judgment.
+          </p>
+        </header>
 
+        <div className="speaking-conversations-main">
           <div className="speaking-theme-group">
             <div className="speaking-theme-list">
               {speakingTopics.map((topic) => (
@@ -135,14 +127,11 @@ export default function SpeakingPage() {
         </div>
       </section>
 
-      <section className="section speaking-final-cta" aria-labelledby="booking-title">
-        <div>
-          <h2 id="booking-title">Invite B Donald to speak.</h2>
-          <p>For conferences, podcasts, leadership rooms, and community conversations.</p>
-        </div>
+      <section className="section speaking-final-cta" aria-label="Invite B Donald to speak">
         <Link className="button-primary" href="/contact#contact-form">
           Invite me to speak
         </Link>
+        <p>For conferences, podcasts, leadership rooms, and community conversations.</p>
       </section>
     </main>
   );

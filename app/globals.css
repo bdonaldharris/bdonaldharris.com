@@ -1439,11 +1439,11 @@ p {
 .speaking-hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(500px, 0.92fr) minmax(0, 1.08fr);
-  gap: clamp(18px, 3vw, 40px);
+  grid-template-columns: minmax(470px, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(14px, 2.4vw, 32px);
   align-items: center;
   width: min(1320px, calc(100vw - 32px));
-  min-height: clamp(540px, 47vw, 650px);
+  min-height: clamp(520px, 45vw, 620px);
   margin: 0 auto;
   overflow: hidden;
   border-radius: 0 0 22px 22px;
@@ -1488,11 +1488,11 @@ p {
   max-width: 700px;
   align-self: center;
   padding:
-    clamp(42px, 5vw, 72px)
+    clamp(32px, 4vw, 58px)
     clamp(34px, 5vw, 70px)
-    clamp(68px, 6vw, 96px)
+    clamp(80px, 7vw, 112px)
     clamp(50px, 7vw, 104px);
-  transform: translateY(-24px);
+  transform: translateY(-54px);
 }
 
 .speaking-hero-copy h1 {
@@ -1518,7 +1518,7 @@ p {
   z-index: 1;
   align-self: center;
   aspect-ratio: 16 / 9;
-  margin: clamp(18px, 2vw, 28px) clamp(18px, 2vw, 28px) clamp(18px, 2vw, 28px) 0;
+  margin: clamp(16px, 2vw, 24px) clamp(16px, 2vw, 24px) clamp(16px, 2vw, 24px) 0;
   overflow: hidden;
   border: 1px solid rgba(154, 164, 184, 0.1);
   border-radius: 18px;
@@ -1602,19 +1602,22 @@ p {
 }
 
 .speaking-conversations-intro {
+  grid-column: 1 / -1;
   display: grid;
-  gap: 16px;
-  margin-bottom: clamp(28px, 4vw, 42px);
+  gap: 10px;
+  margin-bottom: clamp(22px, 3vw, 32px);
 }
 
 .speaking-conversations-intro h2 {
-  max-width: 18ch;
+  max-width: none;
   margin: 0;
+  white-space: nowrap;
 }
 
 .speaking-conversations-intro p {
-  max-width: 64ch;
+  max-width: none;
   margin: 0;
+  white-space: nowrap;
 }
 
 .speaking-theme-list {
@@ -1783,33 +1786,30 @@ p {
 
 .speaking-final-cta {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 22px;
-  align-items: center;
-  padding: clamp(20px, 3vw, 30px);
+  justify-items: center;
+  gap: 10px;
+  padding: clamp(16px, 2.4vw, 24px) 0 clamp(26px, 3.4vw, 38px);
   border-top: 1px solid rgba(154, 164, 184, 0.14);
-  text-align: left;
-}
-
-.speaking-final-cta h2 {
-  margin: 0 0 6px;
-  font-size: clamp(1.5rem, 2.2vw, 2.05rem);
+  text-align: center;
 }
 
 .speaking-final-cta p {
   max-width: 52ch;
   margin: 0;
+  color: var(--color-text-muted);
   font-size: 0.98rem;
+  font-style: italic;
   line-height: 1.55;
 }
 
 @media (max-width: 1100px) and (min-width: 861px) {
   .speaking-hero {
-    grid-template-columns: minmax(450px, 0.95fr) minmax(0, 1.05fr);
+    grid-template-columns: minmax(430px, 0.82fr) minmax(0, 1.18fr);
   }
 
   .speaking-hero-copy {
     padding-left: clamp(44px, 5vw, 64px);
+    transform: translateY(-44px);
   }
 
   .speaking-hero-copy h1 {
@@ -2790,16 +2790,17 @@ p {
     margin-bottom: 24px;
   }
 
+  .speaking-conversations-intro h2,
+  .speaking-conversations-intro p {
+    white-space: normal;
+  }
+
   .speaking-organizer-panel {
     padding: 20px;
   }
 
   .speaking-clip-grid {
     grid-template-columns: 1fr;
-  }
-
-  .speaking-final-cta {
-    justify-items: start;
   }
 
   .pull-quote blockquote {
