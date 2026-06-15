@@ -1,92 +1,111 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArticleCard } from "@/components/cards/article-card";
-import { ContentGrid } from "@/components/sections/content-grid";
-import { CTASection } from "@/components/sections/cta-section";
-import { PageHero } from "@/components/sections/page-hero";
-import { SectionHeading } from "@/components/sections/section-heading";
-import { ideaCategories, ideas } from "@/content/ideas";
+import { ideaLanes, workingConcepts } from "@/content/ideas";
 
 export const metadata: Metadata = {
   title: "Ideas",
   description:
-    "Ideas and reflections from B Donald Harris on AI, Black tech ownership, builder workflows, community, purpose, and systems thinking.",
+    "The public thinking layer of B Donald Harris — concepts, language, and working reflections on AI, builder discipline, Black tech ownership, community, neurodivergence, and meaningful work.",
 };
 
 export default function IdeasPage() {
-  const [featuredIdea, ...restIdeas] = ideas;
-
   return (
-    <main className="page-shell">
-      <PageHero
-        eyebrow="Ideas / Writing"
-        title={
-          <>
-            Ideas for builders navigating the{" "}
-            <span className="text-accent">AI era</span>.
-          </>
-        }
-        body="Thinking out loud about AI, ownership, community, and the work of building — essays, reflections, and talks on Black tech ownership, workflow intelligence, purpose, and systems thinking."
-        motif="threads"
-        primaryCta={{ href: "/speaking", label: "Speaking Topics" }}
-        secondaryCta={{ href: "/projects", label: "Explore Projects" }}
-      />
-
-      <section className="section" aria-labelledby="featured-idea">
-        <article className="featured-reflection warm-section">
-          <p className="eyebrow eyebrow-gold">Featured Reflection</p>
-          <div className="featured-reflection-body">
-            <h2 id="featured-idea">{featuredIdea.title}</h2>
-            <div>
-              <p>{featuredIdea.excerpt}</p>
-              <p className="muted-note">
-                A working reflection — expanding into a fuller essay.
-              </p>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      <section className="section ideas-taxonomy" aria-labelledby="idea-categories">
-        <SectionHeading
-          eyebrow="Categories"
-          title="The lanes of public thinking"
-          body="The themes I keep returning to as I build, write, and speak about the work."
-        />
-        <ul className="category-list" id="idea-categories">
-          {ideaCategories.map((category) => (
-            <li key={category}>{category}</li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="section" aria-labelledby="idea-grid-heading">
-        <SectionHeading
-          eyebrow="Notes"
-          title="Ideas in progress"
-          body="Short reflections that grow into essays, talks, and podcast conversations."
-        />
-        <span id="idea-grid-heading" className="sr-only">
-          Ideas in progress
-        </span>
-        <ContentGrid variant="three">
-          {restIdeas.map((idea) => (
-            <ArticleCard key={idea.title} idea={idea} />
-          ))}
-        </ContentGrid>
-        <div className="section-link">
-          <Link href="/contact">Suggest a conversation around one of these ideas</Link>
+    <main className="page-shell ideas-page">
+      <section className="section ideas-hero">
+        <div className="ideas-hero-field" aria-hidden="true" />
+        <div className="ideas-hero-copy">
+          <h1>
+            Where the work becomes <span className="text-accent">language</span>.
+          </h1>
+          <p>
+            Essays, reflections, and working ideas on AI, builder discipline,
+            Black tech ownership, community, neurodivergence, and the systems
+            behind meaningful work.
+          </p>
         </div>
       </section>
 
-      <CTASection
-        eyebrow="Thought Leadership"
-        title="The ideas are meant to become useful conversations."
-        body="Invite B Donald to speak, collaborate, or turn one of these themes into a deeper room with your organization or community."
-        motif="threads"
-        primaryCta={{ href: "/speaking", label: "Invite Me to Speak" }}
-        secondaryCta={{ href: "/contact", label: "Contact Me" }}
-      />
+      <section
+        className="section ideas-featured-section"
+        aria-labelledby="featured-idea"
+      >
+        <article className="ideas-featured">
+          <h2 id="featured-idea">Community is culture before it is features.</h2>
+          <p>
+            Profiles, feeds, hubs, comments, and notifications do not create
+            community by themselves. Culture does.
+          </p>
+          <p>
+            Trust, safety, visibility, shared language, and mutual
+            responsibility matter more than platform mechanics. The features are
+            only ever a container for the culture that has to come first.
+          </p>
+          <p className="muted-note">A working reflection.</p>
+        </article>
+      </section>
+
+      <section className="section ideas-lanes-section">
+        <header className="ideas-section-head">
+          <h2>The lanes I keep returning to</h2>
+          <p>
+            The recurring themes underneath the work — what I keep writing,
+            building, and speaking toward.
+          </p>
+        </header>
+        <ol className="idea-lanes">
+          {ideaLanes.map((lane) => (
+            <li key={lane.title}>
+              <div className="idea-lane-copy">
+                <h3>{lane.title}</h3>
+                <p>{lane.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="section ideas-concepts-section">
+        <header className="ideas-section-head">
+          <h2>Working concepts</h2>
+          <p>
+            Language I’m naming, borrowing, applying, and refining as patterns
+            keep showing up in the work.
+          </p>
+        </header>
+        <div className="concept-deck">
+          {workingConcepts.map((concept) => (
+            <article key={concept.title} className="concept-card">
+              <h3>{concept.title}</h3>
+              <p>{concept.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section ideas-bridge-section">
+        <div className="ideas-bridge">
+          <h2>Not separate from the work.</h2>
+          <p>
+            These ideas shape the platforms I build, the communities I serve,
+            the talks I give, and the way I help builders move from output to
+            understanding.
+          </p>
+        </div>
+      </section>
+
+      <section
+        className="section ideas-cta-section ideas-final-cta"
+        aria-label="Start a conversation"
+      >
+        <Link className="button-primary" href="/contact">
+          Start a conversation
+        </Link>
+        <p className="ideas-cta-note">
+          Invite B Donald to speak, facilitate, or join a conversation on AI,
+          builder culture, community, ownership, and the future of meaningful
+          work.
+        </p>
+      </section>
     </main>
   );
 }
