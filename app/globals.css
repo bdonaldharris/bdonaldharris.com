@@ -443,6 +443,10 @@ p {
   color: var(--color-cyan-glow);
 }
 
+.text-warm {
+  color: var(--color-soft-gold);
+}
+
 .section-heading {
   max-width: 42ch;
   margin-bottom: clamp(28px, 4vw, 44px);
@@ -1154,23 +1158,64 @@ p {
 
 /* ---------- About page ---------- */
 
-/* About story aside: heading + editorial founder-at-work portrait */
-.story-aside {
-  position: sticky;
-  top: 96px;
+/* Pull the thesis card up close under the About hero (scoped to this page) */
+.page-hero:has(+ .about-throughline) {
+  padding-bottom: clamp(14px, 2vw, 24px);
+}
+
+/* About throughline as a wide, centered pull quote that continues the hero */
+.about-throughline {
+  padding-block: clamp(4px, 1.4vw, 14px) clamp(36px, 5vw, 60px);
+}
+
+.about-throughline .pull-quote {
+  text-align: center;
+}
+
+.pull-quote-wide blockquote {
+  max-width: 28ch;
+  margin-inline: auto;
+  font-size: clamp(1.9rem, 3.6vw, 3rem);
+}
+
+.pull-quote-wide figcaption {
+  max-width: 64ch;
+  font-size: 1.0625rem;
+}
+
+/* Story section: full-width heading, feature row, horizontal storyline */
+.story-section {
   display: grid;
-  gap: 22px;
-  align-content: start;
+  gap: clamp(26px, 4vw, 44px);
+}
+
+.story-heading {
+  max-width: none;
+  font-size: clamp(1.7rem, 2.85vw, 2.3rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+/* Row 2: editorial founder-at-work portrait + through-line paragraph */
+.story-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(28px, 5vw, 56px);
+  align-items: center;
 }
 
 .story-portrait {
   position: relative;
-  margin: 4px 0 0;
+  margin: 0;
   aspect-ratio: 5 / 4;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid var(--color-border-subtle);
-  box-shadow: 0 24px 50px -38px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(214, 169, 74, 0.22);
+  box-shadow:
+    0 24px 50px -38px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(214, 169, 74, 0.06),
+    0 0 40px -20px rgba(214, 169, 74, 0.4);
 }
 
 .story-portrait img {
@@ -1184,128 +1229,203 @@ p {
   content: "";
   pointer-events: none;
   background:
-    linear-gradient(to top, rgba(5, 6, 8, 0.42), transparent 50%),
-    radial-gradient(70% 70% at 100% 0%, rgba(214, 169, 74, 0.14), transparent 62%);
+    linear-gradient(to top, rgba(5, 6, 8, 0.62), transparent 46%),
+    radial-gradient(70% 70% at 100% 0%, rgba(214, 169, 74, 0.16), transparent 62%);
 }
 
-/* About throughline as a wide pull quote */
-.about-throughline {
-  padding-block: clamp(40px, 6vw, 72px);
+.story-portrait figcaption {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 14px 18px;
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
-.pull-quote-wide blockquote {
-  max-width: 24ch;
-  font-size: clamp(1.9rem, 3.6vw, 3rem);
+.story-portrait figcaption::before {
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  margin-right: 10px;
+  content: "";
+  vertical-align: middle;
+  background: var(--color-soft-gold);
 }
 
-.pull-quote-wide figcaption {
-  max-width: 64ch;
-  font-size: 1.0625rem;
+.story-lead {
+  margin: 0;
+  max-width: 44ch;
+  color: var(--color-text-secondary);
+  font-size: clamp(1.15rem, 1.7vw, 1.42rem);
+  line-height: 1.6;
 }
 
-/* About beliefs as a quiet editorial list (no boxes) */
-.belief-list-section {
+/* Row 3: horizontal storyline, items alternating above/below a thin rail */
+.storyline {
+  position: relative;
   display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
-  gap: clamp(28px, 5vw, 64px);
-  align-items: start;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding: 0;
+  margin: clamp(6px, 1.6vw, 18px) 0 0;
+  list-style: none;
 }
 
-/* Keep the heading aside aligned with tall content instead of floating at top */
-.belief-list-section > div:first-child,
+.storyline::before {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  content: "";
+  transform: translateY(-0.5px);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(214, 169, 74, 0.4) 16%,
+    rgba(34, 211, 238, 0.26) 84%,
+    transparent
+  );
+}
+
+.storyline-item {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  min-height: 312px;
+  padding-inline: clamp(8px, 1vw, 16px);
+}
+
+.storyline-content {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+}
+
+.storyline-item[data-pos="above"] .storyline-content {
+  grid-row: 1;
+  align-self: end;
+  padding-bottom: 30px;
+}
+
+.storyline-item[data-pos="below"] .storyline-content {
+  grid-row: 2;
+  align-self: start;
+  padding-top: 30px;
+}
+
+.storyline-index {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-soft-gold);
+}
+
+.storyline-content h3 {
+  margin: 0;
+  font-size: clamp(1rem, 1.2vw, 1.18rem);
+  letter-spacing: -0.01em;
+}
+
+.storyline-content p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.storyline-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 13px;
+  height: 13px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: var(--color-soft-gold);
+  box-shadow:
+    0 0 0 4px rgba(8, 17, 31, 0.92),
+    0 0 14px rgba(214, 169, 74, 0.5);
+}
+
+/* Keep the speaking heading aside aligned with tall content */
 .speaking-lists > div:first-child {
   position: sticky;
   top: 96px;
 }
 
-.belief-intro {
-  margin-top: 16px;
-  max-width: 34ch;
-  color: var(--color-text-muted);
+/* Beliefs: centered intro card + horizontal belief cards */
+.beliefs-section {
+  display: grid;
+  gap: clamp(26px, 3.5vw, 44px);
+  justify-items: center;
+  /* Close the page cleanly: footer's own top margin supplies premium spacing */
+  padding-bottom: clamp(8px, 1.4vw, 18px);
 }
 
-.belief-list {
-  display: grid;
-  gap: 0;
+.beliefs-intro-card {
+  width: min(100%, 620px);
+  padding: clamp(28px, 4vw, 44px);
+  text-align: center;
+  border: 1px solid rgba(214, 169, 74, 0.2);
+  border-radius: 16px;
+  background:
+    radial-gradient(90% 130% at 50% 0%, rgba(214, 169, 74, 0.1), transparent 62%),
+    rgba(16, 20, 28, 0.4);
+}
+
+.beliefs-intro-card h2 {
+  margin: 0;
+}
+
+.beliefs-intro-card p {
+  margin: 14px auto 0;
+  max-width: 42ch;
+  color: var(--color-text-secondary);
+}
+
+.belief-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(14px, 1.6vw, 20px);
+  width: 100%;
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-.belief-list li {
+.belief-card {
   position: relative;
-  padding: 22px 0 22px 30px;
-  border-top: 1px solid var(--color-border-subtle);
+  flex: 1 1 190px;
+  max-width: 260px;
+  padding: 26px 22px 24px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 14px;
+  background: rgba(18, 24, 36, 0.4);
   color: var(--color-text-primary);
-  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-size: 1.02rem;
   font-weight: 600;
+  line-height: 1.4;
   letter-spacing: -0.01em;
-  line-height: 1.3;
 }
 
-.belief-list li:last-child {
-  border-bottom: 1px solid var(--color-border-subtle);
-}
-
-.belief-list li::before {
-  position: absolute;
-  top: 28px;
-  left: 0;
-  width: 8px;
-  height: 8px;
+.belief-card::before {
+  display: block;
+  width: 26px;
+  height: 2px;
+  margin-bottom: 16px;
   content: "";
   border-radius: 999px;
   background: var(--color-soft-gold);
   box-shadow: 0 0 12px rgba(214, 169, 74, 0.35);
 }
 
-.story-timeline,
-.about-current-work {
-  display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
-  gap: clamp(28px, 5vw, 64px);
-  align-items: start;
-}
-
-.timeline-list {
-  display: grid;
-  gap: 4px;
-}
-
-.timeline-item {
-  position: relative;
-  padding: 0 0 26px 28px;
-  border-left: 1px solid var(--color-border-subtle);
-}
-
-.timeline-item:last-child {
-  padding-bottom: 0;
-}
-
-.timeline-item::before {
-  position: absolute;
-  top: 0.32rem;
-  left: -5px;
-  width: 9px;
-  height: 9px;
-  content: "";
-  border-radius: 999px;
-  background: var(--color-soft-gold);
-  box-shadow: 0 0 14px rgba(214, 169, 74, 0.3);
-}
-
-.timeline-item h3 {
-  margin-bottom: 8px;
-}
-
-.timeline-item p {
-  margin: 0;
-  max-width: 58ch;
-}
-
-.about-current-work p {
-  margin-bottom: 22px;
-  max-width: 56ch;
+/* Bring the footer up a touch after the Beliefs section (About page only) */
+.page-shell:has(.beliefs-section) + .site-footer {
+  margin-top: clamp(36px, 4.5vw, 56px);
 }
 
 /* ---------- Speaking page ---------- */
@@ -2180,15 +2300,58 @@ p {
   .section-split,
   .founder-preview,
   .founder-preview-grid,
-  .belief-list-section,
-  .story-timeline,
-  .about-current-work,
+  .story-feature,
   .speaking-lists,
   .media-placeholder,
   .connection-section,
   .featured-podcast,
   .contact-layout {
     grid-template-columns: 1fr;
+  }
+
+  .story-heading {
+    white-space: normal;
+  }
+
+  .story-feature .story-portrait {
+    max-width: 420px;
+  }
+
+  /* Collapse the horizontal storyline into a vertical stacked timeline */
+  .storyline {
+    grid-template-columns: 1fr;
+  }
+
+  .storyline::before {
+    display: none;
+  }
+
+  .storyline-item {
+    grid-template-rows: none;
+    min-height: 0;
+    padding: 0 0 26px 28px;
+    border-left: 1px solid var(--color-border-subtle);
+  }
+
+  .storyline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .storyline-item[data-pos="above"] .storyline-content,
+  .storyline-item[data-pos="below"] .storyline-content {
+    grid-row: auto;
+    align-self: auto;
+    padding: 0;
+  }
+
+  .storyline-content p {
+    font-size: 0.95rem;
+  }
+
+  .storyline-node {
+    top: 0.42rem;
+    left: -6px;
+    transform: none;
   }
 
   .home-hero {
@@ -2225,14 +2388,8 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .story-aside,
-  .belief-list-section > div:first-child,
   .speaking-lists > div:first-child {
     position: static;
-  }
-
-  .story-portrait {
-    max-width: 360px;
   }
 
   .pull-quote blockquote {

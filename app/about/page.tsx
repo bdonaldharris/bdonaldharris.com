@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { CTASection } from "@/components/sections/cta-section";
 import { PageHero } from "@/components/sections/page-hero";
 import { aboutStorySections, beliefStatements } from "@/content/about";
 
@@ -18,12 +16,11 @@ export default function AboutPage() {
         eyebrow="About B Donald Harris"
         title={
           <>
-            I build where technology, purpose, community, and{" "}
-            <span className="text-accent">ownership</span> meet.
+            I build systems, stories, and communities that help people move with{" "}
+            <span className="text-warm">clarity</span>.
           </>
         }
-        body="My work sits at the intersection of software engineering, founder leadership, ministry-shaped formation, media, community, and the lived experience of seeing systems in layers."
-        motif="threads"
+        body="My work sits at the intersection of software engineering, founder leadership, ministry-shaped formation, media, community, and a lifelong instinct for seeing systems in layers."
         primaryCta={{ href: "/speaking", label: "Invite Me to Speak" }}
         secondaryCta={{ href: "/projects", label: "Explore Projects" }}
       />
@@ -42,72 +39,67 @@ export default function AboutPage() {
         </figure>
       </section>
 
-      <section className="section story-timeline warm-section" aria-labelledby="about-story">
-        <div className="story-aside">
-          <p className="eyebrow eyebrow-gold">Story</p>
-          <h2 id="about-story">A path shaped by systems, people, and purpose.</h2>
+      <section
+        className="section story-section warm-section"
+        aria-labelledby="about-story"
+      >
+        <h2 id="about-story" className="story-heading">
+          A path shaped by systems, people, and purpose.
+        </h2>
+
+        <div className="story-feature">
           <figure className="story-portrait">
             <Image
               src="/images/profile-photo-two-web.jpg"
-              alt="B Donald Harris working at his laptop."
+              alt="B Donald Harris, founder and technologist, working at his laptop."
               fill
-              sizes="(max-width: 860px) 92vw, 360px"
+              sizes="(max-width: 860px) 92vw, 440px"
             />
+            <figcaption>B Donald Harris — founder, engineer, and builder.</figcaption>
           </figure>
+          <p className="story-lead">
+            One through line runs from the first system I took apart to the
+            companies I build today: a need to understand how things actually fit
+            together, and to make that clarity useful to other people.
+          </p>
         </div>
-        <div className="timeline-list">
-          {aboutStorySections.map((section) => (
-            <article key={section.title} className="timeline-item">
-              <h3>{section.title}</h3>
-              <p>{section.body}</p>
-            </article>
+
+        <ol className="storyline" aria-label="Career and formation storyline">
+          {aboutStorySections.map((section, index) => (
+            <li
+              key={section.title}
+              className="storyline-item"
+              data-pos={index % 2 === 0 ? "above" : "below"}
+            >
+              <div className="storyline-content">
+                <span className="storyline-index" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3>{section.title}</h3>
+                <p>{section.body}</p>
+              </div>
+              <span className="storyline-node" aria-hidden="true" />
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
-      <section className="section belief-list-section" aria-labelledby="beliefs">
-        <div>
-          <p className="eyebrow">Beliefs</p>
+      <section className="section beliefs-section" aria-labelledby="beliefs">
+        <div className="beliefs-intro-card">
           <h2 id="beliefs">What I believe</h2>
-          <p className="belief-intro">
-            These convictions shape the way I build, speak, collaborate, and
+          <p>
+            The convictions that shape how I build, speak, collaborate, and
             evaluate technology.
           </p>
         </div>
-        <ul className="belief-list">
+        <ul className="belief-grid">
           {beliefStatements.map((belief) => (
-            <li key={belief}>{belief}</li>
+            <li key={belief} className="belief-card">
+              {belief}
+            </li>
           ))}
         </ul>
       </section>
-
-      <section className="section about-current-work">
-        <div>
-          <p className="eyebrow">Current Work</p>
-          <h2>NotableBIT, HindSite, BitVoices, and BIT Voices are connected vehicles.</h2>
-        </div>
-        <div>
-          <p>
-            The work is focused on Black tech ownership, AI-era building,
-            workflow intelligence, media, and community. Some of it is company
-            work. Some of it is product work. Some of it is public conversation.
-            The center is consistent: help builders move with clarity, context,
-            and ownership.
-          </p>
-          <Link className="button-secondary" href="/projects">
-            See the Ecosystem
-          </Link>
-        </div>
-      </section>
-
-      <CTASection
-        eyebrow="Collaboration"
-        title="Build, speak, or partner around work that needs context."
-        body="For speaking, media, partnership, or strategic technology inquiries, the Contact page is the best next step."
-        motif="orbit"
-        primaryCta={{ href: "/contact", label: "Contact Me" }}
-        secondaryCta={{ href: "/speaking", label: "Speaking Topics" }}
-      />
     </main>
   );
 }
