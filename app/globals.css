@@ -335,6 +335,75 @@ a:hover {
   width: min(100%, 340px);
 }
 
+/* Projects page hero (image on the right) */
+.projects-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  gap: clamp(28px, 4vw, 52px);
+  align-items: center;
+  padding-bottom: clamp(40px, 5vw, 64px);
+}
+
+/* Pull "Built in sequence" closer to the hero (Projects only) */
+.projects-hero + .section {
+  padding-top: clamp(8px, 1.5vw, 18px);
+}
+
+/* Confident, editorial headline — smaller than the global hero scale */
+.projects-hero h1 {
+  max-width: 16ch;
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  line-height: 1.12;
+}
+
+/* Projects section headings: stacked single-column rows */
+.projects-section-heading {
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+
+.projects-section-heading h2 {
+  margin: 0;
+}
+
+.projects-section-heading p {
+  margin: 14px 0 0;
+  /* Wide enough to stay on one line on desktop; wraps naturally below */
+  max-width: none;
+}
+
+.projects-hero-image {
+  position: relative;
+  align-self: stretch;
+  min-height: clamp(330px, 37vw, 500px);
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--color-deep-black);
+}
+
+.projects-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+}
+
+/* Blend the image edges into the page so it reads integrated, not boxed */
+.projects-hero-image::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-deep-black) 0%,
+      rgba(5, 6, 8, 0.28) 22%,
+      transparent 50%
+    ),
+    linear-gradient(0deg, var(--color-deep-black) 0%, transparent 20%),
+    linear-gradient(180deg, rgba(5, 6, 8, 0.55) 0%, transparent 18%);
+}
+
 /* ---------- Decorative motifs ---------- */
 
 .motif {
@@ -610,6 +679,35 @@ p {
 
 .project-card[data-layer="human"] .card-meta {
   color: var(--color-soft-gold);
+}
+
+/* Restrained logo mark, top-right (Projects page cards only) */
+.project-card-logo {
+  position: absolute;
+  top: clamp(16px, 2vw, 22px);
+  right: clamp(16px, 2vw, 22px);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 5px;
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 10px;
+  background: rgba(5, 6, 8, 0.55);
+}
+
+.project-card-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.95;
+}
+
+.project-card:has(.project-card-logo) .card-meta {
+  padding-right: 52px;
 }
 
 /* ---------- CTA band ---------- */
@@ -2199,199 +2297,155 @@ p {
 
 .ecosystem-map-section {
   padding-top: 0;
+  padding-bottom: clamp(20px, 2.6vw, 38px);
 }
 
-.ecosystem-map {
+/* Close the ecosystem section into the footer (Projects page only).
+   The default .site-footer top margin (~80px) is the main remaining gap. */
+.projects-page + .site-footer {
+  margin-top: clamp(14px, 2vw, 26px);
+}
+
+/* Interpretive caption beneath the timeline-flow diagram */
+.ecosystem-caption {
+  margin: clamp(22px, 3vw, 34px) 0 0;
+  max-width: 88ch;
+  color: var(--color-text-secondary);
+}
+
+/* Timeline-flow ecosystem: origin → projects, built over time */
+.ecosystem-flow {
   position: relative;
-  min-height: 540px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(10px, 1.4vw, 22px);
+  margin: 0;
+  padding: clamp(36px, 4.6vw, 60px) clamp(22px, 3vw, 44px) clamp(30px, 4vw, 48px);
   overflow: hidden;
+  list-style: none;
   border: 1px solid var(--color-border-subtle);
-  border-radius: 12px;
+  border-radius: 16px;
   background:
-    radial-gradient(circle at center, rgba(34, 211, 238, 0.1), transparent 13rem),
-    radial-gradient(circle at 76% 26%, rgba(214, 169, 74, 0.08), transparent 14rem),
-    rgba(11, 17, 30, 0.6);
+    radial-gradient(120% 140% at 0% 0%, rgba(34, 211, 238, 0.1), transparent 42%),
+    radial-gradient(120% 150% at 100% 100%, rgba(214, 169, 74, 0.09), transparent 46%),
+    rgba(9, 14, 25, 0.62);
 }
 
-.ecosystem-map::before,
-.ecosystem-map::after {
-  position: absolute;
-  inset: 13%;
-  content: "";
-  border: 1px solid rgba(148, 163, 184, 0.08);
-  border-radius: 999px;
-}
-
-.ecosystem-map::after {
-  inset: 27%;
-  border-color: rgba(34, 211, 238, 0.1);
-}
-
-.ecosystem-traces {
+.ecosystem-flow::before {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-}
-
-.ecosystem-node {
-  position: absolute;
-  z-index: 2;
-  display: grid;
-  gap: 6px;
-  width: min(208px, 42vw);
-  padding: 16px 18px;
-  border: 1px solid var(--color-border-strong);
-  border-radius: 12px;
-  background: rgba(7, 10, 18, 0.86);
-  backdrop-filter: blur(14px);
-}
-
-.ecosystem-node::before {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  width: 7px;
-  height: 7px;
+  z-index: 0;
+  pointer-events: none;
   content: "";
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(120% 100% at 50% 0%, black, transparent 80%);
+}
+
+.flow-node {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: 14px 1fr;
+  gap: 20px;
+}
+
+/* connecting path between consecutive nodes */
+.flow-node:not(:last-child)::after {
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  z-index: 0;
+  width: calc(100% + clamp(10px, 1.4vw, 22px));
+  height: 2px;
+  content: "";
+  background: linear-gradient(
+    90deg,
+    rgba(34, 211, 238, 0.42),
+    rgba(214, 169, 74, 0.42)
+  );
+}
+
+.flow-dot {
+  position: relative;
+  z-index: 2;
+  justify-self: start;
+  width: 14px;
+  height: 14px;
   border-radius: 999px;
   background: var(--color-text-muted);
+  box-shadow: 0 0 0 4px rgba(9, 14, 25, 0.85);
 }
 
-.ecosystem-node[data-layer="tech"] {
-  border-color: rgba(34, 211, 238, 0.26);
+.flow-origin .flow-dot {
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(9, 14, 25, 0.85), 0 0 12px rgba(255, 255, 255, 0.55);
 }
 
-.ecosystem-node[data-layer="tech"]::before {
+.flow-node[data-layer="tech"] .flow-dot {
   background: var(--color-cyan-glow);
-  box-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
+  box-shadow: 0 0 0 4px rgba(9, 14, 25, 0.85), 0 0 12px rgba(34, 211, 238, 0.6);
 }
 
-.ecosystem-node[data-layer="human"] {
-  border-color: rgba(214, 169, 74, 0.26);
-}
-
-.ecosystem-node[data-layer="human"]::before {
+.flow-node[data-layer="human"] .flow-dot {
   background: var(--color-soft-gold);
-  box-shadow: 0 0 10px rgba(214, 169, 74, 0.6);
+  box-shadow: 0 0 0 4px rgba(9, 14, 25, 0.85), 0 0 12px rgba(214, 169, 74, 0.6);
 }
 
-.ecosystem-node span {
+.flow-card {
+  display: grid;
+  gap: 9px;
+  align-content: start;
+  padding: 16px 16px 18px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 12px;
+  background: rgba(7, 10, 18, 0.72);
+  backdrop-filter: blur(12px);
+}
+
+.flow-origin .flow-card {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.flow-node[data-layer="tech"] .flow-card {
+  border-color: rgba(34, 211, 238, 0.22);
+}
+
+.flow-node[data-layer="human"] .flow-card {
+  border-color: rgba(214, 169, 74, 0.22);
+}
+
+/* HindSite reads as the current build — emphasis via accent, not offset */
+.flow-node-current .flow-card {
+  border-color: rgba(34, 211, 238, 0.5);
+  background: rgba(10, 16, 28, 0.85);
+  box-shadow:
+    inset 0 0 0 1px rgba(34, 211, 238, 0.18),
+    0 0 30px -8px rgba(34, 211, 238, 0.4);
+}
+
+.flow-step {
+  color: var(--color-text-muted);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.flow-name {
   color: var(--color-text-primary);
+  font-size: clamp(0.98rem, 1.1vw, 1.12rem);
   font-weight: 750;
   letter-spacing: -0.01em;
 }
 
-.ecosystem-node small {
+.flow-role {
   color: var(--color-text-muted);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.ecosystem-node-center {
-  top: 50%;
-  left: 50%;
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(12, 16, 26, 0.92);
-  box-shadow: 0 0 44px rgba(34, 211, 238, 0.14), 0 0 44px rgba(214, 169, 74, 0.08);
-  transform: translate(-50%, -50%);
-}
-
-.ecosystem-node-center::before {
-  background: #ffffff;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
-}
-
-.ecosystem-node-1 {
-  top: 12%;
-  left: 12%;
-}
-
-.ecosystem-node-2 {
-  top: 13%;
-  right: 12%;
-}
-
-.ecosystem-node-3 {
-  right: 10%;
-  bottom: 12%;
-}
-
-.ecosystem-node-4 {
-  bottom: 13%;
-  left: 10%;
-}
-
-.map-text-equivalent {
-  margin-top: 16px;
-  padding: 22px;
-  border: 1px solid var(--color-border-subtle);
-  border-radius: 10px;
-  background: rgba(20, 28, 44, 0.36);
-}
-
-.map-text-equivalent h3 {
-  margin-bottom: 10px;
-}
-
-.map-text-equivalent p {
-  margin: 0;
-  max-width: 78ch;
-}
-
-.connection-section {
-  display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
-  gap: clamp(28px, 5vw, 64px);
-  border-top: 1px solid var(--color-border-subtle);
-  align-items: start;
-}
-
-.connection-section p:not(.eyebrow) {
-  margin-bottom: 20px;
-  max-width: 56ch;
-}
-
-.explore-links ul {
-  display: grid;
-  gap: 0;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.explore-links li {
-  display: flex;
-  gap: 18px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--color-border-subtle);
-}
-
-.explore-links li:first-child {
-  border-top: 1px solid var(--color-border-subtle);
-}
-
-.explore-links a {
-  color: var(--color-text-primary);
-  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.explore-links a:hover {
-  color: var(--color-cyan-glow);
-}
-
-.explore-links span {
-  color: var(--color-text-muted);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -2945,7 +2999,6 @@ p {
   .speaking-theme-row,
   .speaking-final-cta,
   .media-placeholder,
-  .connection-section,
   .featured-podcast,
   .contact-layout {
     grid-template-columns: 1fr;
@@ -3160,37 +3213,35 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .ecosystem-map {
-    display: grid;
-    gap: 12px;
-    min-height: auto;
-    padding: 18px;
+  /* Stack the timeline-flow vertically on small screens */
+  .ecosystem-flow {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: clamp(24px, 6vw, 34px) clamp(20px, 5vw, 30px);
   }
 
-  .ecosystem-map::before,
-  .ecosystem-map::after,
-  .ecosystem-traces {
-    display: none;
+  .flow-node {
+    grid-template-rows: none;
+    grid-template-columns: 14px minmax(0, 1fr);
+    gap: 18px;
+    padding-bottom: clamp(18px, 5vw, 26px);
   }
 
-  .ecosystem-node::before {
-    top: 16px;
+  .flow-node:last-child {
+    padding-bottom: 0;
   }
 
-  .ecosystem-node,
-  .ecosystem-node-center,
-  .ecosystem-node-1,
-  .ecosystem-node-2,
-  .ecosystem-node-3,
-  .ecosystem-node-4 {
-    position: static;
-    width: 100%;
-    transform: none;
-  }
-
-  .explore-links li {
-    display: grid;
-    gap: 6px;
+  /* connector becomes a vertical line down the left rail */
+  .flow-node:not(:last-child)::after {
+    top: 6px;
+    left: 6px;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(34, 211, 238, 0.4),
+      rgba(214, 169, 74, 0.4)
+    );
   }
 
   .press-kit-layout {
@@ -3211,6 +3262,16 @@ p {
 
   .form-row {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-hero-image {
+    display: none;
   }
 }
 
