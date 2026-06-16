@@ -2470,142 +2470,293 @@ p {
   max-width: 56ch;
 }
 
-.appearances-section {
-  border-top: 1px solid var(--color-border-subtle);
-}
+/* ---------- Media page ---------- */
 
-/* Featured podcast anchor — cover-art-style brand tile */
-.featured-podcast-mark {
-  display: grid;
-  place-items: center;
-}
-
-.podcast-cover {
+/* Hero: full-bleed cinematic studio image with copy overlaid on the left */
+.media-hero {
   position: relative;
   display: grid;
-  align-content: space-between;
-  gap: 18px;
+  align-content: center;
   width: 100%;
-  max-width: 300px;
-  aspect-ratio: 1 / 1;
-  padding: 26px;
-  border-radius: 18px;
+  min-height: clamp(440px, 46vw, 620px);
+  margin: 0 auto;
   overflow: hidden;
-  border: 1px solid rgba(214, 169, 74, 0.22);
+  background: var(--color-deep-black);
+}
+
+.media-hero::before,
+.media-hero::after {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  content: "";
+}
+
+/* Left-anchored scrim keeps the headline readable over the image */
+.media-hero::before {
   background:
-    radial-gradient(120% 90% at 0% 0%, rgba(34, 211, 238, 0.18), transparent 55%),
-    radial-gradient(120% 95% at 100% 100%, rgba(214, 169, 74, 0.22), transparent 55%),
-    linear-gradient(150deg, #0c1018, #08080b);
-  box-shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.9);
+    linear-gradient(
+      90deg,
+      rgba(5, 6, 8, 0.96) 0%,
+      rgba(5, 6, 8, 0.86) 28%,
+      rgba(5, 6, 8, 0.5) 52%,
+      rgba(5, 6, 8, 0.12) 78%,
+      transparent 100%
+    ),
+    linear-gradient(to bottom, rgba(5, 6, 8, 0.42), transparent 22%);
 }
 
-.podcast-cover-kicker {
-  color: var(--color-soft-gold);
-  font-size: 0.68rem;
+/* Settle the bottom edge into the page background */
+.media-hero::after {
+  background: linear-gradient(
+    to top,
+    var(--color-deep-black) 0%,
+    rgba(5, 6, 8, 0.72) 15%,
+    transparent 36%
+  );
+}
+
+.media-hero-copy {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  gap: clamp(20px, 2.2vw, 28px);
+  width: var(--container);
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-block: clamp(48px, 6vw, 76px);
+}
+
+/* Calmer, more editorial than the global hero scale — avoids the blocky stack */
+.media-hero-copy h1 {
+  max-width: 17ch;
+  margin: 0;
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
   font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
 }
 
-.podcast-cover-title {
-  color: var(--color-text-primary);
-  font-size: clamp(2rem, 4vw, 2.7rem);
-  font-weight: 820;
-  line-height: 0.92;
-  letter-spacing: -0.02em;
+.media-hero-copy p {
+  max-width: 48ch;
+  margin: 0;
+  color: rgba(247, 246, 243, 0.82);
+  font-size: clamp(1.02rem, 1.15vw, 1.16rem);
 }
 
-.podcast-waveform {
-  display: flex;
-  align-items: flex-end;
-  gap: 5px;
-  height: 40px;
+.media-hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
 }
 
-.podcast-waveform i {
+.media-hero-image img {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Tighter, scoped vertical rhythm for the stacked Media sections */
+.media-recent,
+.media-events,
+.media-press {
+  padding-block: clamp(28px, 3.4vw, 44px);
+}
+
+/* BIT Voices feature: a centered, contained feature card — not a full-width banner */
+.media-feature {
   display: block;
-  width: 4px;
-  border-radius: 999px;
-  background: linear-gradient(to top, var(--color-soft-gold), var(--color-cyan-glow));
-  opacity: 0.9;
+  width: min(820px, 100%);
+  margin: clamp(28px, 3.6vw, 44px) auto;
+  text-align: center;
+  padding: clamp(28px, 3.4vw, 40px) clamp(28px, 4vw, 52px);
 }
 
-.featured-podcast h2 {
-  margin-bottom: 16px;
-  max-width: 18ch;
-}
-
-/* Intentionally reserved state (replaces dashed empty box) */
-.reserved-note {
-  display: flex;
+.media-feature-inner {
+  display: grid;
+  justify-items: center;
   gap: 14px;
-  align-items: flex-start;
-  padding: 22px 0 0;
-  border-top: 1px solid var(--color-border-subtle);
+  max-width: 60ch;
+  margin: 0 auto;
 }
 
-.reserved-note p {
+.media-feature .eyebrow::before {
+  display: none;
+}
+
+.media-feature h2 {
+  margin: 4px 0 0;
+  max-width: 22ch;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+}
+
+.media-feature p:not(.eyebrow) {
   margin: 0;
   max-width: 56ch;
+}
+
+.media-feature .button-secondary {
+  margin-top: 6px;
+}
+
+/* Stacked, single-column section headers (no eyebrow labels) */
+.media-section-heading {
+  margin-bottom: clamp(24px, 3.5vw, 40px);
+}
+
+.media-section-heading h2 {
+  margin: 0;
+}
+
+.media-section-heading p {
+  margin: 14px 0 0;
+  max-width: 58ch;
+}
+
+/* Recent Media placeholder cards: present but clearly upcoming */
+.media-card-soon .card-status {
   color: var(--color-text-muted);
 }
 
-.reserved-dot {
+/* Upcoming Events: a quiet band ruled top and bottom — a transition, not a card */
+.media-events {
+  display: grid;
+  gap: clamp(10px, 1.4vw, 14px);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.media-events h2 {
+  margin: 0;
+}
+
+.media-events-desc {
+  margin: 0;
+  max-width: none;
+  color: var(--color-text-secondary);
+}
+
+.media-availability-note {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  max-width: 80ch;
+  margin: clamp(6px, 1vw, 10px) 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.media-availability-dot {
   flex: none;
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   margin-top: 8px;
   border-radius: 999px;
   background: var(--color-soft-gold);
-  box-shadow: 0 0 14px rgba(214, 169, 74, 0.4);
+  box-shadow: 0 0 12px rgba(214, 169, 74, 0.4);
 }
 
-/* Press kit with real headshot */
-.press-kit-layout {
+/* Media & Press Kit: one unified card — header and body share the container */
+.media-presskit-card {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(220px, 0.5fr) 1fr;
-  gap: clamp(24px, 4vw, 48px);
-  align-items: start;
+  gap: clamp(22px, 2.8vw, 34px);
+  padding: clamp(26px, 3.2vw, 44px);
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(34, 211, 238, 0.08), transparent 42%),
+    radial-gradient(circle at 100% 100%, rgba(214, 169, 74, 0.07), transparent 44%),
+    var(--color-surface-raised);
 }
 
-.press-kit-photo {
+/* Subtle accent / audio line across the top of the card */
+.media-presskit-accent {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-cyan-glow),
+    var(--color-soft-gold)
+  );
+  opacity: 0.85;
+}
+
+/* Header lives inside the card */
+.media-presskit-header {
+  display: grid;
+  gap: 10px;
+}
+
+.media-presskit-header h2 {
+  margin: 0;
+}
+
+.media-presskit-desc {
+  margin: 0;
+  max-width: none;
+  color: var(--color-text-secondary);
+}
+
+/* Body: large image left, content right */
+.media-presskit-main {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.78fr) 1fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: stretch;
+}
+
+.media-presskit-photo {
   position: relative;
   margin: 0;
-  aspect-ratio: 4 / 5;
-  border-radius: 14px;
+  min-height: clamp(300px, 30vw, 420px);
   overflow: hidden;
+  border-radius: 12px;
   border: 1px solid var(--color-border-subtle);
 }
 
-.press-kit-photo img {
+.media-presskit-photo img {
   object-fit: cover;
-  object-position: center 18%;
+  /* Anchor to the top so the full head is always visible (source is a 2:3
+     portrait with the head near the top) */
+  object-position: center top;
 }
 
-.press-kit-detail h3 {
-  margin-bottom: 12px;
+.media-presskit-body {
+  display: grid;
+  align-content: start;
+  gap: clamp(18px, 2.2vw, 24px);
 }
 
-.press-kit-detail > p {
-  margin: 0 0 22px;
-  max-width: 56ch;
+.media-presskit-bio {
+  margin: 0;
+  max-width: 54ch;
 }
 
-.press-kit-facts {
+.media-presskit-facts {
   display: grid;
   gap: 0;
-  margin: 0 0 24px;
+  margin: 0;
 }
 
-.press-kit-facts div {
+.media-presskit-facts div {
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 110px 1fr;
   gap: 16px;
   padding: 14px 0;
   border-top: 1px solid var(--color-border-subtle);
 }
 
-.press-kit-facts dt {
+.media-presskit-facts div:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.media-presskit-facts dt {
   color: var(--color-text-muted);
   font-size: 0.72rem;
   font-weight: 700;
@@ -2613,15 +2764,29 @@ p {
   text-transform: uppercase;
 }
 
-.press-kit-facts dd {
+.media-presskit-facts dd {
   margin: 0;
   color: var(--color-text-secondary);
   font-size: 0.96rem;
   line-height: 1.5;
 }
 
-.press-kit {
-  padding-top: 0;
+.media-presskit-body .button-primary {
+  justify-self: start;
+  margin-top: 4px;
+}
+
+/* Close the final section into the footer (Media page only) */
+.media-page + .site-footer {
+  margin-top: clamp(14px, 2vw, 26px);
+}
+
+/* Keep the lead descriptions on a single editorial row on desktop */
+@media (min-width: 861px) {
+  .media-events-desc,
+  .media-presskit-desc {
+    white-space: nowrap;
+  }
 }
 
 /* ---------- Contact page ---------- */
@@ -3000,6 +3165,7 @@ p {
   .speaking-final-cta,
   .media-placeholder,
   .featured-podcast,
+  .media-presskit-main,
   .contact-layout {
     grid-template-columns: 1fr;
   }
@@ -3244,16 +3410,47 @@ p {
     );
   }
 
-  .press-kit-layout {
-    grid-template-columns: 1fr;
+  .media-hero {
+    min-height: clamp(360px, 82vw, 500px);
   }
 
-  .press-kit-photo {
-    max-width: 280px;
+  .media-hero-copy {
+    padding-block: clamp(34px, 9vw, 60px) clamp(38px, 10vw, 80px);
   }
 
-  .press-kit-facts div {
-    grid-template-columns: 110px 1fr;
+  /* On narrow screens, darken top-to-bottom so the centered copy stays legible */
+  .media-hero::before {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(5, 6, 8, 0.6) 0%,
+        rgba(5, 6, 8, 0.55) 38%,
+        rgba(5, 6, 8, 0.9) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(5, 6, 8, 0.92) 0%,
+        rgba(5, 6, 8, 0.58) 56%,
+        rgba(5, 6, 8, 0.26) 100%
+      );
+  }
+
+  .media-hero-image img {
+    object-position: 60% center;
+  }
+
+  .media-presskit-card {
+    padding: clamp(20px, 5vw, 28px);
+  }
+
+  .media-presskit-photo {
+    min-height: 0;
+    /* Taller block on mobile so the full head and shoulders read naturally */
+    aspect-ratio: 4 / 5;
+  }
+
+  .media-presskit-facts div {
+    grid-template-columns: 96px 1fr;
   }
 
   .alternate-contact ul {
