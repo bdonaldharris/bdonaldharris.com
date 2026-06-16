@@ -13,7 +13,7 @@ export const aboutStorySections = [
   },
   {
     title: "Founder journey",
-    body: "NotableBIT, HindSite, BitVoices Network, and BIT Voices Podcast: different expressions of one body of work toward clarity, context, and ownership.",
+    body: "NotableBIT, BIT Voices Podcast, BitVoices Network, and HindSite: different expressions of one body of work toward clarity, context, and ownership.",
   },
   {
     title: "Late autism diagnosis and clarity",
