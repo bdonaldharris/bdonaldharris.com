@@ -3069,6 +3069,30 @@ p {
   cursor: pointer;
 }
 
+.form-submit:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+/* Inline submit feedback — empty until a result is shown, so layout is stable. */
+.form-feedback {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.form-feedback:empty {
+  display: none;
+}
+
+.form-feedback-success {
+  color: var(--color-cyan-glow);
+}
+
+.form-feedback-error {
+  color: #fca5a5;
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
