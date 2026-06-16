@@ -1254,6 +1254,64 @@ p {
   font-size: clamp(1.06rem, 1.4vw, 1.22rem);
 }
 
+/* ---------- Home page vertical rhythm ---------- */
+/* The section eyebrow labels were removed, so the sections no longer need the
+   tall reserved spacing that assumed a label sat at the top of each block.
+   Tighten the home rhythm into a connected editorial flow. Scoped to the home
+   page (and excluding the masthead hero) so interior pages keep their spacing. */
+.home-page .section:not(.home-hero) {
+  padding-block: clamp(26px, 3vw, 44px);
+}
+
+/* Targeted boundary tightening (the broad rule above left a few seams tall).
+   Each of these section classes is unique to the home page, so the equal-
+   specificity overrides below win by order. */
+
+/* Ecosystem row → Ideas thesis card: pull the two together. The caps (not the
+   vw term) were the culprit — at wide viewports the gap was eco-pb 32 + ideas-pt
+   32 = 64px. Lower caps hold the gap to ~40px on desktop, ~32px when narrow. */
+.home-page .section.ecosystem-section {
+  padding-bottom: clamp(16px, 1.8vw, 20px);
+}
+
+.home-page .section.ideas-feature {
+  padding-block: clamp(16px, 1.8vw, 20px);
+}
+
+/* Ideas row → Discussion Topics card: bring the Speaking block up. */
+.home-page .section.speaking-preview {
+  padding-top: clamp(16px, 1.8vw, 20px);
+}
+
+/* Compact closing invitation. The CTA floated because of three stacked
+   sources: Media's section padding-bottom (44px) above, the closing band's own
+   padding, and a global 80px footer margin below. Tighten all three here. */
+.home-page .section.media-preview {
+  padding-bottom: clamp(16px, 1.8vw, 22px);
+}
+
+.home-page .section.closing-contact {
+  padding-block: clamp(14px, 1.6vw, 20px);
+}
+
+.home-page + .site-footer {
+  margin-top: clamp(20px, 2.4vw, 32px);
+}
+
+/* Ecosystem cards no longer sit beneath an eyebrow — drop the reserved gap. */
+.home-page .ecosystem-home-map {
+  padding-top: 0;
+}
+
+/* Reclaim the top space that separated these from their removed eyebrows. */
+.home-page .pull-quote {
+  margin-top: 0;
+}
+
+.home-page .founder-preview-heading h2 {
+  margin-top: 0;
+}
+
 /* ---------- About page ---------- */
 
 /* Pull the thesis card up close under the About hero (scoped to this page) */

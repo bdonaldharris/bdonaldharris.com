@@ -23,7 +23,7 @@ const homeProjects = homeProjectOrder
 
 export default function HomePage() {
   return (
-    <main className="page-shell">
+    <main className="page-shell home-page">
       <section className="section home-hero">
         <div className="home-hero-copy">
           <p className="eyebrow">Founder • Builder • Technologist • Ecosystem Architect</p>
