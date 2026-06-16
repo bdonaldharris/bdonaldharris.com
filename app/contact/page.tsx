@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { PageHero } from "@/components/sections/page-hero";
-import { SectionHeading } from "@/components/sections/section-heading";
-import { socialLinks } from "@/content/links";
+import { Motif } from "@/components/ui/motif";
 
 const inquiryTypes = [
   "Speaking invitation",
@@ -10,6 +7,21 @@ const inquiryTypes = [
   "Partnership/collaboration",
   "Technology advisory / consulting inquiry",
   "General message",
+];
+
+const inquiryCards = [
+  {
+    title: "Speaking & panels",
+    body: "Keynotes, panels, fireside chats, and workshops on AI, Black tech ownership, and builder workflows.",
+  },
+  {
+    title: "Media & podcast",
+    body: "Podcast conversations, interviews, media requests, and thoughtful conversations around technology and builders.",
+  },
+  {
+    title: "Partnerships & product work",
+    body: "Strategic collaborations, product thinking, ecosystem building, and aligned technology initiatives.",
+  },
 ];
 
 export const metadata: Metadata = {
@@ -20,56 +32,40 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="page-shell">
-      <PageHero
-        eyebrow="Contact"
-        title={
-          <>
-            Let&rsquo;s connect around{" "}
-            <span className="text-accent">aligned work</span>.
-          </>
-        }
-        body="For speaking, media, partnership, or strategic technology inquiries, use the form below. I read every message, but I prioritize requests connected to speaking, product work, Black tech ecosystem building, AI-era workflows, and aligned collaborations."
-        tone="gold"
-        motif="orbit"
-        primaryCta={{ href: "#contact-form", label: "Start Inquiry" }}
-        secondaryCta={{ href: "/speaking", label: "Speaking Topics" }}
-      />
+    <main className="page-shell contact-page">
+      <section className="section contact-hero">
+        <h1>
+          Let&rsquo;s connect around{" "}
+          <span className="text-accent">aligned</span> work.
+        </h1>
+        <Motif variant="orbit" className="contact-hero-motif" />
+      </section>
 
-      <section className="section contact-layout" aria-labelledby="contact-form-heading">
-        <div className="contact-guidance">
-          <p className="eyebrow eyebrow-gold">Inquiry types</p>
-          <dl className="inquiry-types">
-            <div>
-              <dt>Speaking &amp; panels</dt>
-              <dd>
-                Keynotes, panels, fireside chats, and workshops on AI, Black tech
-                ownership, and builder workflows.
-              </dd>
-            </div>
-            <div>
-              <dt>Media &amp; podcast</dt>
-              <dd>
-                Interviews, podcast conversations, and BIT Voices guest or
-                collaboration ideas.
-              </dd>
-            </div>
-            <div>
-              <dt>Partnership &amp; advisory</dt>
-              <dd>
-                Aligned collaborations and strategic technology conversations
-                across the ecosystem.
-              </dd>
-            </div>
-          </dl>
-          <p className="contact-expectation">
-            I read every message and prioritize requests connected to speaking,
-            product work, Black tech ecosystem building, AI-era workflows, and
-            aligned collaboration. Sharing a timeline and a relevant link helps
-            me route your note.
+      <section className="section contact-priority" aria-label="What I prioritize">
+        <blockquote className="contact-priority-note">
+          <p>
+            I read every message, but I prioritize requests connected to
+            speaking, product work, Black tech ecosystem building, AI-era
+            workflows, and aligned collaborations.
           </p>
-        </div>
+        </blockquote>
+      </section>
 
+      <section className="section contact-inquiries" aria-label="Inquiry types">
+        <ul className="inquiry-cards">
+          {inquiryCards.map((card) => (
+            <li key={card.title} className="inquiry-card">
+              <h2>{card.title}</h2>
+              <p>{card.body}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section
+        className="section contact-form-section"
+        aria-labelledby="contact-form-heading"
+      >
         <form
           id="contact-form"
           className="contact-form"
@@ -146,28 +142,12 @@ export default function ContactPage() {
             />
           </div>
 
-          <button className="button-primary form-submit" type="submit">
-            Open Email Draft
-          </button>
+          <div className="form-actions">
+            <button className="button-primary form-submit" type="submit">
+              Open Email Draft
+            </button>
+          </div>
         </form>
-      </section>
-
-      <section className="section alternate-contact" aria-labelledby="alternate-contact">
-        <SectionHeading
-          eyebrow="Connect"
-          title="Other ways to follow the work"
-          body="The form above is best for formal inquiries. These channels are where the work shows up in public."
-        />
-        <ul id="alternate-contact" className="connect-list">
-          {socialLinks.map((link) => (
-            <li key={link.href}>
-              <Link href={link.href}>
-                <span className="connect-label">{link.label}</span>
-                <span className="connect-desc">{link.description}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
       </section>
     </main>
   );

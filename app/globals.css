@@ -2849,74 +2849,133 @@ p {
 
 /* ---------- Contact page ---------- */
 
-.contact-layout {
+/* Minimal, quiet page introduction — headline holds one line on
+   desktop/tablet, with a subtle, secondary motif behind it. */
+.contact-hero {
+  position: relative;
   display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
-  gap: clamp(28px, 5vw, 64px);
-  align-items: start;
-  padding-top: 0;
-}
-
-.contact-guidance .section-heading {
-  margin-bottom: 24px;
-}
-
-.inquiry-types {
-  display: grid;
+  justify-items: start;
   gap: 0;
-  margin: 18px 0 0;
+  padding-block: clamp(48px, 7vw, 86px) clamp(20px, 3vw, 32px);
 }
 
-.inquiry-types div {
-  padding: 22px 0;
-  border-top: 1px solid var(--color-border-subtle);
+.contact-hero h1 {
+  position: relative;
+  z-index: 1;
+  max-width: none;
+  font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+  line-height: 1.1;
 }
 
-.inquiry-types div:first-child {
-  border-top: 0;
+@media (min-width: 861px) {
+  .contact-hero h1 {
+    white-space: nowrap;
+  }
 }
 
-.inquiry-types dt {
-  margin-bottom: 8px;
+.contact-hero-motif {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 0;
+  width: min(40%, 220px);
+  opacity: 0.5;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Personal editorial note below the hero — a quiet pull-quote, not a card. */
+.contact-priority {
+  padding-block: clamp(10px, 2.2vw, 22px) 0;
+}
+
+.contact-priority-note {
+  position: relative;
+  max-width: 670px;
+  margin: 0 auto;
+  padding: clamp(20px, 2.2vw, 30px) 8px 0;
+  text-align: center;
+}
+
+/* Oversized, muted decorative quotation mark — sits just above and slightly
+   left of the message so it reads as part of the quote, not a floating icon. */
+.contact-priority-note::before {
+  content: "\201C";
+  position: absolute;
+  top: clamp(-12px, -0.8vw, -4px);
+  left: 50%;
+  color: rgba(214, 169, 74, 0.3);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.6rem, 6vw, 5rem);
+  line-height: 1;
+  transform: translateX(calc(-50% - 0.42em));
+  pointer-events: none;
+}
+
+.contact-priority-note p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+/* Three inquiry-type cards in a single row. */
+.contact-inquiries {
+  padding-block: clamp(28px, 4vw, 44px) 0;
+}
+
+.inquiry-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.inquiry-card {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: clamp(20px, 2.4vw, 28px);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 12px;
+  background: rgba(20, 28, 44, 0.32);
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.inquiry-card:hover {
+  border-color: rgba(34, 211, 238, 0.32);
+  background: rgba(20, 28, 44, 0.48);
+}
+
+.inquiry-card h2 {
+  margin: 0;
   color: var(--color-text-primary);
   font-size: 1.16rem;
   font-weight: 680;
   letter-spacing: -0.01em;
 }
 
-.inquiry-types dd {
+.inquiry-card p {
   margin: 0;
-  max-width: 42ch;
   color: var(--color-text-secondary);
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   line-height: 1.6;
 }
 
-.contact-expectation {
-  margin: 24px 0 0;
-  padding-left: 18px;
-  max-width: 46ch;
-  border-left: 2px solid rgba(214, 169, 74, 0.5);
-  color: var(--color-text-muted);
-  font-size: 0.96rem;
-  line-height: 1.65;
-}
-
-.alternate-contact ul {
-  display: grid;
-  gap: 10px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.alternate-contact li {
-  color: var(--color-text-secondary);
+/* Single-column, centered form. */
+.contact-form-section {
+  padding-block: clamp(24px, 3.5vw, 40px) 0;
 }
 
 .contact-form {
   display: grid;
-  gap: 18px;
+  gap: 16px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
   padding: clamp(24px, 4vw, 40px);
   border: 1px solid var(--color-border-subtle);
   border-radius: 12px;
@@ -2926,12 +2985,25 @@ p {
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 16px;
 }
 
 .contact-form h2 {
   margin-bottom: 0;
   font-size: clamp(1.5rem, 2.4vw, 2rem);
+}
+
+/* Right-align the submit CTA inside the form card on desktop/tablet. */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+/* Close the form cleanly into the footer (Contact page only), mirroring the
+   page-specific footer adjacency treatment used on Speaking, Media, etc. */
+.contact-page + .site-footer {
+  margin-top: clamp(16px, 2.4vw, 28px);
 }
 
 .form-status-note,
@@ -2993,55 +3065,8 @@ p {
 
 .form-submit {
   width: fit-content;
-  margin-top: 4px;
   border: 0;
   cursor: pointer;
-}
-
-.connect-list {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.connect-list a {
-  display: grid;
-  gap: 6px;
-  align-content: start;
-  height: 100%;
-  padding: 18px 20px;
-  border: 1px solid var(--color-border-subtle);
-  border-radius: 12px;
-  background: rgba(20, 28, 44, 0.32);
-  transition: border-color 180ms ease, background-color 180ms ease;
-}
-
-.connect-list a:hover {
-  border-color: rgba(34, 211, 238, 0.4);
-  background: rgba(20, 28, 44, 0.5);
-}
-
-.connect-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--color-text-primary);
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.connect-label::before {
-  width: 6px;
-  height: 6px;
-  content: "";
-  border-radius: 999px;
-  background: var(--color-cyan-glow);
-}
-
-.connect-desc {
-  color: var(--color-text-muted);
-  font-size: 0.9rem;
-  line-height: 1.5;
 }
 
 /* ---------- Footer ---------- */
@@ -3223,8 +3248,7 @@ p {
   .speaking-final-cta,
   .media-placeholder,
   .featured-podcast,
-  .media-presskit-main,
-  .contact-layout {
+  .media-presskit-main {
     grid-template-columns: 1fr;
   }
 
@@ -3299,11 +3323,12 @@ p {
   }
 
   .page-hero-motif,
-  .cta-motif {
+  .cta-motif,
+  .contact-hero-motif {
     display: none;
   }
 
-  .connect-list {
+  .inquiry-cards {
     grid-template-columns: 1fr;
   }
 
@@ -3511,12 +3536,17 @@ p {
     grid-template-columns: 96px 1fr;
   }
 
-  .alternate-contact ul {
+  .form-row {
     grid-template-columns: 1fr;
   }
 
-  .form-row {
-    grid-template-columns: 1fr;
+  /* Full-width, easy-to-tap CTA on mobile */
+  .form-actions {
+    justify-content: stretch;
+  }
+
+  .form-actions .form-submit {
+    width: 100%;
   }
 }
 
