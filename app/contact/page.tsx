@@ -69,7 +69,7 @@ export default function ContactPage() {
         <form
           id="contact-form"
           className="contact-form"
-          action="mailto:hello@bdonaldharris.com"
+          action="mailto:bdonaldharris@notablebit.com"
           method="post"
           encType="text/plain"
         >

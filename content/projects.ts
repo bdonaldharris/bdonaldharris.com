@@ -16,7 +16,7 @@ export const projects: Project[] = [
     status: "Active company home",
     description:
       "Technology studio and company home for product, strategy, platform work, and aligned ecosystem initiatives.",
-    href: "https://notablebit.com",
+    href: "https://notablebit.com/",
     logo: "/images/notablebit-logo.webp",
   },
   {
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     status: "Public media work",
     description:
       "Conversations with Black technologists, founders, builders, and leaders shaping what comes next.",
-    href: "/media#bit-voices-podcast",
+    href: "https://www.youtube.com/@notablebit",
     logo: "/images/bit-voices-podcast-logo.webp",
   },
   {
@@ -36,7 +36,7 @@ export const projects: Project[] = [
     status: "Growing platform",
     description:
       "A platform and media ecosystem amplifying Black excellence in tech and creating visibility, community, and ownership pathways.",
-    href: "https://bitvoices.network",
+    href: "https://www.bitvoices.network",
     logo: "/images/bitvoices-logo.webp",
   },
   {
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     status: "Being built",
     description:
       "Workflow intelligence for builders navigating AI-assisted development, comprehension debt, project memory, and accountable review.",
-    href: "/projects#hindsite",
+    href: "https://www.hindsite.pro/",
     logo: "/images/hindsite-logo.webp",
   },
 ];

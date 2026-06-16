@@ -11,6 +11,7 @@ export function ProjectCard({ project, showLogo = false }: ProjectCardProps) {
   const layer = /community|media|podcast/i.test(project.category)
     ? "human"
     : "tech";
+  const isExternal = project.href.startsWith("http");
 
   return (
     <article
@@ -28,7 +29,13 @@ export function ProjectCard({ project, showLogo = false }: ProjectCardProps) {
       <p>{project.description}</p>
       <div className="card-footer">
         <span>{project.status}</span>
-        <Link href={project.href} aria-label={`Explore ${project.title}`}>
+        <Link
+          href={project.href}
+          aria-label={`Explore ${project.title}`}
+          {...(isExternal
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
+        >
           Explore
         </Link>
       </div>

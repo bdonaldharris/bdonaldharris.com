@@ -3,7 +3,7 @@ import { EyebrowLabel } from "@/components/ui/eyebrow-label";
 import { Motif } from "@/components/ui/motif";
 
 type PageHeroProps = {
-  eyebrow: string;
+  eyebrow?: string;
   title: React.ReactNode;
   body: string;
   tone?: "cyan" | "gold";
@@ -30,7 +30,7 @@ export function PageHero({
   return (
     <section className={`section page-hero${motif ? " page-hero-framed" : ""}`}>
       <div className="page-hero-copy">
-        <EyebrowLabel tone={tone}>{eyebrow}</EyebrowLabel>
+        {eyebrow && <EyebrowLabel tone={tone}>{eyebrow}</EyebrowLabel>}
         <h1>{title}</h1>
         <p>{body}</p>
         {(primaryCta || secondaryCta) && (

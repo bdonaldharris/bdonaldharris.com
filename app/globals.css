@@ -783,7 +783,7 @@ p {
   z-index: 3;
   display: grid;
   gap: 20px;
-  align-self: start;
+  align-self: center;
   max-width: 610px;
   padding-left: clamp(0px, 2.5vw, 32px);
 }

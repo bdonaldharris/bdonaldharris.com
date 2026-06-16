@@ -35,14 +35,6 @@ export default function HomePage() {
             Podcast. I build software, media, and community systems that help
             Black builders move with clarity, context, and ownership.
           </p>
-          <div className="button-row">
-            <Link className="button-primary" href="/speaking">
-              Invite Me to Speak
-            </Link>
-            <Link className="button-secondary" href="/projects">
-              Explore My Work
-            </Link>
-          </div>
         </div>
         <figure className="hero-portrait">
           <Image
@@ -143,15 +135,24 @@ export default function HomePage() {
           and reflections connected to the broader ecosystem.”
         </p>
         <ul className="media-list">
-          {mediaItems.map((item) => (
-            <li key={item.title}>
-              <Link href={item.href}>
-                <span className="media-list-cat">{item.category}</span>
-                <span className="media-list-title">{item.title}</span>
-                <span className="media-list-desc">{item.description}</span>
-              </Link>
-            </li>
-          ))}
+          {mediaItems.map((item) => {
+            const external = item.href.startsWith("http");
+
+            return (
+              <li key={item.title}>
+                <Link
+                  href={item.href}
+                  {...(external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                >
+                  <span className="media-list-cat">{item.category}</span>
+                  <span className="media-list-title">{item.title}</span>
+                  <span className="media-list-desc">{item.description}</span>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </section>
 

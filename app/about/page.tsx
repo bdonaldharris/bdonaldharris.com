@@ -13,7 +13,6 @@ export default function AboutPage() {
   return (
     <main className="page-shell">
       <PageHero
-        eyebrow="About B Donald Harris"
         title={
           <>
             I build systems, stories, and communities that help people move with{" "}
@@ -21,8 +20,6 @@ export default function AboutPage() {
           </>
         }
         body="My work sits at the intersection of software engineering, founder leadership, ministry-shaped formation, media, community, and a lifelong instinct for seeing systems in layers."
-        primaryCta={{ href: "/speaking", label: "Invite Me to Speak" }}
-        secondaryCta={{ href: "/projects", label: "Explore Projects" }}
       />
 
       <section className="section about-throughline">

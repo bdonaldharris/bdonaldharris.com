@@ -11,21 +11,19 @@ const siteLinks = [
 ];
 
 const ecosystemLinks = [
-  { href: "https://notablebit.com", label: "NotableBIT" },
-  { href: "/media#bit-voices-podcast", label: "BIT Voices Podcast" },
-  { href: "https://bitvoices.network", label: "BitVoices Network" },
-  { href: "/projects#hindsite", label: "HindSite" },
+  { href: "https://notablebit.com/", label: "NotableBIT" },
+  { href: "https://www.youtube.com/@notablebit", label: "BIT Voices Podcast" },
+  { href: "https://www.bitvoices.network", label: "BitVoices Network" },
+  { href: "https://www.hindsite.pro/", label: "HindSite" },
 ];
 
 const socialLinks = [
-  { href: "https://www.linkedin.com/in/bdonaldharris", label: "LinkedIn", icon: "linkedin" },
-  // No dedicated Facebook destination exists yet; routes to the site contact
-  // page as a safe existing fallback (see implementation note).
-  { href: "/contact", label: "Facebook", icon: "facebook" },
-  { href: "https://www.instagram.com/bdonaldharris", label: "Instagram", icon: "instagram" },
-  { href: "https://www.youtube.com/@bitvoices", label: "YouTube", icon: "youtube" },
-  { href: "https://x.com/bdonaldharris", label: "X", icon: "x" },
-  { href: "/contact", label: "Email", icon: "email" },
+  { href: "https://www.linkedin.com/in/briandharris/", label: "LinkedIn", icon: "linkedin" },
+  { href: "https://www.facebook.com/bdonaldharris", label: "Facebook", icon: "facebook" },
+  { href: "https://www.instagram.com/notablebit/", label: "Instagram", icon: "instagram" },
+  { href: "https://www.youtube.com/@notablebit", label: "YouTube", icon: "youtube" },
+  { href: "https://x.com/home", label: "X", icon: "x" },
+  { href: "mailto:bdonaldharris@notablebit.com", label: "Email", icon: "email" },
 ] as const;
 
 type SocialIconName = (typeof socialLinks)[number]["icon"];
@@ -120,24 +118,45 @@ export function SiteFooter() {
           <section aria-labelledby="footer-ecosystem">
             <h2 id="footer-ecosystem">Ecosystem</h2>
             <ul className="footer-links-inline">
-              {ecosystemLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href}>{link.label}</Link>
-                </li>
-              ))}
+              {ecosystemLinks.map((link) => {
+                const external = link.href.startsWith("http");
+
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      {...(external
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </section>
 
           <section aria-labelledby="footer-connect">
             <h2 id="footer-connect">Connect</h2>
             <ul className="footer-social">
-              {socialLinks.map((social) => (
-                <li key={social.label}>
-                  <Link href={social.href} aria-label={social.label}>
-                    <SocialIcon name={social.icon} />
-                  </Link>
-                </li>
-              ))}
+              {socialLinks.map((social) => {
+                const external = social.href.startsWith("http");
+
+                return (
+                  <li key={social.label}>
+                    <Link
+                      href={social.href}
+                      aria-label={social.label}
+                      {...(external
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                    >
+                      <SocialIcon name={social.icon} />
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </section>
         </nav>

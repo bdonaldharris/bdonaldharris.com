@@ -12,7 +12,7 @@ export const mediaItems: MediaItem[] = [
     category: "Podcast",
     description:
       "Conversations with Black technologists, founders, builders, and leaders shaping the future.",
-    href: "/media#bit-voices-podcast",
+    href: "https://www.youtube.com/@notablebit",
     status: "Featured platform",
   },
   {

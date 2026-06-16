@@ -74,7 +74,9 @@ export default function MediaPage() {
           </p>
           <Link
             className="button-secondary"
-            href="https://www.youtube.com/@bitvoices"
+            href="https://www.youtube.com/@notablebit"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Explore the Podcast
           </Link>
