@@ -25,6 +25,14 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+## Contact Form Environment Variables
+
+The `/api/contact` endpoint uses Resend and expects these server-side env vars:
+
+- `RESEND_API_KEY` (required)
+- `CONTACT_FROM_EMAIL` (required in production; must be a verified sender domain in Resend, not `@resend.dev`)
+- `CONTACT_TO_EMAIL` (optional; defaults to `bdonaldharris@notablebit.com`)
+
 ## Validate
 
 ```bash
