@@ -23,7 +23,7 @@ const socialLinks = [
   { href: "https://www.instagram.com/notablebit/", label: "Instagram", icon: "instagram" },
   { href: "https://www.youtube.com/@notablebit", label: "YouTube", icon: "youtube" },
   { href: "https://x.com/home", label: "X", icon: "x" },
-  { href: "mailto:bdonaldharris@notablebit.com", label: "Email", icon: "email" },
+  { href: "mailto:founder@bdonaldharris.com", label: "Email", icon: "email" },
 ] as const;
 
 type SocialIconName = (typeof socialLinks)[number]["icon"];
