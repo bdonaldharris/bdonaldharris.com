@@ -2351,6 +2351,426 @@ p {
   }
 }
 
+/* ---------- Writing page ---------- */
+
+/* Index hero: quiet editorial masthead in the Ideas-page language. */
+.writing-hero {
+  padding-block: clamp(64px, 9vw, 116px) clamp(28px, 4vw, 46px);
+}
+
+.writing-hero-copy {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  max-width: 720px;
+}
+
+/* Quiet accent rule above the headline — mirrors the Ideas hero. */
+.writing-hero-copy::before {
+  width: 56px;
+  height: 2px;
+  margin-bottom: 4px;
+  content: "";
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--color-soft-gold),
+    var(--color-cyan-glow)
+  );
+}
+
+.writing-hero-copy p {
+  max-width: 56ch;
+  margin: 0;
+  color: rgba(247, 246, 243, 0.82);
+  font-size: clamp(1.05rem, 1.2vw, 1.2rem);
+}
+
+.writing-hero-copy .writing-hero-note {
+  max-width: 58ch;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* Shared meta line (published/updated dates) and tag chips. */
+.writing-entry-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.writing-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.writing-tags li {
+  padding: 5px 12px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 999px;
+  color: var(--color-text-muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Index-only tag treatment (featured card + archive rows): plain inline
+   metadata, not a control. No tag pages exist yet, so this intentionally
+   avoids the button/pill affordance used elsewhere (e.g. .writing-tags on
+   the article detail page, left as-is). */
+.writing-tags-meta {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.86rem;
+  letter-spacing: 0.01em;
+}
+
+/* Featured essay: warm-bordered editorial card, not a generic blog hero. */
+.writing-featured-section {
+  padding-block: clamp(16px, 2.2vw, 30px) clamp(22px, 2.8vw, 38px);
+}
+
+.writing-featured {
+  display: grid;
+  gap: 12px;
+  padding: clamp(20px, 2.6vw, 30px) clamp(24px, 4vw, 48px);
+  border: 1px solid rgba(214, 169, 74, 0.2);
+  border-radius: 16px;
+  background:
+    radial-gradient(110% 140% at 0% 0%, rgba(214, 169, 74, 0.09), transparent 55%),
+    radial-gradient(90% 120% at 100% 100%, rgba(34, 211, 238, 0.06), transparent 60%),
+    rgba(14, 19, 32, 0.42);
+}
+
+.writing-featured h2 {
+  max-width: 24ch;
+  margin: 0;
+  font-size: clamp(1.75rem, 3vw, 2.6rem);
+}
+
+.writing-featured h2 a {
+  color: var(--color-text-primary);
+}
+
+.writing-featured h2 a:hover {
+  color: var(--color-cyan-glow);
+}
+
+.writing-featured-desc {
+  max-width: 62ch;
+  margin: 0;
+  font-size: clamp(1.02rem, 1.15vw, 1.12rem);
+}
+
+.writing-featured-link {
+  margin: 0;
+}
+
+.writing-featured-link a {
+  color: var(--color-cyan-glow);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Archive: open hairline rows in the idea-lanes language, not cards. */
+.writing-archive-section {
+  padding-block: clamp(18px, 2.4vw, 34px) clamp(30px, 4vw, 52px);
+}
+
+.writing-section-head {
+  display: grid;
+  gap: 10px;
+  margin-bottom: clamp(20px, 2.8vw, 32px);
+}
+
+.writing-section-head h2 {
+  margin: 0;
+}
+
+.writing-section-head p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.writing-list {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.writing-list li {
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.writing-list li:last-child {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.writing-entry {
+  display: grid;
+  gap: 12px;
+  padding: clamp(24px, 3vw, 34px) 0;
+}
+
+.writing-entry h3 {
+  margin: 0;
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+}
+
+.writing-entry h3 a {
+  color: var(--color-text-primary);
+}
+
+.writing-entry h3 a:hover {
+  color: var(--color-cyan-glow);
+}
+
+.writing-entry p {
+  max-width: 68ch;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* Empty state: calm centered panel until the first essay is published. */
+.writing-empty-section {
+  padding-block: clamp(20px, 3vw, 44px) clamp(40px, 5vw, 64px);
+}
+
+.writing-empty {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  max-width: 56ch;
+  margin-inline: auto;
+  padding: clamp(36px, 5vw, 60px) clamp(24px, 4vw, 56px);
+  border-radius: 18px;
+  background:
+    radial-gradient(90% 120% at 50% 0%, rgba(34, 211, 238, 0.06), transparent 62%),
+    rgba(14, 19, 32, 0.42);
+  text-align: center;
+}
+
+.writing-empty h2,
+.writing-empty p {
+  margin: 0;
+}
+
+/* Close the page sooner into the footer (mirrors Ideas/Speaking). */
+.writing-page + .site-footer,
+.writing-article-page + .site-footer {
+  margin-top: clamp(24px, 3vw, 40px);
+}
+
+/* ---------- Writing article ---------- */
+
+/* Narrow reading measure; .section supplies centering, we override width. */
+.writing-article {
+  display: grid;
+  gap: clamp(26px, 3.6vw, 40px);
+  width: min(76ch, var(--container));
+  padding-block: clamp(44px, 6vw, 72px) clamp(36px, 5vw, 60px);
+}
+
+.writing-article-header {
+  display: grid;
+  gap: 18px;
+}
+
+.writing-back {
+  margin: 0;
+}
+
+.writing-back a {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.writing-back a::before {
+  content: "\2190";
+  font-size: 0.9rem;
+}
+
+.writing-back a:hover {
+  color: var(--color-cyan-glow);
+}
+
+.writing-article-header h1 {
+  max-width: 22ch;
+  font-size: clamp(2.1rem, 4vw, 3.3rem);
+}
+
+.writing-article-deck {
+  max-width: 58ch;
+  margin: 0;
+  color: rgba(247, 246, 243, 0.82);
+  font-size: clamp(1.08rem, 1.35vw, 1.28rem);
+  line-height: 1.6;
+}
+
+/* Long-form body typography. MDX renders plain HTML elements; the reading
+   comfort lives here. */
+.writing-article-body {
+  padding-top: clamp(24px, 3.2vw, 38px);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.writing-article-body p {
+  margin: 0 0 1.4em;
+  color: var(--color-text-secondary);
+  font-size: clamp(1.04rem, 1.15vw, 1.125rem);
+  line-height: 1.85;
+}
+
+.writing-article-body h2 {
+  margin: 2em 0 0.7em;
+  font-size: clamp(1.45rem, 2vw, 1.9rem);
+}
+
+.writing-article-body h3 {
+  margin: 1.6em 0 0.6em;
+  font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+}
+
+.writing-article-body a {
+  color: var(--color-cyan-glow);
+  text-decoration: underline;
+  text-decoration-color: rgba(34, 211, 238, 0.4);
+  text-underline-offset: 3px;
+}
+
+.writing-article-body a:hover {
+  text-decoration-color: currentColor;
+}
+
+.writing-article-body ul,
+.writing-article-body ol {
+  display: grid;
+  gap: 0.6em;
+  margin: 0 0 1.4em;
+  padding-left: 1.4em;
+  color: var(--color-text-secondary);
+  font-size: clamp(1.04rem, 1.15vw, 1.125rem);
+  line-height: 1.75;
+}
+
+.writing-article-body li::marker {
+  color: var(--color-soft-gold);
+}
+
+.writing-article-body blockquote {
+  margin: 1.8em 0;
+  padding: 4px 0 4px clamp(18px, 2.4vw, 26px);
+  border-left: 2px solid var(--color-soft-gold);
+  color: var(--color-text-primary);
+  font-size: clamp(1.12rem, 1.4vw, 1.3rem);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.writing-article-body blockquote p {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.writing-article-body code {
+  padding: 2px 7px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 6px;
+  background: rgba(17, 24, 39, 0.7);
+  color: var(--color-text-primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.86em;
+}
+
+.writing-article-body pre {
+  margin: 1.8em 0;
+  padding: clamp(16px, 2vw, 22px);
+  overflow-x: auto;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 12px;
+  background: rgba(8, 12, 22, 0.75);
+  line-height: 1.65;
+}
+
+.writing-article-body pre code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 0.88rem;
+}
+
+.writing-article-body hr {
+  width: 100%;
+  height: 1px;
+  margin: clamp(30px, 4vw, 44px) auto;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-border-strong),
+    transparent
+  );
+}
+
+.writing-article-body > :last-child {
+  margin-bottom: 0;
+}
+
+.writing-article-footer {
+  padding-top: clamp(18px, 2.4vw, 26px);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.writing-article-footer a {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--color-cyan-glow);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.writing-article-footer a::before {
+  content: "\2190";
+}
+
+@media (max-width: 860px) {
+  .writing-featured {
+    padding: 20px 18px;
+  }
+
+  .writing-article-header h1 {
+    font-size: clamp(1.9rem, 7.4vw, 2.4rem);
+  }
+}
+
 /* ---------- Projects page ---------- */
 
 .ecosystem-map-section {

@@ -1,0 +1,183 @@
+import { promises as fs } from "node:fs";
+import path from "node:path";
+import matter from "gray-matter";
+import { cache } from "react";
+
+// File-based writing archive. Entries live as version-controlled MDX files in
+// content/writing/ with YAML frontmatter. Publishing happens through normal
+// Git and deployment flow — no database, no CMS, no runtime content backend.
+
+export type WritingStatus = "draft" | "published";
+
+export type WritingSyndication = {
+  linkedin?: string;
+  devto?: string;
+  hashnode?: string;
+  medium?: string;
+};
+
+export type WritingEntry = {
+  title: string;
+  slug: string;
+  description: string;
+  /** ISO date string (YYYY-MM-DD). */
+  publishedAt: string;
+  status: WritingStatus;
+  tags: string[];
+  /** ISO date string (YYYY-MM-DD). */
+  updatedAt?: string;
+  featured?: boolean;
+  canonicalUrl?: string;
+  syndicated?: WritingSyndication;
+  series?: string;
+  ogImage?: string;
+};
+
+const WRITING_DIR = path.join(process.cwd(), "content", "writing");
+
+function optionalString(value: unknown): string | undefined {
+  return typeof value === "string" && value.trim() !== ""
+    ? value.trim()
+    : undefined;
+}
+
+// YAML parses unquoted dates as Date objects and quoted dates as strings.
+// Accept both and normalize to YYYY-MM-DD.
+function toIsoDate(value: unknown): string | undefined {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) {
+    return value.toISOString().slice(0, 10);
+  }
+  return optionalString(value);
+}
+
+function toEntry(file: string, data: Record<string, unknown>): WritingEntry {
+  const fail = (message: string): never => {
+    throw new Error(`content/writing/${file}: ${message}`);
+  };
+
+  const title = optionalString(data.title) ?? fail(`"title" is required.`);
+  const slug = optionalString(data.slug) ?? fail(`"slug" is required.`);
+  const description =
+    optionalString(data.description) ?? fail(`"description" is required.`);
+  const publishedAt =
+    toIsoDate(data.publishedAt) ??
+    fail(`"publishedAt" is required (YYYY-MM-DD).`);
+
+  const status = data.status;
+  if (status !== "draft" && status !== "published") {
+    fail(`"status" must be "draft" or "published".`);
+  }
+
+  const tags = Array.isArray(data.tags)
+    ? data.tags.filter((tag): tag is string => typeof tag === "string")
+    : [];
+  if (tags.length === 0) {
+    fail(`"tags" must be a non-empty list of strings.`);
+  }
+
+  // The article route imports `content/writing/<slug>.mdx` directly, so the
+  // filename and frontmatter slug must agree.
+  const fileSlug = file.replace(/\.mdx$/, "");
+  if (fileSlug !== slug) {
+    fail(`frontmatter slug "${slug}" must match the filename.`);
+  }
+
+  const syndicated =
+    typeof data.syndicated === "object" && data.syndicated !== null
+      ? {
+          linkedin: optionalString(
+            (data.syndicated as Record<string, unknown>).linkedin,
+          ),
+          devto: optionalString(
+            (data.syndicated as Record<string, unknown>).devto,
+          ),
+          hashnode: optionalString(
+            (data.syndicated as Record<string, unknown>).hashnode,
+          ),
+          medium: optionalString(
+            (data.syndicated as Record<string, unknown>).medium,
+          ),
+        }
+      : undefined;
+
+  return {
+    title,
+    slug,
+    description,
+    publishedAt,
+    status: status as WritingStatus,
+    tags,
+    updatedAt: toIsoDate(data.updatedAt),
+    featured: data.featured === true,
+    canonicalUrl: optionalString(data.canonicalUrl),
+    syndicated,
+    series: optionalString(data.series),
+    ogImage: optionalString(data.ogImage),
+  };
+}
+
+/**
+ * All writing entries (drafts included), newest first.
+ * Memoized per render pass so pages and generateMetadata share one read.
+ */
+export const getAllWriting = cache(async (): Promise<WritingEntry[]> => {
+  let files: string[];
+  try {
+    files = await fs.readdir(WRITING_DIR);
+  } catch {
+    return [];
+  }
+
+  const entries = await Promise.all(
+    files
+      .filter((file) => file.endsWith(".mdx"))
+      .map(async (file) => {
+        const raw = await fs.readFile(path.join(WRITING_DIR, file), "utf8");
+        return toEntry(file, matter(raw).data);
+      }),
+  );
+
+  return entries.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+});
+
+/** Published entries only, newest first. Drafts never appear here. */
+export async function getPublishedWriting(): Promise<WritingEntry[]> {
+  const entries = await getAllWriting();
+  return entries.filter((entry) => entry.status === "published");
+}
+
+/** Look up a single entry by slug. Callers must check `status` before rendering publicly. */
+export async function getWritingBySlug(
+  slug: string,
+): Promise<WritingEntry | undefined> {
+  const entries = await getAllWriting();
+  return entries.find((entry) => entry.slug === slug);
+}
+
+/** Slugs for all publicly routable (published) entries — used by generateStaticParams. */
+export async function getAllWritingSlugs(): Promise<string[]> {
+  const entries = await getPublishedWriting();
+  return entries.map((entry) => entry.slug);
+}
+
+/** Published entries flagged `featured: true`, newest first. */
+export async function getFeaturedWriting(): Promise<WritingEntry[]> {
+  const entries = await getPublishedWriting();
+  return entries.filter((entry) => entry.featured);
+}
+
+/** Unique tags across published entries, alphabetized. */
+export async function getWritingTags(): Promise<string[]> {
+  const entries = await getPublishedWriting();
+  return [...new Set(entries.flatMap((entry) => entry.tags))].sort((a, b) =>
+    a.localeCompare(b),
+  );
+}
+
+/** Render an ISO date (YYYY-MM-DD) as long-form editorial text, e.g. "July 2, 2026". */
+export function formatWritingDate(isoDate: string): string {
+  return new Intl.DateTimeFormat("en-US", {
+    dateStyle: "long",
+    timeZone: "UTC",
+  }).format(new Date(`${isoDate}T00:00:00Z`));
+}
