@@ -25,12 +25,32 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+Next.js 16 uses Turbopack by default, and `npm run dev` runs plain `next dev`
+(Turbopack). This is the supported local workflow, including for `/writing`
+MDX article pages.
+
+A webpack dev server is available as a fallback (`npm run dev:webpack`), but
+it currently has a known upstream Next.js 16 / React 19 bug when rendering
+MDX routes in dev: opening a `/writing/[slug]` article crashes with `Cannot
+read properties of undefined (reading 'recentlyCreatedOwnerStacks')`. This is
+an RSC dev-renderer issue that reproduces the same way with other MDX
+libraries (not specific to this project's config) and does not affect `next
+build`, `next build --webpack`, or the deployed site — only live rendering in
+the webpack dev server. Do not use `dev:webpack` for iterating on writing
+content until upstream resolves this.
+
 ## Validate
 
 ```bash
 npm run lint
 npm run typecheck
 npm run build
+```
+
+A webpack production build is also available for parity checks:
+
+```bash
+npm run build:webpack
 ```
 
 In restricted Codex runtimes where `npm` is not on `PATH`, run scripts through the bundled Node binary or local package binaries.

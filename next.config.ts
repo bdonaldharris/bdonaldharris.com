@@ -10,12 +10,12 @@ const nextConfig: NextConfig = {
 const withMDX = createMDX({
   options: {
     // String plugin specifiers keep the config serializable so it works with
-    // both the webpack dev server (`next dev --webpack`) and Turbopack builds.
+    // both webpack and Turbopack.
     // remark-frontmatter strips the YAML frontmatter block from rendered MDX;
     // lib/writing.ts parses the same frontmatter for metadata.
     //
-    // Known issue: rendering an MDX route under `next dev --webpack` (this
-    // project's `dev` script) currently crashes with "Cannot read properties
+    // Known issue: rendering an MDX route under the webpack dev server
+    // (`npm run dev:webpack`) currently crashes with "Cannot read properties
     // of undefined (reading 'recentlyCreatedOwnerStacks')". This is an
     // upstream Next.js 16 / React 19 RSC dev-renderer bug affecting MDX
     // broadly, not specific to this config — it reproduces the same way for
@@ -23,10 +23,10 @@ const withMDX = createMDX({
     // https://github.com/vercel/next.js/issues/76395,
     // https://github.com/vercel/next.js/issues/77216, and
     // https://github.com/vercel/next.js/issues/83505). It does not affect
-    // `next build` (static generation) or the deployed site — only live
-    // rendering in the webpack dev server. `next dev` (Turbopack, Next's
-    // default) is unaffected; use that when iterating on /writing content
-    // locally until upstream resolves this.
+    // `next build` (static generation), `next build --webpack`, or the
+    // deployed site — only live rendering in the webpack dev server. This is
+    // why `npm run dev` uses Turbopack (Next's default) rather than webpack;
+    // see README.md for details.
     remarkPlugins: ["remark-frontmatter"],
   },
 });
