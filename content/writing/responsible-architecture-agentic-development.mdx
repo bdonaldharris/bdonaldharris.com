@@ -1,0 +1,116 @@
+---
+title: "Responsible Architecture in the Age of Agentic Development"
+slug: "responsible-architecture-agentic-development"
+description: "Why AI-assisted software construction makes human architectural judgment more important, not less."
+publishedAt: "2026-07-02"
+updatedAt: "2026-07-02"
+status: "published"
+featured: true
+tags:
+  - architecture
+  - AI-assisted development
+  - responsible software
+canonicalUrl:
+syndicated:
+  linkedin:
+  devto:
+  hashnode:
+  medium:
+---
+
+Agentic development has changed the economics of writing software. Code that
+once took a team a sprint can now be generated in an afternoon. What has not
+changed — what has actually become more valuable — is the judgment that decides
+whether that code should exist, where it should live, and what it will cost the
+people who have to live with it.
+
+That judgment is architecture. And in the age of agents, it is a human
+responsibility that cannot be delegated.
+
+## The prompt is not the product
+
+An agent can produce a working endpoint, a passing test suite, and a plausible
+README in minutes. None of that tells you whether the system is sound. Output
+is cheap now. Understanding is the constraint.
+
+When teams ship faster than they understand, they accumulate what I keep
+returning to as *comprehension debt*: the gap between what the system does and
+what the people responsible for it can explain. Unlike technical debt, you
+cannot see it in the code. You see it later — in the incident review, in the
+migration that stalls, in the feature nobody is confident enough to touch.
+
+> Speed is not the risk. Unexamined speed is the risk. The job of architecture
+> is to make speed survivable.
+
+## What responsible architecture looks like now
+
+Responsible architecture in agentic workflows is less about drawing diagrams
+and more about holding a small set of disciplines while the volume of generated
+code goes up:
+
+- **Boundaries before generation.** Decide what owns what — modules, data,
+  failure domains — before an agent fills in the interior. Agents are excellent
+  at interiors and indifferent to boundaries.
+- **Review as comprehension, not approval.** A review that only asks "does it
+  work?" ratifies output. A review that asks "can I explain this?" builds
+  ownership.
+- **Constraints written down.** If a rule about the system only lives in your
+  head, an agent will violate it politely and confidently.
+- **Reversibility as a feature.** Prefer designs you can back out of. The
+  cheaper code is to produce, the more of it you will produce — and the more
+  you will need to unwind.
+
+The ordering matters. Each discipline is a checkpoint where a human decides
+what the system *is*, before the tooling decides what the system *has*.
+
+## Judgment has a shape in the codebase
+
+This is not abstract. Human judgment shows up in small, concrete artifacts. A
+boundary decision can be as plain as a module that refuses to know too much:
+
+```ts
+// The agent generates the pipeline. The human decides the seam.
+export type PublishablePost = {
+  slug: string;
+  title: string;
+  publishedAt: string;
+};
+
+// Everything behind this function can be regenerated tomorrow.
+// The contract is the architecture.
+export function toPublishable(entry: unknown): PublishablePost | null {
+  // validation the team can read, explain, and defend
+  return isValid(entry) ? shape(entry) : null;
+}
+```
+
+The implementation behind `toPublishable` might be rewritten by an agent a
+dozen times. The seam — the decision that a boundary exists, what crosses it,
+and what is refused — is the durable part. That is the artifact a builder is
+accountable for.
+
+## The builder's responsibility
+
+There is a temptation to treat agentic development as a transfer of
+responsibility: the model wrote it, the tool suggested it, the benchmark
+approved it. But responsibility does not transfer with authorship. Whoever
+ships the system owns its behavior — its failures, its costs, and its effect on
+the people who depend on it.
+
+That ownership is why I believe AI-assisted construction makes architectural
+judgment *more* important, not less:
+
+1. Volume amplifies both good and bad decisions. Agents scale whatever
+   structure you give them, including the absence of one.
+2. Generated code carries no memory of intent. Intent has to be recorded by
+   humans, in contracts, constraints, and prose.
+3. Systems still have to be operated, debugged, and explained by people. A
+   system nobody understands is a liability regardless of how quickly it was
+   built.
+
+---
+
+The discipline is not anti-agent. I build with agents daily, and the leverage
+is real. The discipline is anti-abdication. Write the boundaries. Review for
+comprehension. Keep the system explainable. Agents can build — [builders must
+lead](/ideas).
