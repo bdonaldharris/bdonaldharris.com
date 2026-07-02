@@ -2425,6 +2425,17 @@ p {
   text-transform: uppercase;
 }
 
+/* Index-only tag treatment (featured card + archive rows): plain inline
+   metadata, not a control. No tag pages exist yet, so this intentionally
+   avoids the button/pill affordance used elsewhere (e.g. .writing-tags on
+   the article detail page, left as-is). */
+.writing-tags-meta {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.86rem;
+  letter-spacing: 0.01em;
+}
+
 /* Featured essay: warm-bordered editorial card, not a generic blog hero. */
 .writing-featured-section {
   padding-block: clamp(16px, 2.2vw, 30px) clamp(22px, 2.8vw, 38px);
@@ -2432,8 +2443,8 @@ p {
 
 .writing-featured {
   display: grid;
-  gap: 16px;
-  padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 52px);
+  gap: 12px;
+  padding: clamp(20px, 2.6vw, 30px) clamp(24px, 4vw, 48px);
   border: 1px solid rgba(214, 169, 74, 0.2);
   border-radius: 16px;
   background:
@@ -2463,7 +2474,7 @@ p {
 }
 
 .writing-featured-link {
-  margin: 4px 0 0;
+  margin: 0;
 }
 
 .writing-featured-link a {
@@ -2752,7 +2763,7 @@ p {
 
 @media (max-width: 860px) {
   .writing-featured {
-    padding: 24px 20px;
+    padding: 20px 18px;
   }
 
   .writing-article-header h1 {

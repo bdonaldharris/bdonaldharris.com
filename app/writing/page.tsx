@@ -41,13 +41,26 @@ function EntryMeta({ entry }: { entry: WritingEntry }) {
   );
 }
 
+// Capitalizes only the tag's first character, preserving the rest as
+// authored (so "AI-assisted development" is untouched but "architecture"
+// reads as "Architecture").
+function formatTag(tag: string): string {
+  return tag.charAt(0).toUpperCase() + tag.slice(1);
+}
+
+// Restrained inline metadata, not a control: tags here are informative only
+// (no tag pages exist yet), so they're rendered as plain dot-separated text
+// rather than list items styled like buttons/pills.
 function EntryTags({ tags }: { tags: string[] }) {
+  if (tags.length === 0) {
+    return null;
+  }
+
   return (
-    <ul className="writing-tags" aria-label="Tags">
-      {tags.map((tag) => (
-        <li key={tag}>{tag}</li>
-      ))}
-    </ul>
+    <p className="writing-tags-meta">
+      <span className="sr-only">Tags: </span>
+      {tags.map(formatTag).join(" \u00B7 ")}
+    </p>
   );
 }
 
