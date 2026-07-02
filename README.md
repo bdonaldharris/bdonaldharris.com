@@ -39,6 +39,14 @@ build`, `next build --webpack`, or the deployed site — only live rendering in
 the webpack dev server. Do not use `dev:webpack` for iterating on writing
 content until upstream resolves this.
 
+## Contact Form Environment Variables
+
+The `/api/contact` endpoint uses Resend and expects these server-side env vars:
+
+- `RESEND_API_KEY` (required)
+- `CONTACT_FROM_EMAIL` (required in production; must be a verified sender domain in Resend, not `@resend.dev`)
+- `CONTACT_TO_EMAIL` (optional; defaults to `bdonaldharris@notablebit.com`)
+
 ## Validate
 
 ```bash

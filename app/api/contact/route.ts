@@ -11,6 +11,7 @@ const MESSAGE_MAX_LENGTH = 5000;
 const FIELD_MAX_LENGTH = 200;
 // Pragmatic email shape check — not RFC-perfect, just enough to reject garbage.
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const RESEND_ONBOARDING_DOMAIN = "@resend.dev";
 
 type ContactPayload = {
   name?: unknown;
@@ -81,15 +82,36 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_TO_EMAIL ?? "bdonaldharris@notablebit.com";
-  // Resend requires a verified sender. Falls back to their onboarding sender
-  // so the endpoint still works before a custom domain is verified.
-  const fromEmail =
-    process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
+  const toEmail =
+    process.env.CONTACT_TO_EMAIL?.trim() ?? "bdonaldharris@notablebit.com";
+  const fromEmail = process.env.CONTACT_FROM_EMAIL?.trim() ?? "";
 
   if (!apiKey) {
     // Misconfiguration — log server-side, return a generic error to the client.
     console.error("RESEND_API_KEY is not set; cannot send contact email.");
+    return NextResponse.json(
+      { error: "Email service is not configured." },
+      { status: 500 },
+    );
+  }
+
+  if (!fromEmail) {
+    console.error(
+      "CONTACT_FROM_EMAIL is not set; configure a verified sender address for contact form emails.",
+    );
+    return NextResponse.json(
+      { error: "Email service is not configured." },
+      { status: 500 },
+    );
+  }
+
+  if (
+    process.env.NODE_ENV === "production" &&
+    fromEmail.toLowerCase().endsWith(RESEND_ONBOARDING_DOMAIN)
+  ) {
+    console.error(
+      "CONTACT_FROM_EMAIL uses Resend onboarding sender in production; configure a verified domain sender instead.",
+    );
     return NextResponse.json(
       { error: "Email service is not configured." },
       { status: 500 },
@@ -148,7 +170,10 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      console.error("Resend send error:", error);
+      console.error("Resend send error:", {
+        name: error.name,
+        message: error.message,
+      });
       return NextResponse.json(
         { error: "Could not send your message. Please try again." },
         { status: 502 },
