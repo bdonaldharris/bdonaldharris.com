@@ -37,10 +37,12 @@ export default function SpeakingPage() {
           </p>
           {isCurrentEngagement && (
             <Link
-              className={`button-secondary ${styles.heroEngagementLink}`}
+              className={styles.heroEngagementLink}
               href="#current-engagement"
+              aria-label="Featured speaker at the National Business League Conference"
             >
-              National Business League
+              <span className={styles.heroEngagementEyebrow}>Featured Speaker</span>
+              <span className={styles.heroEngagementName}>National Business League</span>
             </Link>
           )}
         </div>
