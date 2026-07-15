@@ -1,0 +1,222 @@
+---
+title: "Listen to the Software: Building With AI as an Act of Discovery"
+slug: "listen-to-the-software-building-with-ai-as-an-act-of-discovery"
+description: "What more than forty years with code have taught me about autism, AI, architecture, and building software through discovery."
+publishedAt: "2026-07-15"
+updatedAt: "2026-07-15"
+status: "published"
+featured: true
+tags:
+  - autism
+  - AI-assisted development
+  - software architecture
+  - software construction
+  - neurodiversity
+canonicalUrl:
+syndicated:
+  linkedin:
+  devto:
+  hashnode:
+  medium:
+ogImage: "/images/writing/listen-to-the-software-og.jpg"
+---
+
+I was nine years old when I started asking computers questions.
+
+This was long before artificial intelligence became part of everyday conversation. There were no coding agents, no large language models, and no software that could take a few paragraphs of instruction and return a working feature. I was learning BASIC, usually by typing programs from books and computer magazines, line by line, hoping I had not missed a character somewhere along the way.
+
+Eventually, I started writing programs of my own. They were simple, usually built around questions and responses. The computer would ask the person at the keyboard for some information, the person would type an answer, and the program would follow whatever path I had already written for it.
+
+```basic
+10 PRINT "WHAT IS YOUR NAME?"
+20 INPUT N$
+30 PRINT "HELLO "; N$
+40 END
+```
+
+Sometimes the program asked a yes-or-no question and branched based on the response.
+
+```basic
+10 PRINT "DO YOU WANT TO PLAY? Y/N"
+20 INPUT A$
+30 IF A$ = "Y" THEN GOTO 100
+40 IF A$ = "N" THEN END
+```
+
+Every possible response had to be anticipated. The computer was not interpreting what I meant or generating something new. It was following a deterministic path, and when it did something unexpected, the problem was almost certainly mine. Still, when I think about those early programs now, the exchange feels strangely familiar.
+
+I was prompting computers before I knew to call it prompting.
+
+The comparison only goes so far, of course. Those early programs could respond only within the paths I had written, while today’s AI systems can infer, generate, suggest, and surprise. But the basic rhythm was already there. I asked the machine for something, studied what came back, adjusted the instructions, and tried again. Even then, working with a computer was not only about telling it what to do. It was also about paying attention to how the system responded.
+
+More than forty years later, I am still doing that.
+
+Almost half of those years were spent as a hobbyist, learning because I was fascinated by what computers could do. More than half have been spent as a professional software engineer, working with increasingly complex languages, systems, architectures, teams, and business problems. Code has been part of my life for so long that it is difficult to separate the way I think about software from the way I think about the world.
+
+## Code as a safe place
+
+I did not learn that I was Autistic until I was fifty, which meant I had already spent more than forty years with code, logic, and systems before I had language for the way my mind worked. By then, programming had been more than an interest for a long time. It had been one of my safe places.
+
+The world around me often felt like it was built around rules everyone else had been given except me. I knew I was different, and other kids seemed to know it too, even though none of us had the language for autism. They did not need a diagnosis to recognize the kid who did not quite fit. They only knew that difference made me easier to single out.
+
+There were cultural expectations as well, including expectations inside Black culture and sometimes within family, about how you were supposed to speak, respond, socialize, carry yourself, and move through the world. Traits I now understand as Autistic often felt strange or wrong at the time. I thought something was wrong with me because I had no other explanation.
+
+The computer gave me a different kind of environment. Its rules could be learned. Its responses could be studied. If something did not work, I could usually trace the problem and try again. The machine did not expect me to read a room, interpret an unspoken custom, or somehow know what everyone else seemed to understand instinctively.
+
+I spent hours in my room on the computer instead of outside playing. In junior high, I sometimes sat at the computer in the library instead of eating lunch in the cafeteria. At the time, I probably thought I was simply choosing the place I preferred. Looking back, I can see that I was also choosing the place where I felt safer.
+
+The diagnosis did not rewrite those experiences, but it gave them a context I had never had before. It gave me a perfectly good explanation for why the world had often felt so difficult to read and why systems, logic, and code had felt so natural to me.
+
+Code was one of my safe places in a world I did not yet know how to explain.
+
+That matters because the way I build software today did not suddenly appear when I became a professional engineer, or when I started working with AI, or when I received an autism diagnosis. It grew out of a lifelong relationship with systems that felt understandable when much of the world did not.
+
+## My mind looks for coherence
+
+Looking back, I can see why programming held my attention so completely. Software gave me rules, relationships, patterns, and structures I could examine. It gave me problems I could turn around in my mind, inspect from several directions, take apart, and rebuild. It gave me the possibility of coherence.
+
+I say possibility because software is not naturally coherent at all. Anyone who has spent time inside a large codebase knows it can be contradictory, overcomplicated, poorly named, and held together by decisions no one remembers making. A system can function every day while carrying years of unresolved tension beneath the surface.
+
+Oddly enough, those inconsistencies are often what hold my attention. I have a hard time leaving structural tension alone. When something technically works but does not seem to belong, I keep turning it over, trying to understand whether the problem is in the feature, the architecture, the language, or in my understanding of what the system is becoming.
+
+That can be useful, but it can also be exhausting. I can spend too much time searching for the right name, revisiting a decision after everyone else has moved on, or trying to resolve a contradiction that the current moment may not require me to solve. For years, I probably would have described much of this as overthinking, and sometimes it is.
+
+But I have also learned that what looks like overthinking from the outside can sometimes be the process of discovering the actual shape of a system. Sometimes I am not struggling to let a problem go. Sometimes the software has not finished telling me what it is.
+
+That is the phrase I keep returning to lately: listen to the software.
+
+I do not mean that software is conscious, or that a codebase has desires, intentions, or some hidden personality waiting to be uncovered. I mean that software produces evidence. It reveals things through repetition, friction, inconsistency, and surprise.
+
+A concept may keep appearing across several workflows. A feature may fit naturally in one part of the system but create tension everywhere else. A boundary that once seemed reasonable may become harder to defend as the product grows. Two ideas designed separately may begin sharing the same language, or a name that once worked may stop describing what the thing has become.
+
+Even something as simple as a feature being easy to build but difficult to explain can be telling us something. These are not always minor inconveniences to patch over. Sometimes they are signals that our understanding of the system has not caught up with the system itself.
+
+My mind tends to return to those signals. I do not only want to know whether something works. I want to know whether it belongs. Does the language match the behavior? Does the feature fit the architecture? Is the boundary real, or did we create it because it was convenient at the time? Are two concepts truly different, or are they fragments of the same idea trying to come together?
+
+That search for coherence shapes the way I build. It also shapes the way I understand architecture.
+
+Architecture is often discussed as though it is something the builder decides in advance and then imposes on the system. There is truth in that. We make choices about boundaries, responsibilities, dependencies, data flow, and the language through which the system describes itself. Those decisions matter, and good systems do not emerge from carelessness.
+
+But architecture is also something we discover through construction.
+
+A design may look clean in a diagram and become awkward once real behavior moves through it. A boundary may appear obvious until a new workflow keeps crossing it. A concept may seem independent until several features begin depending on the same underlying idea. The software does not invalidate the original plan simply by becoming difficult, but the difficulty creates evidence we should not ignore.
+
+Software construction is partly an act of intention and partly an act of discovery. We begin with requirements, architecture, and a vision for what the system should become. Once the work begins, however, the system starts producing evidence of its own.
+
+The builder’s responsibility is not merely to make the software comply with the original plan. It is to remain attentive enough to recognize when the work is revealing a better understanding of the system.
+
+## When the system answers back
+
+I have seen this happen in things I have built beyond the code itself. BitVoices, a community platform for Black builders, went through several design iterations before I understood what the platform was actually trying to become. Features moved, ideas were renamed, and structures that appeared sensible in isolation did not always belong once I considered the culture of the community as a whole.
+
+What could have looked like indecision was really a process of discovery. I was learning that the platform could not be designed well until the philosophy beneath it became clearer. The question was not simply what features the platform needed. The deeper question was what kind of space we were actually building.
+
+The same thing has happened while building HindSite, a product focused on helping builders understand the reasoning and decisions inside fast-moving technical work. It began with a simpler problem, but the repeated patterns in the work gradually revealed something deeper. What first looked like a tool for recording development activity became a philosophy about helping builders reconstruct, review, and reflect on how the work actually unfolded.
+
+I did not arrive at either understanding all at once. The systems had to show me.
+
+Those experiences changed the way I think about iteration. I no longer see every redesign as proof that I failed to define the answer clearly enough at the beginning. Sometimes iteration is how the system answers back. We build, observe, adjust our understanding, and return to the work with a clearer sense of what belongs.
+
+That does not mean every change in direction is wisdom or every difficult design is quietly revealing a better product. Sometimes a design is simply bad. Sometimes a feature is unnecessary. Sometimes the answer is to remove something rather than keep studying it.
+
+Listening is not the same as indulging every possibility. It requires judgment.
+
+The point is that iteration can reveal information that planning could not. The work exposes assumptions. It tests language. It shows where boundaries hold and where they collapse. It reveals whether the product idea, the architecture, and the actual behavior belong to the same system.
+
+When those things do not line up, we have a choice. We can keep forcing the system to fit our first explanation, or we can stop long enough to ask whether the explanation needs to change.
+
+## AI can make software obey
+
+This matters even more now that we are building with AI.
+
+AI makes it remarkably easy to make software comply. We can ask for another endpoint, another workflow, another abstraction, another database table, another interface, or another layer. We can describe what we want in natural language and receive something plausible within minutes.
+
+That speed is powerful. It has changed what one builder can accomplish and shortened the distance between an idea and a working implementation. I use these tools, and I believe they are changing software construction in important ways.
+
+But speed can also hide structural problems.
+
+The faster we can generate software, the easier it becomes to avoid understanding it. When a feature does not fit, we can prompt the model to force it into place. When an abstraction becomes awkward, we can ask for another abstraction to hide the awkwardness. When the architecture begins contradicting itself, we can keep generating patches until the tests pass.
+
+The code may work while the system continues losing coherence.
+
+AI is very good at helping us make software obey. I am more interested in whether we are still taking the time to understand what the software is saying.
+
+Prompting is part of the work, but it cannot be the entire practice. We also have to observe what keeps resurfacing, ask why certain features feel natural while others create tension, and examine whether the model is helping us extend the architecture or merely helping us avoid confronting its weaknesses.
+
+Successful generation is not always the same thing as progress.
+
+A model can produce a clean implementation of a confused idea. It can give us well-structured code inside a poorly understood domain. It can generate interfaces, tests, handlers, services, and abstractions that all appear reasonable on their own while making the system harder to explain as a whole.
+
+That is one of the more subtle risks of building with AI. Bad output is often easy to recognize. Plausible output is more dangerous because it invites us to keep moving.
+
+The feature works. The tests pass. The code looks professional. We accept the result and continue, even though the system has become a little harder to understand.
+
+Over time, those small compromises accumulate. The architecture does not collapse dramatically. It simply becomes less coherent, one plausible decision at a time.
+
+## The practice of listening
+
+Listening to software means creating enough space to notice that process.
+
+It means paying attention when the same problem returns in a different form. It means noticing when a feature requires explanations more complicated than the feature itself. It means recognizing that repeated exceptions may point to a missing concept, or that persistent duplication may be the system pointing toward an abstraction we have not yet named.
+
+It also means allowing ourselves to reconsider the original idea. Builders can become deeply attached to the first explanation of what a product is, especially after investing time, code, language, and identity into it. But the work may reveal that the original explanation was incomplete.
+
+That does not necessarily mean the vision was wrong. It may mean the vision was still becoming visible.
+
+This is where my autistic thinking feels especially relevant to how I work. My thinking is often recursive. I revisit the same question from several directions. I compare the part to the whole, then return to the part after my understanding of the whole has changed. I can become preoccupied with a contradiction other people are comfortable postponing, and I may spend a great deal of time searching for the name that finally makes a concept make sense.
+
+That pattern can slow me down, but it can also help me notice what speed would have allowed me to miss.
+
+Sometimes I recognize that something is wrong long before I can explain what it is. The tension comes first. I may see that two concepts do not belong together, that a boundary feels artificial, or that the language of the system is hiding something, but the explanation may take much longer to emerge.
+
+That can be difficult in environments that reward immediate answers. It can also be valuable in work where the first answer is not always the real one.
+
+I have learned not to treat every feeling of structural tension as truth. Intuition still has to be tested. The system may feel wrong because I do not understand it yet, because I am attached to another approach, or because I am searching for a level of perfection the work does not require.
+
+Listening requires humility in both directions. I have to be willing to question the architecture, but I also have to be willing to question myself.
+
+That is part of what makes this a practice rather than a personality trait. My autistic mind may make certain patterns difficult for me to ignore, but discernment still has to be developed. Attention is only useful when it is paired with judgment.
+
+## Building through discovery
+
+There is a difference between commanding a system and engaging with it. Commanding asks how to make the software do what we want. Engagement asks what is happening, why it is happening, and what it may be revealing about the system we are actually building.
+
+Both questions matter. Software construction still requires intention, discipline, requirements, and architectural judgment. We cannot simply wait for a system to reveal itself and call that engineering.
+
+But intention should not make us deaf.
+
+Sometimes the design we began with is incomplete. Sometimes the language we chose too early limits what we are able to see. Sometimes repeated friction is not a failure of execution. It is evidence that our understanding has not caught up with the system.
+
+A recent podcast conversation gave me another way to think about this. Our guest spoke about George Washington Carver and his practice of listening closely to nature and to the thing he was studying. I am not equating software with nature, but the posture behind the idea stayed with me.
+
+Creation is not always an act of domination. Sometimes it is an act of attention.
+
+That feels especially important now. We are entering an era in which it is easier than ever to tell software what to do. Our instructions can produce more code, more quickly, than many of us could have imagined when we began our careers. But the ability to issue better commands does not remove the need for discernment. It may increase it.
+
+The builder still has to notice when the pieces do not belong together. The builder still has to recognize when the architecture is becoming clearer or more confused. The builder still has to ask whether the software is merely functioning or whether it is becoming coherent.
+
+This is not an argument against productivity. The concern is not that AI makes us too effective. The concern is that productivity can become a substitute for understanding.
+
+We can generate more code than ever while becoming less connected to the system taking shape beneath it.
+
+That is why reflection has to remain part of software construction. Builders need moments when the question is not simply what should be generated next, but what has already been revealed. What changed? Which assumptions no longer hold? Where did the system resist us? What became easier once the right concept appeared? What are we repeatedly explaining because the architecture itself is not clear?
+
+Those questions may not produce code immediately, but they make better code possible.
+
+## The discipline that may matter most
+
+I began asking computers questions when I was nine years old. At the time, every answer had to be anticipated and every path had to be written in advance. The computer could only respond within the small world I had created for it.
+
+Now the systems are more complex, the responses are less predictable, and the tools can generate, infer, and surprise. But the exchange still feels familiar. I ask the system for something, study what comes back, adjust my understanding, and ask again.
+
+The difference is that I now understand more clearly what I am listening for. I am listening for the places where the language no longer fits, the patterns that continue to return, and the tension between what I planned and what the system is becoming. I am listening for the architecture beneath the features and the philosophy beneath the architecture.
+
+My Autistic brain does not always make that process easy. It can keep me inside a problem longer than I want to remain there. It can make unresolved structure difficult to ignore. It can turn a naming problem into an afternoon and an architectural contradiction into several sleepless nights.
+
+But it has also taught me to pay attention to the things that do not immediately make sense.
+
+For much of my life, I thought that difference meant something was wrong with me. The diagnosis gave me another explanation. It helped me understand why the world could feel confusing while code felt safe, why unspoken expectations could exhaust me while explicit systems invited me in, and why I have spent more than forty years returning to logic, patterns, and software.
+
+I thought I was learning how to tell computers what to do. Perhaps I was also learning how to listen.
+
+In an age when AI makes it easier than ever to command software, listening may become one of the most important disciplines a builder can retain.
