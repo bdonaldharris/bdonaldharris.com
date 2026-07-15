@@ -1,0 +1,19 @@
+.archiveList {
+  gap: clamp(26px, 3.4vw, 42px);
+}
+
+.archiveList li,
+.archiveList li:last-child {
+  border: 0;
+}
+
+.archiveEntry {
+  gap: 9px;
+  padding: 0;
+}
+
+@media (max-width: 640px) {
+  .archiveList {
+    gap: 32px;
+  }
+}

@@ -5,12 +5,13 @@ import {
   getPublishedWriting,
   type WritingEntry,
 } from "@/lib/writing";
+import styles from "./essays.module.css";
 
 const pageDescription =
-  "Essays, field notes, and working ideas on software construction, responsible architecture, AI-assisted development, and the discipline of building systems humans still understand.";
+  "Essays and working notes on the craft of building.";
 
 export const metadata: Metadata = {
-  title: "Writing",
+  title: "Essays",
   description: pageDescription,
   alternates: {
     canonical: "/writing",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://bdonaldharris.com/writing",
-    title: "Writing | B Donald Harris",
+    title: "Essays | B Donald Harris",
     description: pageDescription,
   },
 };
@@ -75,17 +76,8 @@ export default async function WritingPage() {
     <main className="page-shell writing-page">
       <section className="section writing-hero">
         <div className="writing-hero-copy">
-          <h1>Writing</h1>
-          <p>
-            Essays, field notes, and working ideas on software construction,
-            responsible architecture, AI-assisted development, and the
-            discipline of building systems humans still{" "}
-            <span className="text-accent">understand</span>.
-          </p>
-          <p className="writing-hero-note">
-            This is the source of record. Pieces may travel elsewhere, but the
-            archive lives here.
-          </p>
+          <h1>Essays</h1>
+          <p>Essays and working notes on the craft of building.</p>
         </div>
       </section>
 
@@ -131,20 +123,18 @@ export default async function WritingPage() {
               aria-labelledby="writing-archive"
             >
               <header className="writing-section-head">
-                <h2 id="writing-archive">All writing</h2>
-                <p>Published entries, newest first.</p>
+                <h2 id="writing-archive">Archive</h2>
               </header>
-              <ol className="writing-list">
+              <ol className={`writing-list ${styles.archiveList}`}>
                 {archive.map((entry) => (
                   <li key={entry.slug}>
-                    <article className="writing-entry">
+                    <article className={`writing-entry ${styles.archiveEntry}`}>
                       <EntryMeta entry={entry} />
                       <h3>
                         <Link href={`/writing/${entry.slug}`}>
                           {entry.title}
                         </Link>
                       </h3>
-                      <p>{entry.description}</p>
                       <EntryTags tags={entry.tags} />
                     </article>
                   </li>
