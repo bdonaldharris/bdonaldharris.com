@@ -73,7 +73,10 @@ export default function MediaPage() {
         <MediaClips />
       </section>
 
-      <section className="section media-inquiry" aria-labelledby="media-inquiry-heading">
+      <section
+        className="section featured-podcast media-feature media-inquiry"
+        aria-labelledby="media-inquiry-heading"
+      >
         <div className="media-feature-inner">
           <p className="eyebrow eyebrow-gold">Media &amp; Press</p>
           <h2 id="media-inquiry-heading">Looking for context or approved assets?</h2>
