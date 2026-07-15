@@ -4,7 +4,8 @@ import { useRef, useState } from "react";
 
 const inquiryTypes = [
   "Speaking invitation",
-  "Podcast/media inquiry",
+  "Podcast guest or collaboration",
+  "Media / Press Inquiry",
   "Partnership/collaboration",
   "Technology advisory / consulting inquiry",
   "General message",
