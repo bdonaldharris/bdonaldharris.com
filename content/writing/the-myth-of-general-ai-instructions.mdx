@@ -1,0 +1,156 @@
+---
+title: "The Myth of General AI Instructions"
+slug: "the-myth-of-general-ai-instructions"
+description: "Why the future of software development depends on making organizational intelligence explicit by digitizing tribal knowledge."
+publishedAt: "2026-07-28"
+updatedAt: "2026-07-28"
+status: "published"
+featured: true
+tags:
+  - AI-assisted development
+  - organizational intelligence
+  - engineering culture
+  - software craftsmanship
+canonicalUrl:
+syndicated:
+  linkedin:
+  devto:
+  hashnode:
+  medium:
+---
+
+The more I listen to experienced engineers talk about AI-assisted development, the more I notice a difference in how they approach it. Senior engineers tend to have a fairly balanced view. They understand the speed and leverage AI can provide, but they also understand that software development is still software development. Architecture, security, performance, scalability, maintainability, testing, and design decisions still matter. AI may change how quickly code is produced, but it does not erase the responsibility attached to what gets built.
+
+The greater disconnect seems to exist among early mid-level engineers, junior developers, novices, and nontechnical founders who have been sold a much simpler version of the story. They are told that if they describe what they want clearly enough, use the right sequence of prompts, and follow the advice of XYZ YouTuber explaining the eight AI prompts they absolutely need to know, the AI will build an application with all the expected bells and whistles and somehow make everything work.
+
+There is often no conscious decision to ignore engineering practices. The thought may never arise in the first place.
+
+When someone does not understand the software development lifecycle, clean architecture, security boundaries, performance considerations, scalability, or long-term maintenance, they are unlikely to ask whether an AI system is accounting for those things. From their perspective, they have discovered a tool that understands instructions and can build applications.
+
+It is a little like using an ATM. You insert your debit card, enter a few instructions, and money comes out. Most people do not stop to think about the banking networks, authorization systems, security controls, transaction processing, reconciliation, or failure handling operating behind the screen. They know what they want from the machine, they complete the visible steps, and the expected result appears.
+
+AI-assisted software development can create a similar illusion. Instructions go in, software comes out, the interface works, the pages render, and the demo looks convincing. It may even connect to a database, authenticate users, and accept payments. That visible success can create the impression that a product has been built when what may have actually happened is that software-shaped output has been generated.
+
+This is the first major disconnect. The problem is not yet whether the AI understands best practices. The person using it may not even know there are practices to consider. Software engineering has been collapsed into software generation, and prompting has been elevated into the primary skill required to build.
+
+That is how we arrive at the belief that anyone can become a builder by learning the right magic prompt sequence.
+
+I am not opposed to more people gaining the ability to build software. I believe access should expand. People without traditional engineering backgrounds should be able to explore ideas, create prototypes, learn, and bring useful products into the world. My objection is to the belief that access to code generation automatically provides engineering judgment.
+
+I tend to think of the distinction in two categories: builders and vibe coders.
+
+Builders care about creating software that is useful, efficient, and sustainable. Their current skill level is not the defining factor. A builder may be senior, junior, self-taught, or completely new to software development. What matters is that they understand there is more to the work than producing an output. When they encounter gaps in their knowledge, they are willing to acquire the information and skills needed to build responsibly.
+
+Vibe coders, as I use the term, believe they can prompt their way to software without much thought beyond the prompt itself. That is probably why I dislike the phrase “vibe coding,” even if some of my feelings may be unfairly attached to the term.
+
+My concern is made worse by the YouTube gurus promoting an unrealistic ideology around vibe coding. They present software development as though the only barrier between an idea and a profitable product is discovering the right prompt sequence. In doing so, they are not simply exaggerating the capabilities of AI. They are misleading potential builders down the wrong path by teaching them to pursue shortcuts before they understand the work those shortcuts are supposed to assist.
+
+There is nothing inherently wrong with exploring quickly, experimenting, or allowing AI to help move an idea toward a prototype. The problem begins when an exploratory technique is treated as a complete software development methodology. A prototype is not the same thing as a production system, a working demo is not necessarily a sustainable product, and code generation is not the same thing as software engineering.
+
+The difference is not whether AI wrote the code. The difference is whether someone took responsibility for the decisions surrounding it.
+
+This distinction becomes even more important when AI systems are introduced into established engineering teams.
+
+When I first began creating engineering standards for AI coding agents, I approached the problem much as I would have approached documentation for human developers. I assumed the AI would interpret certain instructions in roughly the same way an engineer would.
+
+One of those instructions was simple: follow existing patterns and do not introduce new ones.
+
+To a human developer, especially one with experience, that sentence can carry a great deal of meaning. The developer understands that they should inspect the surrounding code, preserve established boundaries, use existing abstractions, follow naming conventions, respect the testing approach, maintain the error-handling model, and avoid creating unnecessary architectural variation.
+
+A human fills in the spaces between the words.
+
+An AI agent may understand the instruction and apply it correctly in several parts of the task while still failing to recognize other places where the same instruction should have been applied.
+
+That was the realization. The issue was not that the instruction was unclear in ordinary language. The issue was that I had written it as though human context and agent context were the same.
+
+They are not.
+
+Every software team has its own culture and its own ways of doing things. Even where individuals bring different ideas, experiences, and approaches, the common denominator has traditionally been human interaction.
+
+Humans learn culture through more than documentation. They absorb it through meetings, repetition, correction, code reviews, informal conversations, shared failures, and accumulated experience. They learn which rules are flexible, which principles are nonnegotiable, which patterns are intentional, and which awkward-looking decisions exist because a cleaner-looking alternative failed in production years earlier.
+
+Much of that understanding is not restated every time a task is assigned because it does not need to be. It is part of the team’s shared context.
+
+AI introduces a new parameter.
+
+Systems that can interpret instructions, read code, process context, and generate implementations at extraordinary speed have joined the development workflow. They can communicate through the same forms we use, both natural language and code, but their dialect and context do not move in a straight line from ours.
+
+Shared language does not guarantee shared understanding.
+
+When a human engineer hears, “Add this endpoint following our existing patterns,” the request may expand inside their mind into a complete set of architectural and cultural expectations. They understand that they should use the established API conventions, preserve the authorization flow, follow the current validation approach, respect service boundaries, match the logging and error-handling model, add tests consistent with the repository, and avoid creating a new abstraction simply because another approach is technically possible.
+
+An AI agent may instead find a similar endpoint and generate something that resembles it.
+
+That is not necessarily irrational behavior. It is an incomplete transfer of context.
+
+This is why general AI instructions are a myth.
+
+The myth is not that broad engineering principles have no value. The myth is that they carry enough meaning by themselves. Instructions such as “follow existing patterns,” “use good judgment,” “follow project standards,” or “do not introduce unnecessary abstractions” are understandable, but they often stand alone. They do not tell the agent where the organization has defined what those ideas mean.
+
+A useful AI instruction must do more than state the desired behavior. It must route the agent to authoritative context.
+
+That may mean directing the agent to read the repository architecture guide before making changes, review the engineering standards relevant to the layer being modified, use the documented data-access and error-handling patterns, and avoid introducing a new approach unless the task explicitly requires an architectural change.
+
+The difference is not simply that this instruction contains more words. The difference is that it tells the AI where meaning lives.
+
+A good AI instruction does not need to contain all of the organization’s knowledge. It needs to direct the agent to the canonical sources it must read before deciding how to perform the work.
+
+That distinction matters because copying every engineering rule into every instruction file would create duplication, contradiction, and drift. The goal is not to make every prompt enormous. The goal is to create reliable paths to authoritative knowledge.
+
+This is where tribal knowledge enters the conversation.
+
+The phrase can sound narrow or outdated, but what I mean by tribal knowledge is cultural understanding.
+
+Every business, company, division, and team develops a culture. That culture includes more than workplace personality. It includes how decisions are made, how quality is defined, what tradeoffs are acceptable, what risks matter most, what lessons have been learned, and how the organization believes work should be done.
+
+A team may value reliability over speed when the two conflict. It may refuse to introduce abstractions before repetition proves they are needed. It may believe that every production failure should become a permanent engineering standard rather than remain an isolated fix. It may prioritize customer trust over an arbitrary delivery date.
+
+Those are not merely technical rules. They are expressions of culture.
+
+Human developers can absorb them over time. AI systems cannot be expected to inherit them by proximity.
+
+AI is digital. It is not flesh and bone or spirit. It does not participate in culture in the same way people do. If we want it to work usefully alongside humans, then the relevant cultural understanding has to be translated into a form it can access.
+
+That is what I mean by digitizing tribal knowledge.
+
+Digitizing tribal knowledge is not simply putting documents into a shared folder. It is making the organization’s relevant cultural understanding explicit, structured, discoverable, and usable within human and AI workflows.
+
+When that happens, tribal knowledge becomes organizational intelligence.
+
+Organizational intelligence is the accumulated reasoning, principles, decisions, lessons, and context that allow an organization to operate with greater consistency and make better decisions. It helps teams understand not only what exists, but why it exists. It preserves lessons beyond the people who first learned them, allows new team members to become effective without relying entirely on informal transmission, and gives AI agents access to something closer to the context experienced engineers carry in their heads.
+
+The importance of this extends beyond engineering teams.
+
+There was a time when I might have treated organizational intelligence primarily as the responsibility of engineering leadership. That boundary is harder to defend now.
+
+Companies across healthcare, finance, logistics, energy, education, media, and nearly every other domain increasingly describe themselves as software companies, regardless of the industry in which they operate.
+
+If software is how an organization delivers value, enforces policy, serves customers, and scales its operations, then the intelligence guiding that software belongs to the broader organization.
+
+An AI coding agent does not only need to know which repository pattern to follow. It may also need to understand which business risks are unacceptable, which regulatory boundaries shape the product, which customer behaviors matter, which workflows are intentional, and which strategic decisions must not be casually reversed.
+
+A technically elegant implementation can still be completely wrong for the organization.
+
+This does not mean every cultural habit should be converted into permanent AI guidance. Some practices represent wisdom, while others may represent temporary constraints, outdated assumptions, or habits the organization needs to outgrow. Deciding what becomes authoritative, who approves it, how it is reviewed, and when it expires belongs to AI governance.
+
+That is an important question, but it is not the question I am addressing here.
+
+The argument here is more foundational. AI systems do not automatically inherit cultural understanding. Organizations must intentionally translate relevant cultural knowledge into explicit digital context.
+
+Teams that fail to do this may reach the wrong conclusion about AI altogether.
+
+They may attempt to use AI agents with vague instructions, incomplete standards, inconsistent architecture, and undocumented assumptions. When the results are unpredictable or subpar, they may decide that AI is not useful for serious software development.
+
+That would be an unfair judgment of the technology based on weak implementation practices.
+
+The team may say AI is unreliable when the real problem is that the organization never gave it reliable guidance. They may say the agent failed to follow existing patterns when those patterns were never clearly documented or referenced. They may say AI cannot understand their system when the reasoning behind the system has remained trapped inside human experience.
+
+As a result, they may never receive the benefits AI could have provided.
+
+Strong engineering organizations will not succeed with AI simply because they write cleverer prompts. They will succeed because they understand their own systems, standards, principles, and cultural expectations well enough to make them usable by a new kind of participant.
+
+AI does not remove the need for engineering discipline. It makes that discipline more visible, and it increases the value of making organizational intelligence explicit.
+
+The future of AI-assisted software development will not be determined by who discovers the perfect prompt sequence. It will be shaped by the organizations that learn how to digitize what their people know, preserve the reasoning behind how they build, and direct AI toward authoritative context before asking it to produce code.
+
+General instructions tell the AI what to do. Useful instructions tell it what it must understand before it begins.
