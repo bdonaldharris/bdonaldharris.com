@@ -1,0 +1,60 @@
+:root {
+  /* Charcoal + warm ivory foundation */
+  --color-deep-black: #090a0e;
+  --color-midnight-navy: #17162b;
+  --color-charcoal-blue: #1d1e27;
+  --color-deep-slate: #292a36;
+
+  /* Deep indigo identity with restrained electric-blue interaction */
+  --color-electric-blue: #60a5fa;
+  --color-cyan-glow: #7db7ff;
+  --color-warm-amber: #8f91c9;
+  --color-soft-gold: #b7b8e8;
+
+  /* Warm, editorial typography */
+  --color-text-primary: #f4efe6;
+  --color-text-secondary: #d4cec3;
+  --color-text-muted: #a39d94;
+
+  --color-border-subtle: rgba(183, 184, 232, 0.14);
+  --color-border-strong: rgba(183, 184, 232, 0.25);
+  --color-surface-raised: rgba(29, 30, 39, 0.68);
+  --color-surface-glass: rgba(23, 22, 43, 0.74);
+  --glow-warm: rgba(87, 82, 168, 0.18);
+  --glow-cool: rgba(96, 165, 250, 0.12);
+}
+
+html {
+  background: var(--color-deep-black);
+}
+
+body {
+  background:
+    radial-gradient(circle at 14% 0%, rgba(79, 70, 229, 0.13), transparent 34rem),
+    radial-gradient(circle at 90% 4%, rgba(96, 165, 250, 0.06), transparent 28rem),
+    linear-gradient(180deg, var(--color-midnight-navy), var(--color-deep-black) 58%);
+}
+
+body::before {
+  background-image:
+    linear-gradient(rgba(183, 184, 232, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(183, 184, 232, 0.028) 1px, transparent 1px);
+}
+
+::selection {
+  background: rgba(96, 165, 250, 0.28);
+}
+
+.site-header {
+  border-bottom-color: rgba(183, 184, 232, 0.11);
+  background: rgba(9, 10, 14, 0.72);
+}
+
+.mobile-menu nav {
+  background: rgba(9, 10, 14, 0.97);
+}
+
+.button-secondary:hover,
+.mobile-cta:hover {
+  border-color: rgba(96, 165, 250, 0.58);
+}
