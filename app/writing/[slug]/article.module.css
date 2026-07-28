@@ -1,6 +1,6 @@
-/* The article shell can use the full page container so long titles are not
-   forced to wrap at the narrower reading measure. The body and footer retain
-   the established 76ch measure for comfortable long-form reading. */
+/* The article shell uses the full page container. The header spans the layout so
+   titles and subtitles can wrap naturally, while the reading column remains at
+   the established long-form measure. */
 :global(.writing-article) {
   width: var(--container);
 }
@@ -9,7 +9,51 @@ h1.articleTitle {
   max-width: none;
 }
 
+:global(.writing-article-deck) {
+  max-width: none;
+}
+
+.articleLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 76ch) minmax(220px, 280px);
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+}
+
+.articleMain {
+  min-width: 0;
+}
+
 :global(.writing-article-body),
 :global(.writing-article-footer) {
-  width: min(76ch, 100%);
+  width: 100%;
+}
+
+.sidebar {
+  position: sticky;
+  top: 96px;
+  min-width: 0;
+  padding-top: clamp(24px, 3.2vw, 38px);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.sidebar h2 {
+  margin: 0 0 12px;
+  color: var(--color-text-primary);
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1040px) {
+  .articleLayout {
+    grid-template-columns: minmax(0, 76ch);
+  }
+
+  .sidebar {
+    position: static;
+    width: min(76ch, 100%);
+    margin-top: clamp(12px, 2vw, 24px);
+  }
 }
