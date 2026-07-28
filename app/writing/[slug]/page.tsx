@@ -6,6 +6,7 @@ import {
   getAllWritingSlugs,
   getWritingBySlug,
 } from "@/lib/writing";
+import styles from "./article.module.css";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -67,7 +68,7 @@ export default async function WritingArticlePage({ params }: Props) {
           <p className="writing-back">
             <Link href="/writing">Writing</Link>
           </p>
-          <h1>{entry.title}</h1>
+          <h1 className={styles.articleTitle}>{entry.title}</h1>
           <p className="writing-article-deck">{entry.description}</p>
           <div className="writing-entry-meta">
             <time dateTime={entry.publishedAt}>
