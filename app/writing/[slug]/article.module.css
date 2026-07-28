@@ -1,3 +1,15 @@
+/* The article shell can use the full page container so long titles are not
+   forced to wrap at the narrower reading measure. The body and footer retain
+   the established 76ch measure for comfortable long-form reading. */
+:global(.writing-article) {
+  width: var(--container);
+}
+
 h1.articleTitle {
   max-width: none;
+}
+
+:global(.writing-article-body),
+:global(.writing-article-footer) {
+  width: min(76ch, 100%);
 }
