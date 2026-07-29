@@ -79,6 +79,7 @@ export default async function WritingArticlePage({ params }: Props) {
             <time dateTime={entry.publishedAt}>
               {formatWritingDate(entry.publishedAt)}
             </time>
+            <span>{entry.readingMinutes} min read</span>
             {entry.updatedAt && entry.updatedAt !== entry.publishedAt && (
               <span className="writing-updated">
                 Updated{" "}
