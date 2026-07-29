@@ -1,0 +1,45 @@
+.writing-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.writing-hero-artifact {
+  justify-self: center;
+  width: min(100%, 520px);
+}
+
+.writing-hero-artifact img {
+  width: 100%;
+  height: auto;
+}
+
+.about-page .page-hero h1,
+.ideas-page .ideas-hero h1 {
+  max-width: none;
+}
+
+.about-page .page-hero p:not(.eyebrow),
+.ideas-page .ideas-hero p {
+  max-width: 62ch;
+}
+
+.speaking-page .speaking-hero-organizer {
+  transform: translateY(-10px);
+}
+
+@media (max-width: 860px) {
+  .writing-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .writing-hero-artifact {
+    order: 2;
+    width: min(100%, 520px);
+  }
+
+  .speaking-page .speaking-hero-organizer {
+    transform: none;
+  }
+}
