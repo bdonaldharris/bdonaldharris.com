@@ -1789,7 +1789,7 @@ p {
 
 @media (min-width: 861px) {
   .speaking-organizer-panel {
-    margin-top: clamp(10px, 1.4vw, 18px);
+    margin-top: 0;
   }
 }
 
@@ -2092,10 +2092,6 @@ p {
     var(--color-soft-gold),
     var(--color-cyan-glow)
   );
-}
-
-.ideas-hero-copy h1 {
-  max-width: 16ch;
 }
 
 .ideas-hero-copy p {

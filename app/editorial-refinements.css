@@ -17,7 +17,7 @@
 
 /* Image-less editorial heroes need a wider reading measure. */
 .about-page .page-hero {
-  width: min(100%, 960px);
+  width: min(calc(100vw - 40px), 960px);
   padding-right: 0;
 }
 
@@ -78,6 +78,10 @@
   .about-page .page-hero-copy,
   .ideas-page .ideas-hero-copy {
     max-width: 100%;
+  }
+
+  .about-page .page-hero {
+    width: min(calc(100vw - 32px), 680px);
   }
 
   .about-page .page-hero p:not(.eyebrow),
