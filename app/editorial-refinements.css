@@ -15,6 +15,16 @@
   height: auto;
 }
 
+/* Image-less editorial heroes need a wider reading measure. */
+.about-page .page-hero {
+  width: min(100%, 960px);
+  padding-right: 0;
+}
+
+.about-page .page-hero-copy {
+  max-width: 860px;
+}
+
 .about-page .page-hero h1,
 .ideas-page .ideas-hero h1 {
   max-width: none;
@@ -31,6 +41,10 @@
   max-width: 1100px;
 }
 
+.ideas-page .ideas-hero-copy {
+  max-width: 860px;
+}
+
 .speaking-page .speaking-organizer-panel {
   transform: translateY(-10px);
 }
@@ -43,6 +57,11 @@
   .writing-hero-artifact {
     order: 2;
     width: min(100%, 520px);
+  }
+
+  .about-page .page-hero-copy,
+  .ideas-page .ideas-hero-copy {
+    max-width: 100%;
   }
 
   .about-page .page-hero p:not(.eyebrow),
