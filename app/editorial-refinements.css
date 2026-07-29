@@ -25,7 +25,7 @@
   max-width: 62ch;
 }
 
-.speaking-page .speaking-hero-organizer {
+.speaking-page .speaking-organizer-panel {
   transform: translateY(-10px);
 }
 
@@ -39,7 +39,7 @@
     width: min(100%, 520px);
   }
 
-  .speaking-page .speaking-hero-organizer {
+  .speaking-page .speaking-organizer-panel {
     transform: none;
   }
 }
