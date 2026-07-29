@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="page-shell">
+    <main className="page-shell about-page">
       <PageHero
         title={
           <>
@@ -36,10 +36,7 @@ export default function AboutPage() {
         </figure>
       </section>
 
-      <section
-        className="section story-section warm-section"
-        aria-labelledby="about-story"
-      >
+      <section className="section story-section warm-section" aria-labelledby="about-story">
         <h2 id="about-story" className="story-heading">
           A path shaped by systems, people, and purpose.
         </h2>
@@ -63,15 +60,9 @@ export default function AboutPage() {
 
         <ol className="storyline" aria-label="Career and formation storyline">
           {aboutStorySections.map((section, index) => (
-            <li
-              key={section.title}
-              className="storyline-item"
-              data-pos={index % 2 === 0 ? "above" : "below"}
-            >
+            <li key={section.title} className="storyline-item" data-pos={index % 2 === 0 ? "above" : "below"}>
               <div className="storyline-content">
-                <span className="storyline-index" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                <span className="storyline-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 <h3>{section.title}</h3>
                 <p>{section.body}</p>
               </div>
@@ -84,16 +75,11 @@ export default function AboutPage() {
       <section className="section beliefs-section" aria-labelledby="beliefs">
         <div className="beliefs-intro-card">
           <h2 id="beliefs">What I believe</h2>
-          <p>
-            The convictions that shape how I build, speak, collaborate, and
-            evaluate technology.
-          </p>
+          <p>The convictions that shape how I build, speak, collaborate, and evaluate technology.</p>
         </div>
         <ul className="belief-grid">
           {beliefStatements.map((belief) => (
-            <li key={belief} className="belief-card">
-              {belief}
-            </li>
+            <li key={belief} className="belief-card">{belief}</li>
           ))}
         </ul>
       </section>
