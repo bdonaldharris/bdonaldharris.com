@@ -45,6 +45,22 @@
   max-width: 860px;
 }
 
+/* Final editorial rhythm pass: remove landing-page spacing cues. */
+.about-page .page-hero-copy,
+.ideas-page .ideas-hero-copy {
+  margin-top: 0;
+}
+
+.about-page .page-hero h1,
+.ideas-page .ideas-hero h1 {
+  letter-spacing: -0.025em;
+}
+
+.about-page .page-hero p:not(.eyebrow),
+.ideas-page .ideas-hero p {
+  margin-top: clamp(18px, 2vw, 28px);
+}
+
 .speaking-page .speaking-organizer-panel {
   transform: translateY(-10px);
 }
