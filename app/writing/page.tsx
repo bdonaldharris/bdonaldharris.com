@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { EssayArchive } from "@/components/writing/essay-archive";
 import { formatWritingDate, getPublishedWriting } from "@/lib/writing";
@@ -38,6 +39,15 @@ export default async function WritingPage() {
           <h1>Essays</h1>
           <p>Essays and working notes on the craft of building.</p>
         </div>
+        <div className="writing-hero-artifact">
+          <Image
+            src="/images/essays-sketchbook.png"
+            alt="An engineer's sketchbook showing the beginning of a builder's journey."
+            width={900}
+            height={700}
+            priority
+          />
+        </div>
       </section>
 
       {entries.length === 0 ? (
@@ -69,24 +79,18 @@ export default async function WritingPage() {
                   <time dateTime={featured.publishedAt}>
                     {formatWritingDate(featured.publishedAt)}
                   </time>
-                  {featured.updatedAt &&
-                    featured.updatedAt !== featured.publishedAt && (
-                      <span className="writing-updated">
-                        Updated{" "}
-                        <time dateTime={featured.updatedAt}>
-                          {formatWritingDate(featured.updatedAt)}
-                        </time>
-                      </span>
-                    )}
+                  {featured.updatedAt && featured.updatedAt !== featured.publishedAt && (
+                    <span className="writing-updated">
+                      Updated <time dateTime={featured.updatedAt}>{formatWritingDate(featured.updatedAt)}</time>
+                    </span>
+                  )}
                 </div>
                 <p className="writing-tags-meta">
                   <span className="sr-only">Tags: </span>
-                  {featured.tags.map(formatTag).join(" \u00B7 ")}
+                  {featured.tags.map(formatTag).join(" · ")}
                 </p>
                 <p className="writing-featured-link">
-                  <Link href={`/writing/${featured.slug}`}>
-                    Read the essay
-                  </Link>
+                  <Link href={`/writing/${featured.slug}`}>Read the essay</Link>
                 </p>
               </article>
             </section>
