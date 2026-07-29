@@ -24,6 +24,8 @@ export type WritingEntry = {
   publishedAt: string;
   status: WritingStatus;
   tags: string[];
+  /** Estimated reading time at 200 words per minute. */
+  readingMinutes: number;
   /** ISO date string (YYYY-MM-DD). */
   updatedAt?: string;
   featured?: boolean;
@@ -34,6 +36,7 @@ export type WritingEntry = {
 };
 
 const WRITING_DIR = path.join(process.cwd(), "content", "writing");
+const READING_WORDS_PER_MINUTE = 200;
 
 function optionalString(value: unknown): string | undefined {
   return typeof value === "string" && value.trim() !== ""
@@ -50,7 +53,26 @@ function toIsoDate(value: unknown): string | undefined {
   return optionalString(value);
 }
 
-function toEntry(file: string, data: Record<string, unknown>): WritingEntry {
+function estimateReadingMinutes(content: string): number {
+  const readableText = content
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/^>\s?/gm, "")
+    .replace(/[*_~|-]/g, " ");
+
+  const wordCount = readableText.match(/[\p{L}\p{N}]+(?:['’.-][\p{L}\p{N}]+)*/gu)?.length ?? 0;
+  return Math.max(1, Math.ceil(wordCount / READING_WORDS_PER_MINUTE));
+}
+
+function toEntry(
+  file: string,
+  data: Record<string, unknown>,
+  content: string,
+): WritingEntry {
   const fail = (message: string): never => {
     throw new Error(`content/writing/${file}: ${message}`);
   };
@@ -107,6 +129,7 @@ function toEntry(file: string, data: Record<string, unknown>): WritingEntry {
     publishedAt,
     status: status as WritingStatus,
     tags,
+    readingMinutes: estimateReadingMinutes(content),
     updatedAt: toIsoDate(data.updatedAt),
     featured: data.featured === true,
     canonicalUrl: optionalString(data.canonicalUrl),
@@ -133,7 +156,8 @@ export const getAllWriting = cache(async (): Promise<WritingEntry[]> => {
       .filter((file) => file.endsWith(".mdx"))
       .map(async (file) => {
         const raw = await fs.readFile(path.join(WRITING_DIR, file), "utf8");
-        return toEntry(file, matter(raw).data);
+        const parsed = matter(raw);
+        return toEntry(file, parsed.data, parsed.content);
       }),
   );
 
