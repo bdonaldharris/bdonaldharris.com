@@ -2,37 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import mediaHeroImage from "@/assets/originals/media-hero.png";
-import { ContentGrid } from "@/components/sections/content-grid";
+import { MediaClips } from "./media-clips";
 
 export const metadata: Metadata = {
   title: "Media",
   description:
-    "Podcast episodes, interviews, speaking clips, and reflections from B Donald Harris and BIT Voices Podcast — plus media and press kit context.",
+    "Podcast episodes, interviews, speaking clips, and reflections from B Donald Harris and BIT Voices Podcast.",
 };
-
-const recentMedia = [
-  {
-    category: "Video",
-    title: "Podcast Clips & Conversations",
-    description:
-      "Selected video clips and conversations from podcast episodes, interviews, and media appearances.",
-    status: "Coming soon",
-  },
-  {
-    category: "Articles",
-    title: "Published Articles & Features",
-    description:
-      "Articles, features, and contributed thinking connected to AI, software, builders, and community.",
-    status: "Coming soon",
-  },
-  {
-    category: "Writing",
-    title: "Founder Reflections",
-    description:
-      "Short reflections and essays from the intersection of product thinking, builder culture, and technology leadership.",
-    status: "Coming soon",
-  },
-];
 
 export default function MediaPage() {
   return (
@@ -89,96 +65,29 @@ export default function MediaPage() {
       >
         <div className="media-section-heading">
           <h2 id="recent-media-heading">Recent Media</h2>
+          <p>
+            Selected moments from conversations about technology, culture,
+            entrepreneurship, and the systems shaping how we build and live.
+          </p>
         </div>
-        <ContentGrid variant="three">
-          {recentMedia.map((item) => (
-            <article
-              key={item.title}
-              className="editorial-card media-card media-card-soon"
-            >
-              <p className="card-meta">{item.category}</p>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <div className="card-footer">
-                <span className="card-status">{item.status}</span>
-              </div>
-            </article>
-          ))}
-        </ContentGrid>
+        <MediaClips />
       </section>
 
       <section
-        className="section media-events"
-        id="upcoming-events"
-        aria-labelledby="upcoming-events-heading"
+        className="section featured-podcast media-feature media-inquiry"
+        aria-labelledby="media-inquiry-heading"
       >
-        <h2 id="upcoming-events-heading">Upcoming Events</h2>
-        <p className="media-events-desc">
-          Talks, interviews, panels, and public conversations will be added as
-          they are confirmed.
-        </p>
-        <p className="media-availability-note">
-          <span className="media-availability-dot" aria-hidden="true" />
-          Available for podcasts, panels, interviews, and conversations on AI,
-          software, Black tech, builder culture, product thinking, and
-          community-led innovation.
-        </p>
-      </section>
-
-      <section
-        className="section media-press"
-        aria-labelledby="press-kit-heading"
-      >
-        <div className="media-presskit-card">
-          <span className="media-presskit-accent" aria-hidden="true" />
-          <header className="media-presskit-header">
-            <h2 id="press-kit-heading">Media &amp; Press Kit</h2>
-            <p className="media-presskit-desc">
-              Helpful context for podcast hosts, event organizers, journalists,
-              and media teams.
-            </p>
-          </header>
-          <div className="media-presskit-main">
-            <figure className="media-presskit-photo">
-              <Image
-                src="/images/profile-photo-one-web.jpg"
-                alt="Headshot of B Donald Harris."
-                fill
-                sizes="(max-width: 860px) 92vw, 360px"
-              />
-            </figure>
-            <div className="media-presskit-body">
-              <p className="media-presskit-bio">
-                B Donald Harris is the founder of NotableBIT, creator of
-                HindSite, and host of BIT Voices Podcast. His work sits at the
-                intersection of AI, software, Black tech ownership, media, and
-                community.
-              </p>
-              <dl className="media-presskit-facts">
-                <div>
-                  <dt>Roles</dt>
-                  <dd>Founder, builder, technologist, speaker, podcast host</dd>
-                </div>
-                <div>
-                  <dt>Focus</dt>
-                  <dd>
-                    AI, software, builder culture, workflow intelligence,
-                    community, Black tech ownership
-                  </dd>
-                </div>
-                <div>
-                  <dt>Assets</dt>
-                  <dd>
-                    Headshots, logos, short bio, and media context available on
-                    request
-                  </dd>
-                </div>
-              </dl>
-              <Link className="button-primary" href="/contact">
-                Request Media Assets
-              </Link>
-            </div>
-          </div>
+        <div className="media-feature-inner">
+          <p className="eyebrow eyebrow-gold">Media &amp; Press</p>
+          <h2 id="media-inquiry-heading">Looking for context or approved assets?</h2>
+          <p>
+            For interviews, commentary, biographies, headshots, approved media
+            assets, or other press-related requests, submit a media or press
+            inquiry through the contact form.
+          </p>
+          <Link className="button-primary" href="/contact#contact-form">
+            Submit a Media Inquiry
+          </Link>
         </div>
       </section>
     </main>

@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { EssayArchive } from "@/components/writing/essay-archive";
 import {
   formatWritingDate,
   getAllWritingSlugs,
+  getPublishedWriting,
   getWritingBySlug,
 } from "@/lib/writing";
+import styles from "./article.module.css";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -52,7 +55,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function WritingArticlePage({ params }: Props) {
   const { slug } = await params;
-  const entry = await getWritingBySlug(slug);
+  const [entry, entries] = await Promise.all([
+    getWritingBySlug(slug),
+    getPublishedWriting(),
+  ]);
 
   if (!entry || entry.status !== "published") {
     notFound();
@@ -65,14 +71,16 @@ export default async function WritingArticlePage({ params }: Props) {
       <article className="section writing-article">
         <header className="writing-article-header">
           <p className="writing-back">
-            <Link href="/writing">Writing</Link>
+            <Link href="/writing">Essays</Link>
           </p>
-          <h1>{entry.title}</h1>
+          <h1 className={styles.articleTitle}>{entry.title}</h1>
           <p className="writing-article-deck">{entry.description}</p>
           <div className="writing-entry-meta">
             <time dateTime={entry.publishedAt}>
               {formatWritingDate(entry.publishedAt)}
             </time>
+            <span aria-hidden="true">·</span>
+            <span>{entry.readingMinutes} min read</span>
             {entry.updatedAt && entry.updatedAt !== entry.publishedAt && (
               <span className="writing-updated">
                 Updated{" "}
@@ -89,13 +97,26 @@ export default async function WritingArticlePage({ params }: Props) {
           </ul>
         </header>
 
-        <div className="writing-article-body">
-          <Article />
-        </div>
+        <div className={styles.articleLayout}>
+          <div className={styles.articleMain}>
+            <div className="writing-article-body">
+              <Article />
+            </div>
 
-        <footer className="writing-article-footer">
-          <Link href="/writing">Back to Writing</Link>
-        </footer>
+            <footer className="writing-article-footer">
+              <Link href="/writing">Back to Essays</Link>
+            </footer>
+          </div>
+
+          <aside className={styles.sidebar} aria-labelledby="essay-archive-title">
+            <h2 id="essay-archive-title">Essay archive</h2>
+            <EssayArchive
+              entries={entries}
+              variant="sidebar"
+              currentSlug={entry.slug}
+            />
+          </aside>
+        </div>
       </article>
     </main>
   );

@@ -4,10 +4,14 @@ import Link from "next/link";
 import {
   audienceFit,
   signatureTalks,
-  speakingClipPlaceholders,
   speakingFormats,
   speakingTopics,
 } from "@/content/speaking";
+import styles from "./speaking.module.css";
+
+export const dynamic = "force-dynamic";
+
+const ENGAGEMENT_END = new Date("2026-08-22T23:59:59-04:00");
 
 export const metadata: Metadata = {
   title: "Speaking",
@@ -16,6 +20,8 @@ export const metadata: Metadata = {
 };
 
 export default function SpeakingPage() {
+  const isCurrentEngagement = new Date() <= ENGAGEMENT_END;
+
   return (
     <main className="page-shell speaking-page">
       <section className="speaking-hero" aria-labelledby="speaking-hero-title">
@@ -29,6 +35,16 @@ export default function SpeakingPage() {
             about technology, culture, ownership, and the future of work in the AI
             era.
           </p>
+          {isCurrentEngagement && (
+            <Link
+              className={styles.heroEngagementLink}
+              href="#current-engagement"
+              aria-label="Featured speaker at the National Business League Conference"
+            >
+              <span className={styles.heroEngagementEyebrow}>Featured Speaker</span>
+              <span className={styles.heroEngagementName}>National Business League</span>
+            </Link>
+          )}
         </div>
 
         <div className="speaking-hero-image" aria-hidden="true">
@@ -115,16 +131,39 @@ export default function SpeakingPage() {
         </aside>
       </section>
 
-      <section className="section speaking-clips" aria-label="Speaking clip placeholders">
-        <div className="speaking-clip-grid">
-          {speakingClipPlaceholders.map((clip) => (
-            <article key={clip} className="speaking-clip-card">
-              <div className="speaking-play-indicator" aria-hidden="true" />
-              <h3>{clip}</h3>
-              <p>Clip placeholder</p>
-            </article>
-          ))}
+      <section
+        id="current-engagement"
+        className={`section ${styles.engagement}`}
+        aria-labelledby="current-engagement-title"
+      >
+        <div className={styles.engagementCopy}>
+          <p className="eyebrow eyebrow-gold">
+            {isCurrentEngagement ? "Current engagement" : "Recent engagement"}
+          </p>
+          <h2 id="current-engagement-title">
+            126th National Business League Conference
+          </h2>
+          <p className={styles.talkTitle}>
+            From Consumers to Builders: Practical AI for Black Entrepreneurs and SMBs
+          </p>
+          <p className={styles.engagementMeta}>
+            {isCurrentEngagement
+              ? "August 21–22, 2026"
+              : "Presented August 21–22, 2026"}
+            <span aria-hidden="true"> · </span>
+            Atlanta, Georgia
+          </p>
         </div>
+
+        <figure className={styles.engagementArtwork}>
+          <Image
+            src="/images/nbl-current-engagement.webp"
+            alt="Conference graphic for B Donald Harris's National Business League presentation, From Consumers to Builders: Practical AI for Black Entrepreneurs and SMBs."
+            width={1080}
+            height={1350}
+            sizes="(max-width: 860px) 100vw, 720px"
+          />
+        </figure>
       </section>
 
       <section className="section speaking-final-cta" aria-label="Invite B Donald to speak">

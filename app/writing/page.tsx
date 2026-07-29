@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import {
-  formatWritingDate,
-  getPublishedWriting,
-  type WritingEntry,
-} from "@/lib/writing";
-import styles from "./essays.module.css";
+import { EssayArchive } from "@/components/writing/essay-archive";
+import { formatWritingDate, getPublishedWriting } from "@/lib/writing";
 
 const pageDescription =
   "Essays and working notes on the craft of building.";
@@ -24,45 +21,8 @@ export const metadata: Metadata = {
   },
 };
 
-function EntryMeta({ entry }: { entry: WritingEntry }) {
-  return (
-    <div className="writing-entry-meta">
-      <time dateTime={entry.publishedAt}>
-        {formatWritingDate(entry.publishedAt)}
-      </time>
-      {entry.updatedAt && entry.updatedAt !== entry.publishedAt && (
-        <span className="writing-updated">
-          Updated{" "}
-          <time dateTime={entry.updatedAt}>
-            {formatWritingDate(entry.updatedAt)}
-          </time>
-        </span>
-      )}
-    </div>
-  );
-}
-
-// Capitalizes only the tag's first character, preserving the rest as
-// authored (so "AI-assisted development" is untouched but "architecture"
-// reads as "Architecture").
 function formatTag(tag: string): string {
   return tag.charAt(0).toUpperCase() + tag.slice(1);
-}
-
-// Restrained inline metadata, not a control: tags here are informative only
-// (no tag pages exist yet), so they're rendered as plain dot-separated text
-// rather than list items styled like buttons/pills.
-function EntryTags({ tags }: { tags: string[] }) {
-  if (tags.length === 0) {
-    return null;
-  }
-
-  return (
-    <p className="writing-tags-meta">
-      <span className="sr-only">Tags: </span>
-      {tags.map(formatTag).join(" \u00B7 ")}
-    </p>
-  );
 }
 
 export default async function WritingPage() {
@@ -78,6 +38,15 @@ export default async function WritingPage() {
         <div className="writing-hero-copy">
           <h1>Essays</h1>
           <p>Essays and working notes on the craft of building.</p>
+        </div>
+        <div className="writing-hero-artifact">
+          <Image
+            src="/images/essays-sketchbook.png"
+            alt="An engineer's sketchbook showing the beginning of a builder's journey."
+            width={900}
+            height={700}
+            priority
+          />
         </div>
       </section>
 
@@ -106,12 +75,23 @@ export default async function WritingPage() {
                   </Link>
                 </h2>
                 <p className="writing-featured-desc">{featured.description}</p>
-                <EntryMeta entry={featured} />
-                <EntryTags tags={featured.tags} />
+                <div className="writing-entry-meta">
+                  <time dateTime={featured.publishedAt}>
+                    {formatWritingDate(featured.publishedAt)}
+                  </time>
+                  <span>{featured.readingMinutes} min read</span>
+                  {featured.updatedAt && featured.updatedAt !== featured.publishedAt && (
+                    <span className="writing-updated">
+                      Updated <time dateTime={featured.updatedAt}>{formatWritingDate(featured.updatedAt)}</time>
+                    </span>
+                  )}
+                </div>
+                <p className="writing-tags-meta">
+                  <span className="sr-only">Tags: </span>
+                  {featured.tags.map(formatTag).join(" · ")}
+                </p>
                 <p className="writing-featured-link">
-                  <Link href={`/writing/${featured.slug}`}>
-                    Read the essay
-                  </Link>
+                  <Link href={`/writing/${featured.slug}`}>Read the essay</Link>
                 </p>
               </article>
             </section>
@@ -125,21 +105,7 @@ export default async function WritingPage() {
               <header className="writing-section-head">
                 <h2 id="writing-archive">Archive</h2>
               </header>
-              <ol className={`writing-list ${styles.archiveList}`}>
-                {archive.map((entry) => (
-                  <li key={entry.slug}>
-                    <article className={`writing-entry ${styles.archiveEntry}`}>
-                      <EntryMeta entry={entry} />
-                      <h3>
-                        <Link href={`/writing/${entry.slug}`}>
-                          {entry.title}
-                        </Link>
-                      </h3>
-                      <EntryTags tags={entry.tags} />
-                    </article>
-                  </li>
-                ))}
-              </ol>
+              <EssayArchive entries={archive} variant="page" />
             </section>
           )}
         </>
