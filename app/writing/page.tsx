@@ -79,6 +79,7 @@ export default async function WritingPage() {
                   <time dateTime={featured.publishedAt}>
                     {formatWritingDate(featured.publishedAt)}
                   </time>
+                  <span>{featured.readingMinutes} min read</span>
                   {featured.updatedAt && featured.updatedAt !== featured.publishedAt && (
                     <span className="writing-updated">
                       Updated <time dateTime={featured.updatedAt}>{formatWritingDate(featured.updatedAt)}</time>
