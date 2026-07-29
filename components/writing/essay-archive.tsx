@@ -63,9 +63,14 @@ export function EssayArchive({
               return (
                 <li key={entry.slug} className={styles.entry}>
                   <article>
-                    <time dateTime={entry.publishedAt}>
-                      {formatWritingDate(entry.publishedAt)}
-                    </time>
+                    <div className="writing-entry-meta">
+                      <time dateTime={entry.publishedAt}>
+                        {formatWritingDate(entry.publishedAt)}
+                      </time>
+                      {variant === "page" && (
+                        <span>{entry.readingMinutes} min read</span>
+                      )}
+                    </div>
                     <h3>
                       {isCurrent ? (
                         <span aria-current="page">{entry.title}</span>
