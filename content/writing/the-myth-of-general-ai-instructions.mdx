@@ -20,6 +20,8 @@ syndicated:
 ogImage: "/images/writing/the-myth-of-general-ai-instructions.png"
 ---
 
+## The Myth Begins With a Misunderstanding
+
 The more I listen to experienced engineers talk about AI-assisted development, the more I notice a difference in how they approach it. Senior engineers tend to have a fairly balanced view. They understand the speed and leverage AI can provide, but they also understand that software development is still software development. Architecture, security, performance, scalability, maintainability, testing, and design decisions still matter. AI may change how quickly code is produced, but it does not erase the responsibility attached to what gets built.
 
 The greater disconnect seems to exist among early mid-level engineers, junior developers, novices, and nontechnical founders who have been sold a much simpler version of the story. They are told that if they describe what they want clearly enough, use the right sequence of prompts, and follow the advice of XYZ YouTuber explaining the eight AI prompts they absolutely need to know, the AI will build an application with all the expected bells and whistles and somehow make everything work.
@@ -38,6 +40,8 @@ That is how we arrive at the belief that anyone can become a builder by learning
 
 I am not opposed to more people gaining the ability to build software. I believe access should expand. People without traditional engineering backgrounds should be able to explore ideas, create prototypes, learn, and bring useful products into the world. My objection is to the belief that access to code generation automatically provides engineering judgment.
 
+## Builders, Vibe Coders, and the Missing Middle
+
 I tend to think of the distinction in two categories: builders and vibe coders.
 
 Builders care about creating software that is useful, efficient, and sustainable. Their current skill level is not the defining factor. A builder may be senior, junior, self-taught, or completely new to software development. What matters is that they understand there is more to the work than producing an output. When they encounter gaps in their knowledge, they are willing to acquire the information and skills needed to build responsibly.
@@ -51,6 +55,8 @@ There is nothing inherently wrong with exploring quickly, experimenting, or allo
 The difference is not whether AI wrote the code. The difference is whether someone took responsibility for the decisions surrounding it.
 
 This distinction becomes even more important when AI systems are introduced into established engineering teams.
+
+## Human Context and Agent Context Are Not the Same
 
 When I first began creating engineering standards for AI coding agents, I approached the problem much as I would have approached documentation for human developers. I assumed the AI would interpret certain instructions in roughly the same way an engineer would.
 
@@ -76,6 +82,8 @@ AI introduces a new parameter.
 
 Systems that can interpret instructions, read code, process context, and generate implementations at extraordinary speed have joined the development workflow. They can communicate through the same forms we use, both natural language and code, but their dialect and context do not move in a straight line from ours.
 
+## Shared Language Does Not Guarantee Shared Understanding
+
 Shared language does not guarantee shared understanding.
 
 When a human engineer hears, “Add this endpoint following our existing patterns,” the request may expand inside their mind into a complete set of architectural and cultural expectations. They understand that they should use the established API conventions, preserve the authorization flow, follow the current validation approach, respect service boundaries, match the logging and error-handling model, add tests consistent with the repository, and avoid creating a new abstraction simply because another approach is technically possible.
@@ -83,6 +91,8 @@ When a human engineer hears, “Add this endpoint following our existing pattern
 An AI agent may instead find a similar endpoint and generate something that resembles it.
 
 That is not necessarily irrational behavior. It is an incomplete transfer of context.
+
+## General Instructions Are Not Organizational Knowledge
 
 This is why general AI instructions are a myth.
 
@@ -97,6 +107,8 @@ The difference is not simply that this instruction contains more words. The diff
 A good AI instruction does not need to contain all of the organization’s knowledge. It needs to direct the agent to the canonical sources it must read before deciding how to perform the work.
 
 That distinction matters because copying every engineering rule into every instruction file would create duplication, contradiction, and drift. The goal is not to make every prompt enormous. The goal is to create reliable paths to authoritative knowledge.
+
+## From Tribal Knowledge to Organizational Intelligence
 
 This is where tribal knowledge enters the conversation.
 
@@ -132,11 +144,15 @@ An AI coding agent does not only need to know which repository pattern to follow
 
 A technically elegant implementation can still be completely wrong for the organization.
 
+## Governance Determines What Becomes Authoritative
+
 This does not mean every cultural habit should be converted into permanent AI guidance. Some practices represent wisdom, while others may represent temporary constraints, outdated assumptions, or habits the organization needs to outgrow. Deciding what becomes authoritative, who approves it, how it is reviewed, and when it expires belongs to AI governance.
 
 That is an important question, but it is not the question I am addressing here.
 
 The argument here is more foundational. AI systems do not automatically inherit cultural understanding. Organizations must intentionally translate relevant cultural knowledge into explicit digital context.
+
+## AI Critics May Be Closer to Allies Than They Realize
 
 Some of the strongest critics of AI-assisted development may be closer to becoming its allies than they realize. Their concern about insecure code, fragile architecture, disposable products, and systems nobody understands is not opposed to disciplined AI development. It is part of the case for it. The mistake is treating the worst examples of AI-generated software as evidence that the capability itself has no serious place in engineering. Many of the results dismissed as AI slop are also the predictable outcome of vague instructions, missing standards, absent governance, and organizational knowledge that was never made available to the agent. Critics who care deeply about software quality already possess many of the values required to make AI-assisted development better. The opportunity is not to convince them to lower their standards, but to show that those standards can become the foundation for using AI responsibly.
 
@@ -149,6 +165,8 @@ That would be an unfair judgment of the technology based on weak implementation 
 The team may say AI is unreliable when the real problem is that the organization never gave it reliable guidance. They may say the agent failed to follow existing patterns when those patterns were never clearly documented or referenced. They may say AI cannot understand their system when the reasoning behind the system has remained trapped inside human experience.
 
 As a result, they may never receive the benefits AI could have provided.
+
+## The Future Depends on Making Knowledge Explicit
 
 Strong engineering organizations will not succeed with AI simply because they write cleverer prompts. They will succeed because they understand their own systems, standards, principles, and cultural expectations well enough to make them usable by a new kind of participant.
 
