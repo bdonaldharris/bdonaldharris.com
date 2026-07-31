@@ -2644,6 +2644,10 @@ p {
   font-size: clamp(1.45rem, 2vw, 1.9rem);
 }
 
+.writing-article-body > h2:first-child {
+  margin-top: 0;
+}
+
 .writing-article-body h3 {
   margin: 1.6em 0 0.6em;
   font-size: clamp(1.15rem, 1.5vw, 1.4rem);
