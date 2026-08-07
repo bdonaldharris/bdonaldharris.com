@@ -681,17 +681,31 @@ p {
   color: var(--color-soft-gold);
 }
 
-/* Restrained logo mark, top-right (Projects page cards only) */
+/* Projects-page cards: centered, consistent rows from heading through CTA */
+.project-card:has(.project-card-logo) {
+  grid-template-rows: 3.5rem 53px 2.8rem minmax(10rem, 1fr) auto;
+  align-items: stretch;
+  text-align: center;
+}
+
+.project-card:has(.project-card-logo) .card-meta {
+  justify-content: center;
+  padding-right: 0;
+}
+
+.project-card:has(.project-card-logo) .card-meta::before {
+  display: none;
+}
+
 .project-card-logo {
-  position: absolute;
-  top: clamp(16px, 2vw, 22px);
-  right: clamp(16px, 2vw, 22px);
-  z-index: 2;
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  justify-self: center;
+  width: 53px;
+  height: 53px;
   padding: 5px;
   overflow: hidden;
   border: 1px solid var(--color-border-subtle);
@@ -706,8 +720,21 @@ p {
   opacity: 0.95;
 }
 
-.project-card:has(.project-card-logo) .card-meta {
-  padding-right: 52px;
+.project-card:has(.project-card-logo) > p:not(.card-meta) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-card:has(.project-card-logo) .card-footer {
+  display: grid;
+  justify-content: stretch;
+  gap: 10px;
+  text-align: center;
+}
+
+.project-card:has(.project-card-logo) .card-footer > * {
+  justify-self: center;
 }
 
 /* ---------- CTA band ---------- */

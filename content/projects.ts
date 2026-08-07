@@ -32,7 +32,7 @@ export const projects: Project[] = [
   {
     id: "bitvoices-network",
     title: "BitVoices Network",
-    category: "Community and media",
+    category: "Community",
     status: "Growing platform",
     description:
       "A platform and media ecosystem amplifying Black excellence in tech and creating visibility, community, and ownership pathways.",
@@ -42,7 +42,7 @@ export const projects: Project[] = [
   {
     id: "hindsite",
     title: "HindSite",
-    category: "Workflow intelligence",
+    category: "Builder Tools",
     status: "Being built",
     description:
       "Workflow intelligence for builders navigating AI-assisted development, comprehension debt, project memory, and accountable review.",
