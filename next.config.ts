@@ -5,6 +5,19 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  // Legacy information architecture: /ideas was retired and /writing became
+  // /essays. `permanent: true` emits 308, preserving link and search authority.
+  async redirects() {
+    return [
+      { source: "/ideas", destination: "/essays", permanent: true },
+      { source: "/writing", destination: "/essays", permanent: true },
+      {
+        source: "/writing/:slug*",
+        destination: "/essays/:slug*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const withMDX = createMDX({
@@ -12,7 +25,7 @@ const withMDX = createMDX({
     // String plugin specifiers keep the config serializable so it works with
     // both webpack and Turbopack.
     // remark-frontmatter strips the YAML frontmatter block from rendered MDX;
-    // lib/writing.ts parses the same frontmatter for metadata.
+    // lib/essays.ts parses the same frontmatter for metadata.
     //
     // Known issue: rendering an MDX route under the webpack dev server
     // (`npm run dev:webpack`) currently crashes with "Cannot read properties

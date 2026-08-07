@@ -74,7 +74,7 @@ export default function HomePage() {
           ))}
         </ul>
         <p className="idea-rows-link">
-          <Link href="/ideas">Read More Ideas</Link>
+          <Link href="/essays">Read the Essays</Link>
         </p>
       </section>
 

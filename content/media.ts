@@ -24,11 +24,11 @@ export const mediaItems: MediaItem[] = [
     status: "Available for invitations",
   },
   {
-    title: "Founder Reflections / Ideas",
-    category: "Writing",
+    title: "Founder Reflections / Essays",
+    category: "Essays",
     description:
       "Selected reflections on AI-era building, workflow intelligence, community, and ownership.",
-    href: "/ideas",
+    href: "/essays",
     status: "Ongoing",
   },
 ];

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { EssayArchive } from "@/components/writing/essay-archive";
+import { EssayArchive } from "@/components/essays/essay-archive";
 import {
-  formatWritingDate,
-  getAllWritingSlugs,
-  getPublishedWriting,
-  getWritingBySlug,
-} from "@/lib/writing";
+  formatEssayDate,
+  getAllEssaySlugs,
+  getEssayBySlug,
+  getPublishedEssays,
+} from "@/lib/essays";
 import styles from "./article.module.css";
 
 type Props = {
@@ -19,19 +19,19 @@ type Props = {
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const slugs = await getAllWritingSlugs();
+  const slugs = await getAllEssaySlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const entry = await getWritingBySlug(slug);
+  const entry = await getEssayBySlug(slug);
 
   if (!entry || entry.status !== "published") {
     return {};
   }
 
-  const url = `https://bdonaldharris.com/writing/${entry.slug}`;
+  const url = `https://bdonaldharris.com/essays/${entry.slug}`;
 
   return {
     title: entry.title,
@@ -53,31 +53,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function WritingArticlePage({ params }: Props) {
+export default async function EssayArticlePage({ params }: Props) {
   const { slug } = await params;
   const [entry, entries] = await Promise.all([
-    getWritingBySlug(slug),
-    getPublishedWriting(),
+    getEssayBySlug(slug),
+    getPublishedEssays(),
   ]);
 
   if (!entry || entry.status !== "published") {
     notFound();
   }
 
-  const { default: Article } = await import(`@/content/writing/${slug}.mdx`);
+  const { default: Article } = await import(`@/content/essays/${slug}.mdx`);
 
   return (
     <main className="page-shell writing-article-page">
       <article className="section writing-article">
         <header className="writing-article-header">
           <p className="writing-back">
-            <Link href="/writing">Essays</Link>
+            <Link href="/essays">Essays</Link>
           </p>
           <h1 className={styles.articleTitle}>{entry.title}</h1>
           <p className="writing-article-deck">{entry.description}</p>
           <div className="writing-entry-meta">
             <time dateTime={entry.publishedAt}>
-              {formatWritingDate(entry.publishedAt)}
+              {formatEssayDate(entry.publishedAt)}
             </time>
             <span aria-hidden="true">·</span>
             <span>{entry.readingMinutes} min read</span>
@@ -85,7 +85,7 @@ export default async function WritingArticlePage({ params }: Props) {
               <span className="writing-updated">
                 Updated{" "}
                 <time dateTime={entry.updatedAt}>
-                  {formatWritingDate(entry.updatedAt)}
+                  {formatEssayDate(entry.updatedAt)}
                 </time>
               </span>
             )}
@@ -104,7 +104,7 @@ export default async function WritingArticlePage({ params }: Props) {
             </div>
 
             <footer className="writing-article-footer">
-              <Link href="/writing">Back to Essays</Link>
+              <Link href="/essays">Back to Essays</Link>
             </footer>
           </div>
 

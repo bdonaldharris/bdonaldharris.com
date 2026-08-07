@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { EssayArchive } from "@/components/writing/essay-archive";
-import { formatWritingDate, getPublishedWriting } from "@/lib/writing";
+import { EssayArchive } from "@/components/essays/essay-archive";
+import { ideaLanes } from "@/content/ideas";
+import { formatEssayDate, getPublishedEssays } from "@/lib/essays";
 
 const pageDescription =
-  "Essays and working notes on the craft of building.";
+  "Essays, reflections, and working ideas on AI, builder discipline, Black tech ownership, community, neurodivergence, and the systems behind meaningful work.";
 
 export const metadata: Metadata = {
   title: "Essays",
   description: pageDescription,
   alternates: {
-    canonical: "/writing",
+    canonical: "/essays",
   },
   openGraph: {
     type: "website",
-    url: "https://bdonaldharris.com/writing",
+    url: "https://bdonaldharris.com/essays",
     title: "Essays | B Donald Harris",
     description: pageDescription,
   },
@@ -25,8 +26,8 @@ function formatTag(tag: string): string {
   return tag.charAt(0).toUpperCase() + tag.slice(1);
 }
 
-export default async function WritingPage() {
-  const entries = await getPublishedWriting();
+export default async function EssaysPage() {
+  const entries = await getPublishedEssays();
   const featured = entries.find((entry) => entry.featured);
   const archive = featured
     ? entries.filter((entry) => entry.slug !== featured.slug)
@@ -37,7 +38,7 @@ export default async function WritingPage() {
       <section className="section writing-hero">
         <div className="writing-hero-copy">
           <h1>Essays</h1>
-          <p>Essays and working notes on the craft of building.</p>
+          <p>{pageDescription}</p>
         </div>
         <div className="writing-hero-artifact">
           <Image
@@ -48,6 +49,26 @@ export default async function WritingPage() {
             priority
           />
         </div>
+      </section>
+
+      <section className="section ideas-lanes-section">
+        <header className="ideas-section-head">
+          <h2>Recurring Themes</h2>
+          <p>
+            The recurring themes underneath the work — what I keep writing,
+            building, and speaking toward.
+          </p>
+        </header>
+        <ol className="idea-lanes">
+          {ideaLanes.map((lane) => (
+            <li key={lane.title}>
+              <div className="idea-lane-copy">
+                <h3>{lane.title}</h3>
+                <p>{lane.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </section>
 
       {entries.length === 0 ? (
@@ -70,19 +91,19 @@ export default async function WritingPage() {
               <article className="writing-featured">
                 <p className="eyebrow eyebrow-gold">Featured essay</p>
                 <h2 id="featured-writing">
-                  <Link href={`/writing/${featured.slug}`}>
+                  <Link href={`/essays/${featured.slug}`}>
                     {featured.title}
                   </Link>
                 </h2>
                 <p className="writing-featured-desc">{featured.description}</p>
                 <div className="writing-entry-meta">
                   <time dateTime={featured.publishedAt}>
-                    {formatWritingDate(featured.publishedAt)}
+                    {formatEssayDate(featured.publishedAt)}
                   </time>
                   <span>{featured.readingMinutes} min read</span>
                   {featured.updatedAt && featured.updatedAt !== featured.publishedAt && (
                     <span className="writing-updated">
-                      Updated <time dateTime={featured.updatedAt}>{formatWritingDate(featured.updatedAt)}</time>
+                      Updated <time dateTime={featured.updatedAt}>{formatEssayDate(featured.updatedAt)}</time>
                     </span>
                   )}
                 </div>
@@ -91,7 +112,7 @@ export default async function WritingPage() {
                   {featured.tags.map(formatTag).join(" · ")}
                 </p>
                 <p className="writing-featured-link">
-                  <Link href={`/writing/${featured.slug}`}>Read the essay</Link>
+                  <Link href={`/essays/${featured.slug}`}>Read the essay</Link>
                 </p>
               </article>
             </section>
@@ -100,10 +121,10 @@ export default async function WritingPage() {
           {archive.length > 0 && (
             <section
               className="section writing-archive-section"
-              aria-labelledby="writing-archive"
+              aria-labelledby="essays-list"
             >
               <header className="writing-section-head">
-                <h2 id="writing-archive">Archive</h2>
+                <h2 id="essays-list">Essays</h2>
               </header>
               <EssayArchive entries={archive} variant="page" />
             </section>

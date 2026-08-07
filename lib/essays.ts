@@ -3,26 +3,26 @@ import path from "node:path";
 import matter from "gray-matter";
 import { cache } from "react";
 
-// File-based writing archive. Entries live as version-controlled MDX files in
-// content/writing/ with YAML frontmatter. Publishing happens through normal
+// File-based essay archive. Entries live as version-controlled MDX files in
+// content/essays/ with YAML frontmatter. Publishing happens through normal
 // Git and deployment flow — no database, no CMS, no runtime content backend.
 
-export type WritingStatus = "draft" | "published";
+export type EssayStatus = "draft" | "published";
 
-export type WritingSyndication = {
+export type EssaySyndication = {
   linkedin?: string;
   devto?: string;
   hashnode?: string;
   medium?: string;
 };
 
-export type WritingEntry = {
+export type EssayEntry = {
   title: string;
   slug: string;
   description: string;
   /** ISO date string (YYYY-MM-DD). */
   publishedAt: string;
-  status: WritingStatus;
+  status: EssayStatus;
   tags: string[];
   /** Estimated reading time at 200 words per minute. */
   readingMinutes: number;
@@ -30,12 +30,12 @@ export type WritingEntry = {
   updatedAt?: string;
   featured?: boolean;
   canonicalUrl?: string;
-  syndicated?: WritingSyndication;
+  syndicated?: EssaySyndication;
   series?: string;
   ogImage?: string;
 };
 
-const WRITING_DIR = path.join(process.cwd(), "content", "writing");
+const ESSAYS_DIR = path.join(process.cwd(), "content", "essays");
 const READING_WORDS_PER_MINUTE = 200;
 
 function optionalString(value: unknown): string | undefined {
@@ -72,9 +72,9 @@ function toEntry(
   file: string,
   data: Record<string, unknown>,
   content: string,
-): WritingEntry {
+): EssayEntry {
   const fail = (message: string): never => {
-    throw new Error(`content/writing/${file}: ${message}`);
+    throw new Error(`content/essays/${file}: ${message}`);
   };
 
   const title = optionalString(data.title) ?? fail(`"title" is required.`);
@@ -97,7 +97,7 @@ function toEntry(
     fail(`"tags" must be a non-empty list of strings.`);
   }
 
-  // The article route imports `content/writing/<slug>.mdx` directly, so the
+  // The article route imports `content/essays/<slug>.mdx` directly, so the
   // filename and frontmatter slug must agree.
   const fileSlug = file.replace(/\.mdx$/, "");
   if (fileSlug !== slug) {
@@ -127,7 +127,7 @@ function toEntry(
     slug,
     description,
     publishedAt,
-    status: status as WritingStatus,
+    status: status as EssayStatus,
     tags,
     readingMinutes: estimateReadingMinutes(content),
     updatedAt: toIsoDate(data.updatedAt),
@@ -140,13 +140,13 @@ function toEntry(
 }
 
 /**
- * All writing entries (drafts included), newest first.
+ * All essay entries (drafts included), newest first.
  * Memoized per render pass so pages and generateMetadata share one read.
  */
-export const getAllWriting = cache(async (): Promise<WritingEntry[]> => {
+export const getAllEssays = cache(async (): Promise<EssayEntry[]> => {
   let files: string[];
   try {
-    files = await fs.readdir(WRITING_DIR);
+    files = await fs.readdir(ESSAYS_DIR);
   } catch {
     return [];
   }
@@ -155,7 +155,7 @@ export const getAllWriting = cache(async (): Promise<WritingEntry[]> => {
     files
       .filter((file) => file.endsWith(".mdx"))
       .map(async (file) => {
-        const raw = await fs.readFile(path.join(WRITING_DIR, file), "utf8");
+        const raw = await fs.readFile(path.join(ESSAYS_DIR, file), "utf8");
         const parsed = matter(raw);
         return toEntry(file, parsed.data, parsed.content);
       }),
@@ -165,41 +165,41 @@ export const getAllWriting = cache(async (): Promise<WritingEntry[]> => {
 });
 
 /** Published entries only, newest first. Drafts never appear here. */
-export async function getPublishedWriting(): Promise<WritingEntry[]> {
-  const entries = await getAllWriting();
+export async function getPublishedEssays(): Promise<EssayEntry[]> {
+  const entries = await getAllEssays();
   return entries.filter((entry) => entry.status === "published");
 }
 
 /** Look up a single entry by slug. Callers must check `status` before rendering publicly. */
-export async function getWritingBySlug(
+export async function getEssayBySlug(
   slug: string,
-): Promise<WritingEntry | undefined> {
-  const entries = await getAllWriting();
+): Promise<EssayEntry | undefined> {
+  const entries = await getAllEssays();
   return entries.find((entry) => entry.slug === slug);
 }
 
 /** Slugs for all publicly routable (published) entries — used by generateStaticParams. */
-export async function getAllWritingSlugs(): Promise<string[]> {
-  const entries = await getPublishedWriting();
+export async function getAllEssaySlugs(): Promise<string[]> {
+  const entries = await getPublishedEssays();
   return entries.map((entry) => entry.slug);
 }
 
 /** Published entries flagged `featured: true`, newest first. */
-export async function getFeaturedWriting(): Promise<WritingEntry[]> {
-  const entries = await getPublishedWriting();
+export async function getFeaturedEssays(): Promise<EssayEntry[]> {
+  const entries = await getPublishedEssays();
   return entries.filter((entry) => entry.featured);
 }
 
 /** Unique tags across published entries, alphabetized. */
-export async function getWritingTags(): Promise<string[]> {
-  const entries = await getPublishedWriting();
+export async function getEssayTags(): Promise<string[]> {
+  const entries = await getPublishedEssays();
   return [...new Set(entries.flatMap((entry) => entry.tags))].sort((a, b) =>
     a.localeCompare(b),
   );
 }
 
 /** Render an ISO date (YYYY-MM-DD) as long-form editorial text, e.g. "July 2, 2026". */
-export function formatWritingDate(isoDate: string): string {
+export function formatEssayDate(isoDate: string): string {
   return new Intl.DateTimeFormat("en-US", {
     dateStyle: "long",
     timeZone: "UTC",
