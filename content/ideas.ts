@@ -10,7 +10,7 @@ export type IdeaLane = {
 };
 
 // The recurring themes B Donald writes and speaks about — an editorial map,
-// not a tag cloud.
+// not a tag cloud. Surfaced on the Essays page as "Recurring Themes".
 export const ideaLanes: IdeaLane[] = [
   {
     title: "AI & Builder Discipline",
@@ -40,41 +40,6 @@ export const ideaLanes: IdeaLane[] = [
     title: "Faith, Purpose & Leadership",
     description:
       "Reflections on calling, responsibility, service, and meaningful work.",
-  },
-];
-
-export type WorkingConcept = {
-  title: string;
-  description: string;
-};
-
-// Named concepts B Donald is developing — intentionally in progress, not
-// unfinished notes.
-export const workingConcepts: WorkingConcept[] = [
-  {
-    title: "Comprehension Debt",
-    description:
-      "A term I did not coin, but one that names a pattern I keep seeing: fast output without understanding creates costs teams eventually have to pay down.",
-  },
-  {
-    title: "The Prompt Is Not the Product",
-    description:
-      "AI amplifies the quality of the builder’s thinking. It does not replace the thinking itself.",
-  },
-  {
-    title: "Visibility Is Not the Finish Line",
-    description:
-      "Being seen matters. Ownership, leverage, and durable opportunity matter more.",
-  },
-  {
-    title: "Having a Name for It Is Power",
-    description:
-      "Language can turn private patterns into clarity, agency, and better systems.",
-  },
-  {
-    title: "AI Adoption Has a Human Problem",
-    description:
-      "The hard part is not only tooling. It is trust, workflow, leadership, and understanding.",
   },
 ];
 

@@ -3,11 +3,10 @@ import Link from "next/link";
 const siteLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/speaking", label: "Speaking" },
-  { href: "/ideas", label: "Ideas" },
-  { href: "/writing", label: "Essays" },
+  { href: "/essays", label: "Essays" },
   { href: "/projects", label: "Projects" },
   { href: "/media", label: "Media" },
+  { href: "/speaking", label: "Speaking" },
   { href: "/contact", label: "Contact" },
 ];
 

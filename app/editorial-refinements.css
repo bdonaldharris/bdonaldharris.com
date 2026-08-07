@@ -25,39 +25,29 @@
   max-width: 860px;
 }
 
-.about-page .page-hero h1,
-.ideas-page .ideas-hero h1 {
+.about-page .page-hero h1 {
   max-width: none;
   text-wrap: balance;
 }
 
-.about-page .page-hero p:not(.eyebrow),
-.ideas-page .ideas-hero p {
+.about-page .page-hero p:not(.eyebrow) {
   max-width: 72ch;
 }
 
-.about-page .page-hero,
-.ideas-page .ideas-hero {
+.about-page .page-hero {
   max-width: 1100px;
 }
 
-.ideas-page .ideas-hero-copy {
-  max-width: 860px;
-}
-
 /* Final editorial rhythm pass: remove landing-page spacing cues. */
-.about-page .page-hero-copy,
-.ideas-page .ideas-hero-copy {
+.about-page .page-hero-copy {
   margin-top: 0;
 }
 
-.about-page .page-hero h1,
-.ideas-page .ideas-hero h1 {
+.about-page .page-hero h1 {
   letter-spacing: -0.025em;
 }
 
-.about-page .page-hero p:not(.eyebrow),
-.ideas-page .ideas-hero p {
+.about-page .page-hero p:not(.eyebrow) {
   margin-top: clamp(18px, 2vw, 28px);
 }
 
@@ -75,8 +65,7 @@
     width: min(100%, 520px);
   }
 
-  .about-page .page-hero-copy,
-  .ideas-page .ideas-hero-copy {
+  .about-page .page-hero-copy {
     max-width: 100%;
   }
 
@@ -84,8 +73,7 @@
     width: min(calc(100vw - 32px), 680px);
   }
 
-  .about-page .page-hero p:not(.eyebrow),
-  .ideas-page .ideas-hero p {
+  .about-page .page-hero p:not(.eyebrow) {
     max-width: 100%;
   }
 

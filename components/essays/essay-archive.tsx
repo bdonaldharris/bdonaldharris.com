@@ -1,20 +1,20 @@
 import Link from "next/link";
-import { formatWritingDate, type WritingEntry } from "@/lib/writing";
+import { formatEssayDate, type EssayEntry } from "@/lib/essays";
 import styles from "./essay-archive.module.css";
 
 type EssayArchiveProps = {
-  entries: WritingEntry[];
+  entries: EssayEntry[];
   variant: "page" | "sidebar";
   currentSlug?: string;
 };
 
 type YearGroup = {
   year: string;
-  entries: WritingEntry[];
+  entries: EssayEntry[];
 };
 
-function groupByYear(entries: WritingEntry[]): YearGroup[] {
-  const groups = new Map<string, WritingEntry[]>();
+function groupByYear(entries: EssayEntry[]): YearGroup[] {
+  const groups = new Map<string, EssayEntry[]>();
 
   for (const entry of entries) {
     const year = entry.publishedAt.slice(0, 4);
@@ -65,7 +65,7 @@ export function EssayArchive({
                   <article>
                     <div className="writing-entry-meta">
                       <time dateTime={entry.publishedAt}>
-                        {formatWritingDate(entry.publishedAt)}
+                        {formatEssayDate(entry.publishedAt)}
                       </time>
                       {variant === "page" && (
                         <span>{entry.readingMinutes} min read</span>
@@ -75,7 +75,7 @@ export function EssayArchive({
                       {isCurrent ? (
                         <span aria-current="page">{entry.title}</span>
                       ) : (
-                        <Link href={`/writing/${entry.slug}`}>{entry.title}</Link>
+                        <Link href={`/essays/${entry.slug}`}>{entry.title}</Link>
                       )}
                     </h3>
                     {variant === "page" && (

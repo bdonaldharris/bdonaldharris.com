@@ -6,7 +6,7 @@ Positioning:
 
 > Founder. Builder. Technologist. Ecosystem Architect.
 
-The site connects B Donald Harris, NotableBIT, HindSite, BitVoices Network, BIT Voices Podcast, speaking, ideas/writing, media, and contact paths.
+The site connects B Donald Harris, NotableBIT, HindSite, BitVoices Network, BIT Voices Podcast, speaking, essays, media, and contact paths.
 
 ## Stack
 
@@ -26,17 +26,17 @@ npm run dev
 Open `http://localhost:3000`.
 
 Next.js 16 uses Turbopack by default, and `npm run dev` runs plain `next dev`
-(Turbopack). This is the supported local workflow, including for `/writing`
+(Turbopack). This is the supported local workflow, including for `/essays`
 MDX article pages.
 
 A webpack dev server is available as a fallback (`npm run dev:webpack`), but
 it currently has a known upstream Next.js 16 / React 19 bug when rendering
-MDX routes in dev: opening a `/writing/[slug]` article crashes with `Cannot
+MDX routes in dev: opening a `/essays/[slug]` article crashes with `Cannot
 read properties of undefined (reading 'recentlyCreatedOwnerStacks')`. This is
 an RSC dev-renderer issue that reproduces the same way with other MDX
 libraries (not specific to this project's config) and does not affect `next
 build`, `next build --webpack`, or the deployed site — only live rendering in
-the webpack dev server. Do not use `dev:webpack` for iterating on writing
+the webpack dev server. Do not use `dev:webpack` for iterating on essay
 content until upstream resolves this.
 
 ## Contact Form Environment Variables

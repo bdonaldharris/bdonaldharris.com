@@ -1,4 +1,4 @@
-import { getPublishedWriting } from "@/lib/writing";
+import { getPublishedEssays } from "@/lib/essays";
 
 // Rendered once at build time — the feed changes only when content is
 // committed and the site is redeployed.
@@ -20,11 +20,11 @@ function toPubDate(isoDate: string): string {
 }
 
 export async function GET() {
-  const entries = await getPublishedWriting();
+  const entries = await getPublishedEssays();
 
   const items = entries
     .map((entry) => {
-      const url = `${SITE_URL}/writing/${entry.slug}`;
+      const url = `${SITE_URL}/essays/${entry.slug}`;
 
       return [
         "    <item>",
@@ -44,8 +44,8 @@ export async function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>B Donald Harris — Writing</title>
-    <link>${SITE_URL}/writing</link>
+    <title>B Donald Harris — Essays</title>
+    <link>${SITE_URL}/essays</link>
     <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />
     <description>Essays, field notes, and working ideas on software construction, responsible architecture, AI-assisted development, and the discipline of building systems humans still understand.</description>
     <language>en-us</language>
