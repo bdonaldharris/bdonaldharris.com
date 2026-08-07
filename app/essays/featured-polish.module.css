@@ -1,0 +1,42 @@
+.featuredCard {
+  border-color: rgba(214, 169, 74, 0.34);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(214, 169, 74, 0.05);
+}
+
+.featuredEyebrow {
+  margin-bottom: 2px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.featuredTitle {
+  font-size: clamp(1.9rem, 3.25vw, 2.85rem) !important;
+  font-weight: 800;
+}
+
+.featuredCta {
+  margin-top: 6px !important;
+}
+
+.featuredCta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.13em !important;
+}
+
+.featuredCta a::after {
+  content: "→";
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 180ms ease;
+}
+
+.featuredCta a:hover::after {
+  transform: translateX(3px);
+}
