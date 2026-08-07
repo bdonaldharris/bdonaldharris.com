@@ -51,6 +51,39 @@ export default async function EssaysPage() {
         </div>
       </section>
 
+      {featured && (
+        <section
+          className="section writing-featured-section"
+          aria-labelledby="featured-writing"
+        >
+          <article className="writing-featured">
+            <p className="eyebrow eyebrow-gold">Featured essay</p>
+            <h2 id="featured-writing">
+              <Link href={`/essays/${featured.slug}`}>{featured.title}</Link>
+            </h2>
+            <p className="writing-featured-desc">{featured.description}</p>
+            <div className="writing-entry-meta">
+              <time dateTime={featured.publishedAt}>
+                {formatEssayDate(featured.publishedAt)}
+              </time>
+              <span>{featured.readingMinutes} min read</span>
+              {featured.updatedAt && featured.updatedAt !== featured.publishedAt && (
+                <span className="writing-updated">
+                  Updated <time dateTime={featured.updatedAt}>{formatEssayDate(featured.updatedAt)}</time>
+                </span>
+              )}
+            </div>
+            <p className="writing-tags-meta">
+              <span className="sr-only">Tags: </span>
+              {featured.tags.map(formatTag).join(" · ")}
+            </p>
+            <p className="writing-featured-link">
+              <Link href={`/essays/${featured.slug}`}>Read the essay</Link>
+            </p>
+          </article>
+        </section>
+      )}
+
       <section className="section ideas-lanes-section">
         <header className="ideas-section-head">
           <h2>Recurring Themes</h2>
@@ -82,54 +115,17 @@ export default async function EssaysPage() {
           </div>
         </section>
       ) : (
-        <>
-          {featured && (
-            <section
-              className="section writing-featured-section"
-              aria-labelledby="featured-writing"
-            >
-              <article className="writing-featured">
-                <p className="eyebrow eyebrow-gold">Featured essay</p>
-                <h2 id="featured-writing">
-                  <Link href={`/essays/${featured.slug}`}>
-                    {featured.title}
-                  </Link>
-                </h2>
-                <p className="writing-featured-desc">{featured.description}</p>
-                <div className="writing-entry-meta">
-                  <time dateTime={featured.publishedAt}>
-                    {formatEssayDate(featured.publishedAt)}
-                  </time>
-                  <span>{featured.readingMinutes} min read</span>
-                  {featured.updatedAt && featured.updatedAt !== featured.publishedAt && (
-                    <span className="writing-updated">
-                      Updated <time dateTime={featured.updatedAt}>{formatEssayDate(featured.updatedAt)}</time>
-                    </span>
-                  )}
-                </div>
-                <p className="writing-tags-meta">
-                  <span className="sr-only">Tags: </span>
-                  {featured.tags.map(formatTag).join(" · ")}
-                </p>
-                <p className="writing-featured-link">
-                  <Link href={`/essays/${featured.slug}`}>Read the essay</Link>
-                </p>
-              </article>
-            </section>
-          )}
-
-          {archive.length > 0 && (
-            <section
-              className="section writing-archive-section"
-              aria-labelledby="essays-list"
-            >
-              <header className="writing-section-head">
-                <h2 id="essays-list">Essays</h2>
-              </header>
-              <EssayArchive entries={archive} variant="page" />
-            </section>
-          )}
-        </>
+        archive.length > 0 && (
+          <section
+            className="section writing-archive-section"
+            aria-labelledby="essays-list"
+          >
+            <header className="writing-section-head">
+              <h2 id="essays-list">Essays</h2>
+            </header>
+            <EssayArchive entries={archive} variant="page" />
+          </section>
+        )
       )}
     </main>
   );
