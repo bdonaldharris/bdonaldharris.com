@@ -4,6 +4,7 @@ import Link from "next/link";
 import { EssayArchive } from "@/components/essays/essay-archive";
 import { ideaLanes } from "@/content/ideas";
 import { formatEssayDate, getPublishedEssays } from "@/lib/essays";
+import styles from "./featured-polish.module.css";
 
 const pageDescription =
   "Essays, reflections, and working ideas on AI, builder discipline, Black tech ownership, community, neurodivergence, and the systems behind meaningful work.";
@@ -56,9 +57,11 @@ export default async function EssaysPage() {
           className="section writing-featured-section"
           aria-labelledby="featured-writing"
         >
-          <article className="writing-featured">
-            <p className="eyebrow eyebrow-gold">Featured essay</p>
-            <h2 id="featured-writing">
+          <article className={`writing-featured ${styles.featuredCard}`}>
+            <p className={`eyebrow eyebrow-gold ${styles.featuredEyebrow}`}>
+              Featured essay
+            </p>
+            <h2 id="featured-writing" className={styles.featuredTitle}>
               <Link href={`/essays/${featured.slug}`}>{featured.title}</Link>
             </h2>
             <p className="writing-featured-desc">{featured.description}</p>
@@ -77,7 +80,7 @@ export default async function EssaysPage() {
               <span className="sr-only">Tags: </span>
               {featured.tags.map(formatTag).join(" · ")}
             </p>
-            <p className="writing-featured-link">
+            <p className={`writing-featured-link ${styles.featuredCta}`}>
               <Link href={`/essays/${featured.slug}`}>Read the essay</Link>
             </p>
           </article>
