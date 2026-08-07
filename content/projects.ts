@@ -35,7 +35,7 @@ export const projects: Project[] = [
     category: "Community",
     status: "Growing platform",
     description:
-      "A platform and media ecosystem amplifying Black excellence in tech and creating visibility, community, and ownership pathways.",
+      "A media ecosystem amplifying Black excellence in tech through visibility, community, and ownership.",
     href: "https://www.bitvoices.network",
     logo: "/images/bitvoices-logo.webp",
   },
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     category: "Builder Tools",
     status: "Being built",
     description:
-      "Workflow intelligence for builders navigating AI-assisted development, comprehension debt, project memory, and accountable review.",
+      "Workflow intelligence for clearer AI-assisted development, durable project memory, and accountable review.",
     href: "https://www.hindsite.pro/",
     logo: "/images/hindsite-logo.webp",
   },

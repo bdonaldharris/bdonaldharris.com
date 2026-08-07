@@ -683,7 +683,7 @@ p {
 
 /* Projects-page cards: centered, consistent rows from heading through CTA */
 .project-card:has(.project-card-logo) {
-  grid-template-rows: 3.5rem 53px 2.8rem minmax(10rem, 1fr) auto;
+  grid-template-rows: 3.5rem 61px 2.8rem minmax(10rem, 1fr) auto;
   align-items: stretch;
   text-align: center;
 }
@@ -704,8 +704,8 @@ p {
   align-items: center;
   justify-content: center;
   justify-self: center;
-  width: 53px;
-  height: 53px;
+  width: 61px;
+  height: 61px;
   padding: 5px;
   overflow: hidden;
   border: 1px solid var(--color-border-subtle);
@@ -721,9 +721,9 @@ p {
 }
 
 .project-card:has(.project-card-logo) > p:not(.card-meta) {
-  display: flex;
+  display: grid;
   align-items: center;
-  justify-content: center;
+  text-align: left;
 }
 
 .project-card:has(.project-card-logo) .card-footer {
