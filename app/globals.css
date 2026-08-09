@@ -832,6 +832,10 @@ p {
   max-width: 51ch;
 }
 
+.home-hero .button-row {
+  margin-top: 4px;
+}
+
 /* Image-backed masthead: real HTML copy sits over the dark left side. */
 .hero-portrait {
   position: absolute;
@@ -867,6 +871,256 @@ p {
   content: "";
   pointer-events: none;
   background: linear-gradient(to top, rgba(5, 6, 8, 0.56), transparent 42%);
+}
+
+/* ---------- Lean home page ---------- */
+
+.home-principles-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 18px;
+  background:
+    radial-gradient(80% 120% at 100% 0%, rgba(214, 169, 74, 0.08), transparent 58%),
+    rgba(14, 22, 38, 0.42);
+}
+
+.home-page .section.home-principles-panel:not(.home-hero) {
+  margin-top: clamp(32px, 4vw, 52px);
+  padding-block: 0;
+}
+
+.home-thesis {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  align-content: center;
+  min-height: 270px;
+  padding: clamp(28px, 3.5vw, 42px);
+  text-align: center;
+}
+
+.home-thesis h2 {
+  max-width: 18ch;
+  font-size: clamp(1.65rem, 2.3vw, 2.15rem);
+}
+
+.home-thesis > p:not(.eyebrow) {
+  max-width: 43ch;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+  line-height: 1.6;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-cyan-glow);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.text-link::after {
+  content: "\2192";
+}
+
+.home-credibility {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 14px;
+  min-height: 270px;
+  padding: clamp(28px, 3.5vw, 42px);
+  border-left: 1px solid var(--color-border-subtle);
+  text-align: center;
+}
+
+.home-credibility h2 {
+  max-width: 22ch;
+  font-size: clamp(1.65rem, 2.3vw, 2.15rem);
+}
+
+.home-credibility p:not(.eyebrow) {
+  max-width: 45ch;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+  line-height: 1.6;
+}
+
+.home-credibility .text-link {
+  justify-self: center;
+}
+
+.latest-podcast {
+  display: grid;
+  gap: clamp(22px, 3vw, 34px);
+  justify-items: center;
+  text-align: center;
+}
+
+.latest-podcast-kicker {
+  margin: 0 0 -12px;
+  color: var(--color-soft-gold);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.latest-podcast > h2 {
+  width: 100%;
+  max-width: none;
+  font-size: clamp(1.15rem, 1.8vw, 1.48rem);
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.latest-podcast-player {
+  position: relative;
+  width: min(100%, 1120px);
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(34, 211, 238, 0.22);
+  border-radius: 18px;
+  background: #050608;
+}
+
+.latest-podcast-player img {
+  object-fit: contain;
+}
+
+.latest-podcast-player:hover,
+.latest-podcast-player:focus-visible {
+  border-color: rgba(34, 211, 238, 0.68);
+}
+
+.latest-podcast-player:focus-visible {
+  outline: 3px solid rgba(34, 211, 238, 0.5);
+  outline-offset: 5px;
+}
+
+.latest-podcast-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: clamp(74px, 8vw, 98px);
+  aspect-ratio: 1;
+  border: 2px solid rgba(255, 255, 255, 0.74);
+  border-radius: 999px;
+  background: rgba(5, 6, 8, 0.58);
+  color: #fff;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(7px);
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.latest-podcast-player:hover .latest-podcast-play {
+  background: rgba(5, 6, 8, 0.76);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.latest-podcast-description {
+  max-width: 78ch;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  line-height: 1.72;
+}
+
+.podcast-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: clamp(14px, 3vw, 30px);
+  overflow-y: auto;
+  background: rgba(3, 5, 9, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+.podcast-modal {
+  display: grid;
+  gap: 20px;
+  width: min(100%, 1040px);
+  max-height: calc(100vh - 28px);
+  padding: clamp(16px, 2.4vw, 26px);
+  overflow-y: auto;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 18px;
+  background: var(--color-deep-black);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.58);
+  text-align: left;
+}
+
+.podcast-modal-header {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.podcast-modal-header h2 {
+  max-width: 42ch;
+  margin: 0;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.podcast-modal-close {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  cursor: pointer;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text-primary);
+}
+
+.podcast-modal-close:hover,
+.podcast-modal-close:focus-visible {
+  border-color: rgba(34, 211, 238, 0.52);
+  background: rgba(34, 211, 238, 0.12);
+}
+
+.podcast-modal-close:focus-visible {
+  outline: 2px solid var(--color-cyan-glow);
+  outline-offset: 3px;
+}
+
+.podcast-modal-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #000;
+}
+
+.podcast-modal-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.podcast-youtube-link {
+  justify-self: center;
 }
 
 /* Home ecosystem: connected vehicles under a shared mission */
@@ -1275,10 +1529,12 @@ p {
 }
 
 .closing-contact p {
-  max-width: 48ch;
+  max-width: none;
   margin: 0;
   color: var(--color-text-secondary);
   font-size: clamp(1.06rem, 1.4vw, 1.22rem);
+  font-style: italic;
+  white-space: nowrap;
 }
 
 /* ---------- Home page vertical rhythm ---------- */
@@ -1287,7 +1543,7 @@ p {
    Tighten the home rhythm into a connected editorial flow. Scoped to the home
    page (and excluding the masthead hero) so interior pages keep their spacing. */
 .home-page .section:not(.home-hero) {
-  padding-block: clamp(26px, 3vw, 44px);
+  padding-block: clamp(42px, 6vw, 78px);
 }
 
 /* Targeted boundary tightening (the broad rule above left a few seams tall).
@@ -1318,7 +1574,7 @@ p {
 }
 
 .home-page .section.closing-contact {
-  padding-block: clamp(14px, 1.6vw, 20px);
+  padding-block: clamp(34px, 5vw, 60px);
 }
 
 .home-page + .site-footer {
@@ -3404,6 +3660,9 @@ p {
   .page-hero-framed,
   .cta-section,
   .section-split,
+  .home-principles-panel,
+  .home-credibility,
+  .latest-podcast,
   .founder-preview,
   .founder-preview-grid,
   .story-feature,
@@ -3594,6 +3853,35 @@ p {
 
   .home-hero-copy .eyebrow {
     white-space: normal;
+  }
+
+  .home-credibility {
+    border-top: 1px solid var(--color-border-subtle);
+    border-left: 0;
+  }
+
+  .home-page .home-principles-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-principles-panel .home-credibility {
+    border-top: 1px solid var(--color-border-subtle);
+    border-left: 0;
+  }
+
+  .home-thesis,
+  .home-credibility {
+    min-height: 0;
+    padding: clamp(34px, 9vw, 52px) clamp(22px, 7vw, 40px);
+  }
+
+  .latest-podcast > h2,
+  .closing-contact p {
+    white-space: normal;
+  }
+
+  .latest-podcast-player {
+    border-radius: 12px;
   }
 
   .founder-preview-heading h2 {

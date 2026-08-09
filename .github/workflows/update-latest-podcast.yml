@@ -1,0 +1,46 @@
+name: Update latest podcast episode
+
+on:
+  schedule:
+    # Sunday morning and evening in Chicago (fixed UTC times; shifts by one
+    # hour when daylight saving time changes).
+    - cron: "17 15 * * 0"
+    - cron: "17 1 * * 1"
+  workflow_dispatch:
+    inputs:
+      playlist_id:
+        description: "Optional playlist ID override"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-latest-podcast
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      YOUTUBE_PLAYLIST_ID: ${{ inputs.playlist_id || 'PLBvSthjBhCTU' }}
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+
+      - name: Update the featured episode
+        run: python3 scripts/update-latest-podcast.py
+
+      - name: Commit a new episode
+        run: |
+          if git diff --quiet -- content/latest-podcast.json; then
+            echo "The featured episode is already current."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/latest-podcast.json
+          git commit -m "Update latest podcast episode"
+          git push

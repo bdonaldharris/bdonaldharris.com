@@ -5,6 +5,15 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+        pathname: "/vi/**",
+      },
+    ],
+  },
   // Legacy information architecture: /ideas was retired and /writing became
   // /essays. `permanent: true` emits 308, preserving link and search authority.
   async redirects() {
