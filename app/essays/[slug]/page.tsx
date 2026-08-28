@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EssayArchive } from "@/components/essays/essay-archive";
@@ -69,33 +70,53 @@ export default async function EssayArticlePage({ params }: Props) {
   return (
     <main className="page-shell writing-article-page">
       <article className="section writing-article">
-        <header className="writing-article-header">
-          <p className="writing-back">
-            <Link href="/essays">Essays</Link>
-          </p>
-          <h1 className={styles.articleTitle}>{entry.title}</h1>
-          <p className="writing-article-deck">{entry.description}</p>
-          <div className="writing-entry-meta">
-            <time dateTime={entry.publishedAt}>
-              {formatEssayDate(entry.publishedAt)}
-            </time>
-            <span aria-hidden="true">·</span>
-            <span>{entry.readingMinutes} min read</span>
-            {entry.updatedAt && entry.updatedAt !== entry.publishedAt && (
-              <span className="writing-updated">
-                Updated{" "}
-                <time dateTime={entry.updatedAt}>
-                  {formatEssayDate(entry.updatedAt)}
-                </time>
-              </span>
-            )}
-          </div>
-          <ul className="writing-tags" aria-label="Tags">
-            {entry.tags.map((tag) => (
-              <li key={tag}>{tag}</li>
-            ))}
-          </ul>
-        </header>
+        <div
+          className={
+            entry.featuredImage
+              ? styles.headerLayout
+              : styles.headerLayoutWithoutImage
+          }
+        >
+          <header className="writing-article-header">
+            <p className="writing-back">
+              <Link href="/essays">Essays</Link>
+            </p>
+            <h1 className={styles.articleTitle}>{entry.title}</h1>
+            <p className="writing-article-deck">{entry.description}</p>
+            <div className="writing-entry-meta">
+              <time dateTime={entry.publishedAt}>
+                {formatEssayDate(entry.publishedAt)}
+              </time>
+              <span aria-hidden="true">·</span>
+              <span>{entry.readingMinutes} min read</span>
+              {entry.updatedAt && entry.updatedAt !== entry.publishedAt && (
+                <span className="writing-updated">
+                  Updated{" "}
+                  <time dateTime={entry.updatedAt}>
+                    {formatEssayDate(entry.updatedAt)}
+                  </time>
+                </span>
+              )}
+            </div>
+            <ul className="writing-tags" aria-label="Tags">
+              {entry.tags.map((tag) => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul>
+          </header>
+
+          {entry.featuredImage && (
+            <div className={styles.featuredImage}>
+              <Image
+                src={entry.featuredImage}
+                alt=""
+                fill
+                sizes="(max-width: 1040px) 100vw, 42vw"
+                priority
+              />
+            </div>
+          )}
+        </div>
 
         <div className={styles.articleLayout}>
           <div className={styles.articleMain}>
