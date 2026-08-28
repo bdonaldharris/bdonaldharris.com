@@ -4,29 +4,25 @@ Essay discussions are rendered by `components/essays/giscus-discussion.tsx` belo
 
 Giscus stores comments in GitHub Discussions for `bdonaldharris/bdonaldharris.com` and associates each essay with a Discussion by URL pathname. That keeps the discussion identity tied to the stable `/essays/<slug>` route rather than the essay title.
 
-## GitHub prerequisite
+## GitHub configuration
 
-GitHub Discussions must be enabled for this repository and the Giscus GitHub App must have access to it. At the time this integration was added, Discussions was not yet enabled for the repository.
+GitHub Discussions is enabled for the repository and the Giscus GitHub App has access to it.
 
-After enabling Discussions, choose the Discussion category that should hold essay conversations and use the Giscus configuration page to obtain its category ID.
-
-## Environment variables
-
-Set these public environment variables in local development and Vercel:
+Essay conversations use the dedicated `Essay Discussions` category:
 
 ```text
-NEXT_PUBLIC_GISCUS_CATEGORY=<discussion category name>
-NEXT_PUBLIC_GISCUS_CATEGORY_ID=<discussion category id>
+Category: Essay Discussions
+Category ID: DIC_kwDOS59KfM4DEYEQ
 ```
 
-The repository name and repository ID are fixed in the component because they are properties of this site repository:
+The repository identity is:
 
 ```text
-bdonaldharris/bdonaldharris.com
-R_kgDOS59KfA
+Repository: bdonaldharris/bdonaldharris.com
+Repository ID: R_kgDOS59KfA
 ```
 
-If either Giscus environment variable is absent, the discussion section does not render. This prevents a broken Giscus embed from appearing before Discussions has been configured.
+These values are fixed properties of this site and are declared directly in the Giscus component. No environment variables are required for the integration.
 
 ## Current behavior
 
