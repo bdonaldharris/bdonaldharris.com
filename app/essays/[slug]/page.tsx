@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EssayArchive } from "@/components/essays/essay-archive";
+import { GiscusDiscussion } from "@/components/essays/giscus-discussion";
 import {
   formatEssayDate,
   getAllEssaySlugs,
@@ -123,6 +124,8 @@ export default async function EssayArticlePage({ params }: Props) {
             <div className="writing-article-body">
               <Article />
             </div>
+
+            <GiscusDiscussion />
 
             <footer className="writing-article-footer">
               <Link href="/essays">Back to Essays</Link>
