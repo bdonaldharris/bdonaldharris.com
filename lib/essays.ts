@@ -33,10 +33,22 @@ export type EssayEntry = {
   syndicated?: EssaySyndication;
   series?: string;
   ogImage?: string;
+  featuredImage?: string;
 };
 
 const ESSAYS_DIR = path.join(process.cwd(), "content", "essays");
 const READING_WORDS_PER_MINUTE = 200;
+
+// Existing essays predate the featuredImage frontmatter field. Keep this
+// compatibility map until their frontmatter is backfilled; new essays should
+// declare featuredImage directly.
+const FEATURED_IMAGE_MIGRATIONS: Record<string, string> = {
+  "ai-gate": "/images/essays/featured/ai-gate-og.jpg",
+  "listen-to-the-software-building-with-ai-as-an-act-of-discovery":
+    "/images/essays/featured/listen-to-the-software-og-v2.jpg",
+  "the-myth-of-general-ai-instructions":
+    "/images/essays/featured/the-myth-of-general-ai-instructions.png",
+};
 
 function optionalString(value: unknown): string | undefined {
   return typeof value === "string" && value.trim() !== ""
@@ -136,6 +148,8 @@ function toEntry(
     syndicated,
     series: optionalString(data.series),
     ogImage: optionalString(data.ogImage),
+    featuredImage:
+      optionalString(data.featuredImage) ?? FEATURED_IMAGE_MIGRATIONS[slug],
   };
 }
 
