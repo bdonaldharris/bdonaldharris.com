@@ -1,14 +1,14 @@
-/* The article shell uses the full page container. Featured essays extend the
-   established article grid upward so the image occupies the secondary column
-   without interrupting the reading column. */
+/* The article shell uses the full page container. Featured essays use an
+   independent editorial header grid so the artwork can carry equal visual
+   weight without changing the established reading-column proportions below. */
 :global(.writing-article) {
   width: var(--container);
 }
 
 .headerLayout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 400px);
-  gap: clamp(40px, 5vw, 72px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(44px, 5vw, 72px);
   align-items: center;
   margin-bottom: clamp(34px, 4.5vw, 56px);
 }
@@ -57,6 +57,11 @@ h1.articleTitle {
 :global(.writing-article-body),
 :global(.writing-article-footer) {
   width: 100%;
+}
+
+.headerLayout + .articleLayout .articleMain :global(.writing-article-body) {
+  padding-top: 0;
+  border-top: 0;
 }
 
 .sidebar {
