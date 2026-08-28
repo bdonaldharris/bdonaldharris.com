@@ -33,6 +33,7 @@ export type EssayEntry = {
   syndicated?: EssaySyndication;
   series?: string;
   ogImage?: string;
+  featuredImage?: string;
 };
 
 const ESSAYS_DIR = path.join(process.cwd(), "content", "essays");
@@ -136,6 +137,7 @@ function toEntry(
     syndicated,
     series: optionalString(data.series),
     ogImage: optionalString(data.ogImage),
+    featuredImage: optionalString(data.featuredImage),
   };
 }
 
