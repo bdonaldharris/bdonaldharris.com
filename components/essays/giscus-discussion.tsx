@@ -5,16 +5,16 @@ import styles from "./giscus-discussion.module.css";
 
 const GISCUS_REPO = "bdonaldharris/bdonaldharris.com";
 const GISCUS_REPO_ID = "R_kgDOS59KfA";
+const GISCUS_CATEGORY = "Essay Discussions";
+const GISCUS_CATEGORY_ID = "DIC_kwDOS59KfM4DEYEQ";
 
 export function GiscusDiscussion() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const category = process.env.NEXT_PUBLIC_GISCUS_CATEGORY;
-  const categoryId = process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID;
 
   useEffect(() => {
     const container = containerRef.current;
 
-    if (!container || !category || !categoryId) {
+    if (!container) {
       return;
     }
 
@@ -26,8 +26,8 @@ export function GiscusDiscussion() {
     script.crossOrigin = "anonymous";
     script.setAttribute("data-repo", GISCUS_REPO);
     script.setAttribute("data-repo-id", GISCUS_REPO_ID);
-    script.setAttribute("data-category", category);
-    script.setAttribute("data-category-id", categoryId);
+    script.setAttribute("data-category", GISCUS_CATEGORY);
+    script.setAttribute("data-category-id", GISCUS_CATEGORY_ID);
     script.setAttribute("data-mapping", "pathname");
     script.setAttribute("data-strict", "1");
     script.setAttribute("data-reactions-enabled", "1");
@@ -42,11 +42,7 @@ export function GiscusDiscussion() {
     return () => {
       container.replaceChildren();
     };
-  }, [category, categoryId]);
-
-  if (!category || !categoryId) {
-    return null;
-  }
+  }, []);
 
   return (
     <section className={styles.discussion} aria-labelledby="essay-discussion-title">
