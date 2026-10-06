@@ -110,51 +110,48 @@ export function SiteFooter() {
           </p>
         </div>
 
-        <nav className="footer-nav-groups" aria-label="Footer navigation">
-          <section aria-labelledby="footer-ecosystem">
-            <h2 id="footer-ecosystem">Ecosystem</h2>
-            <ul className="footer-links-inline">
-              {ecosystemLinks.map((link) => {
-                const external = link.href.startsWith("http");
+        <nav
+          className="footer-nav-groups"
+          aria-label="Ecosystem and social links"
+        >
+          <ul className="footer-links-inline">
+            {ecosystemLinks.map((link) => {
+              const external = link.href.startsWith("http");
 
-                return (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      {...(external
-                        ? { target: "_blank", rel: "noopener noreferrer" }
-                        : {})}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    {...(external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
 
-          <section aria-labelledby="footer-connect">
-            <h2 id="footer-connect">Connect</h2>
-            <ul className="footer-social">
-              {socialLinks.map((social) => {
-                const external = social.href.startsWith("http");
+          <ul className="footer-social">
+            {socialLinks.map((social) => {
+              const external = social.href.startsWith("http");
 
-                return (
-                  <li key={social.label}>
-                    <Link
-                      href={social.href}
-                      aria-label={social.label}
-                      {...(external
-                        ? { target: "_blank", rel: "noopener noreferrer" }
-                        : {})}
-                    >
-                      <SocialIcon name={social.icon} />
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
+              return (
+                <li key={social.label}>
+                  <Link
+                    href={social.href}
+                    aria-label={social.label}
+                    {...(external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
+                    <SocialIcon name={social.icon} />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </nav>
       </div>
 
