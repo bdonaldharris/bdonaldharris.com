@@ -148,8 +148,9 @@
   border-inline-start: 2px solid var(--color-soft-gold);
   background: linear-gradient(
     90deg,
-    rgba(214, 169, 74, 0.06),
-    transparent 48%
+    rgba(214, 169, 74, 0.11),
+    rgba(214, 169, 74, 0.035) 34%,
+    transparent 64%
   );
 }
 
@@ -157,12 +158,38 @@
   padding-inline-start: 14px;
 }
 
+.featured .rowLink h3 span {
+  color: color-mix(
+    in srgb,
+    var(--color-text-primary) 86%,
+    var(--color-soft-gold) 14%
+  );
+}
+
+.featured .rowLink:hover,
+.featured .rowLink:focus-visible {
+  background-color: rgba(214, 169, 74, 0.055);
+  box-shadow:
+    inset 0 1px 0 rgba(214, 169, 74, 0.34),
+    inset 0 -1px 0 rgba(214, 169, 74, 0.34);
+}
+
+.featured .rowLink:hover h3 span,
+.featured .rowLink:focus-visible h3 span {
+  color: var(--color-soft-gold);
+}
+
+.featured .rowLink:hover .thumbnail,
+.featured .rowLink:focus-visible .thumbnail {
+  border-color: rgba(214, 169, 74, 0.62);
+}
+
 .featuredEyebrow {
   margin: 0;
   color: var(--color-soft-gold);
-  font-size: 0.68rem;
-  font-weight: 750;
-  letter-spacing: 0.13em;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
