@@ -87,6 +87,24 @@ export default async function EssaysPage() {
         </section>
       )}
 
+      {entries.length === 0 ? (
+        <section className="section writing-empty-section">
+          <div className="writing-empty">
+            <h2>The archive begins here.</h2>
+            <p>
+              No published essays yet — the first pieces are being written.
+              When they land, this is where they will live.
+            </p>
+          </div>
+        </section>
+      ) : (
+        archive.length > 0 && (
+          <section className="section writing-archive-section">
+            <EssayArchive entries={archive} variant="page" />
+          </section>
+        )
+      )}
+
       <section className="section ideas-lanes-section">
         <header className="ideas-section-head">
           <h2>Recurring Themes</h2>
@@ -106,30 +124,6 @@ export default async function EssaysPage() {
           ))}
         </ol>
       </section>
-
-      {entries.length === 0 ? (
-        <section className="section writing-empty-section">
-          <div className="writing-empty">
-            <h2>The archive begins here.</h2>
-            <p>
-              No published essays yet — the first pieces are being written.
-              When they land, this is where they will live.
-            </p>
-          </div>
-        </section>
-      ) : (
-        archive.length > 0 && (
-          <section
-            className="section writing-archive-section"
-            aria-labelledby="essays-list"
-          >
-            <header className="writing-section-head">
-              <h2 id="essays-list">Essays</h2>
-            </header>
-            <EssayArchive entries={archive} variant="page" />
-          </section>
-        )
-      )}
     </main>
   );
 }
