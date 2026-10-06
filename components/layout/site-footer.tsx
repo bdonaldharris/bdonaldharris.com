@@ -111,17 +111,6 @@ export function SiteFooter() {
         </div>
 
         <nav className="footer-nav-groups" aria-label="Footer navigation">
-          <section aria-labelledby="footer-site">
-            <h2 id="footer-site">B Donald Harris</h2>
-            <ul className="footer-links-inline">
-              {siteLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href}>{link.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-
           <section aria-labelledby="footer-ecosystem">
             <h2 id="footer-ecosystem">Ecosystem</h2>
             <ul className="footer-links-inline">
@@ -170,8 +159,19 @@ export function SiteFooter() {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; {year} B Donald Harris. All rights reserved.</p>
-        <p>NotableBIT &deg; BIT Voices Podcast &deg; BitVoices Network</p>
+        <nav className="footer-bottom-nav" aria-label="Footer site navigation">
+          <ul>
+            {siteLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href}>{link.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="footer-bottom-meta">
+          <p>&copy; {year} B Donald Harris. All rights reserved.</p>
+          <p>NotableBIT &deg; BIT Voices Podcast &deg; BitVoices Network</p>
+        </div>
       </div>
     </footer>
   );
