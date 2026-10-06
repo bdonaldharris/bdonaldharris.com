@@ -43,4 +43,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content/latest-podcast.json
           git commit -m "Update latest podcast episode"
-          git push
+
+          # Main may move while this workflow is running. Rebase the generated
+          # content commit onto the latest remote head before pushing so normal
+          # concurrent site updates do not cause a non-fast-forward failure.
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
