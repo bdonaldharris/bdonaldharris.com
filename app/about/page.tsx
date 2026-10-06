@@ -62,7 +62,6 @@ export default function AboutPage() {
           {aboutStorySections.map((section, index) => (
             <li key={section.title} className="storyline-item" data-pos={index % 2 === 0 ? "above" : "below"}>
               <div className="storyline-content">
-                <span className="storyline-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 <h3>{section.title}</h3>
                 <p>{section.body}</p>
               </div>
