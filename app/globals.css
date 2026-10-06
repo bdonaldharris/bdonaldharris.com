@@ -3476,28 +3476,17 @@ p {
   line-height: 1.6;
 }
 
-/* Column two: nav groups stacked vertically */
+/* Column two: ecosystem links and social icons stacked as two quiet rows. */
 .footer-nav-groups {
-  --footer-indent: clamp(18px, 2vw, 26px);
   display: grid;
-  gap: clamp(14px, 1.8vw, 18px);
-}
-
-/* Headings stay flush-left; child rows are indented beneath them */
-.footer-nav-groups h2 {
-  margin: 0 0 8px;
-  color: var(--color-text-secondary);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  gap: clamp(8px, 1vw, 12px);
 }
 
 .footer-links-inline {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 16px;
-  padding: 0 0 0 var(--footer-indent);
+  padding: 0;
   margin: 0;
   list-style: none;
 }
@@ -3511,14 +3500,13 @@ p {
   color: var(--color-text-primary);
 }
 
-/* Connect: clean inline icon links (no buttons), padded for tap targets */
+/* Clean inline icon links (no buttons), padded for tap targets. */
 .footer-social {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  /* indent glyphs to match text rows: subtract each icon's 8px inner padding */
-  padding: 0 0 0 calc(var(--footer-indent) - 8px);
-  margin: -2px 0 -8px;
+  padding: 0;
+  margin: -2px 0 -8px -8px;
   list-style: none;
 }
 
