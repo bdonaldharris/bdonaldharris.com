@@ -104,7 +104,7 @@ export function SiteFooter() {
 
       <div className="footer-main">
         <div className="footer-intro">
-          <p className="footer-wordmark">B Donald Harris</p>
+          <p className="footer-wordmark">The Apostolic Technologist</p>
           <p className="footer-positioning">
             Building for Black Builders in the AI Era
           </p>
