@@ -50,7 +50,10 @@ export function EssayArchive({
         <details
           key={group.year}
           className={styles.yearGroup}
-          open={group.year === currentYear}
+          open={
+            group.year === currentYear ||
+            group.entries.some((entry) => entry.slug === featuredSlug)
+          }
         >
           <summary className={styles.yearSummary}>
             <span>{group.year}</span>

@@ -55,6 +55,7 @@ export default async function EssaysPage() {
         </section>
       ) : (
         <section className="section writing-archive-section">
+          <h2 className="sr-only">Essay archive</h2>
           <EssayArchive
             entries={entries}
             variant="page"
