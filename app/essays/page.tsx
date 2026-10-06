@@ -72,7 +72,7 @@ export default async function EssaysPage() {
             building, and speaking toward.
           </p>
         </header>
-        <ol className="idea-lanes">
+        <ul className="idea-lanes">
           {ideaLanes.map((lane) => (
             <li key={lane.title}>
               <div className="idea-lane-copy">
@@ -81,7 +81,7 @@ export default async function EssaysPage() {
               </div>
             </li>
           ))}
-        </ol>
+        </ul>
       </section>
     </main>
   );
