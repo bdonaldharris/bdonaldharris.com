@@ -10,10 +10,6 @@ export const metadata: Metadata = {
     "Explore the connected body of work across NotableBIT, BIT Voices Podcast, BitVoices Network, and HindSite.",
 };
 
-function ecosystemLayer(category: string) {
-  return /community|media|podcast/i.test(category) ? "human" : "tech";
-}
-
 export default function ProjectsPage() {
   return (
     <main className="page-shell projects-page">
@@ -56,48 +52,6 @@ export default function ProjectsPage() {
         </ContentGrid>
       </section>
 
-      <section className="section ecosystem-map-section" aria-labelledby="ecosystem-map">
-        <div className="projects-section-heading">
-          <h2 id="ecosystem-map">How the ecosystem connects</h2>
-        </div>
-        <ol className="ecosystem-flow" aria-hidden="true">
-          <li className="flow-node flow-origin">
-            <span className="flow-dot" />
-            <div className="flow-card">
-              <span className="flow-name">B Donald Harris</span>
-              <span className="flow-role">Founder &amp; mission</span>
-            </div>
-          </li>
-          {projects.map((project, index) => (
-            <li
-              className={`flow-node${
-                index === projects.length - 1 ? " flow-node-current" : ""
-              }`}
-              data-layer={ecosystemLayer(project.category)}
-              key={project.id}
-            >
-              <span className="flow-dot" />
-              <div className="flow-card">
-                <span className="flow-name">{project.title}</span>
-                <span className="flow-role">{project.category}</span>
-              </div>
-            </li>
-          ))}
-        </ol>
-        <p className="ecosystem-caption">
-          B Donald Harris sits at the narrative center. NotableBIT carries the
-          company and studio layer. BIT Voices Podcast, BitVoices Network, and
-          HindSite extend the work into media, community, and product.
-        </p>
-        <p className="sr-only">
-          B Donald Harris is the public founder and narrative center. NotableBIT
-          is the company and studio home. BIT Voices Podcast carries
-          conversations with Black technologists, founders, builders, and
-          leaders. BitVoices Network is growing as a community and media
-          ecosystem for Black builders. HindSite is being built as workflow
-          intelligence for builders.
-        </p>
-      </section>
     </main>
   );
 }
