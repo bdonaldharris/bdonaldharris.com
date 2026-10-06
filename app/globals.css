@@ -2675,8 +2675,12 @@ p {
 
 /* ---------- Projects page ---------- */
 
-/* Close the ecosystem section into the footer (Projects page only).
-   The default .site-footer top margin (~80px) is the main remaining gap. */
+/* Close the final Projects section into the footer without changing the
+   project cards themselves. */
+.projects-page > .section:last-child {
+  padding-bottom: clamp(20px, 2.6vw, 38px);
+}
+
 .projects-page + .site-footer {
   margin-top: clamp(14px, 2vw, 26px);
 }
