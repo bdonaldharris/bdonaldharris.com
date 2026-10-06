@@ -68,6 +68,104 @@
   padding: 18px 0;
 }
 
+.entryContent {
+  display: grid;
+  min-width: 0;
+  gap: 8px;
+}
+
+.rowLink {
+  grid-template-columns: minmax(0, 1fr) 128px;
+  column-gap: 20px;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.archive[data-variant="page"] .rowLink {
+  display: grid;
+  padding-block: 18px;
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.archive[data-variant="page"] .entry article {
+  padding-block: 0;
+}
+
+.archive[data-variant="page"] .entries > .entry:last-child .rowLink {
+  padding-bottom: 26px;
+  margin-bottom: -8px;
+}
+
+.rowLink:hover h3 span,
+.rowLink:focus-visible h3 span {
+  color: var(--color-cyan-glow);
+}
+
+.rowLink:hover,
+.rowLink:focus-visible {
+  background-color: rgba(34, 211, 238, 0.035);
+  box-shadow:
+    inset 0 1px 0 rgba(34, 211, 238, 0.2),
+    inset 0 -1px 0 rgba(34, 211, 238, 0.2);
+}
+
+.rowLink:hover .thumbnail,
+.rowLink:focus-visible .thumbnail {
+  border-color: rgba(34, 211, 238, 0.46);
+}
+
+.rowLink:hover .thumbnailImage,
+.rowLink:focus-visible .thumbnailImage {
+  filter: brightness(1.06) contrast(1.03);
+}
+
+.rowLink:focus-visible {
+  outline: 2px solid var(--color-cyan-glow);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.thumbnail {
+  width: 128px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 4px;
+  transition: border-color 180ms ease;
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 180ms ease;
+}
+
+.featured {
+  border-inline-start: 2px solid var(--color-soft-gold);
+  background: linear-gradient(
+    90deg,
+    rgba(214, 169, 74, 0.06),
+    transparent 48%
+  );
+}
+
+.featured .rowLink {
+  padding-inline-start: 14px;
+}
+
+.featuredEyebrow {
+  margin: 0;
+  color: var(--color-soft-gold);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
 .entry time {
   color: var(--color-text-muted);
   font-size: 0.72rem;
@@ -122,6 +220,27 @@
 
 .archive[data-variant="sidebar"] .entry time {
   font-size: 0.64rem;
+}
+
+@media (max-width: 960px) {
+  .rowLink {
+    grid-template-columns: minmax(0, 1fr) 120px;
+    column-gap: 18px;
+  }
+
+  .thumbnail {
+    width: 120px;
+  }
+}
+
+@media (max-width: 720px) {
+  .rowLink {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .archive[data-variant="page"] .thumbnail {
+    display: none;
+  }
 }
 
 @media (max-width: 640px) {
