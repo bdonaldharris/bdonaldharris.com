@@ -85,6 +85,7 @@
 .archive[data-variant="page"] .rowLink {
   display: grid;
   padding-block: 18px;
+  padding-inline-end: 14px;
   transition:
     background-color 180ms ease,
     box-shadow 180ms ease;
