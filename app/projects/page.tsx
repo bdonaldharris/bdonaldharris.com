@@ -64,7 +64,6 @@ export default function ProjectsPage() {
           <li className="flow-node flow-origin">
             <span className="flow-dot" />
             <div className="flow-card">
-              <span className="flow-step">Start</span>
               <span className="flow-name">B Donald Harris</span>
               <span className="flow-role">Founder &amp; mission</span>
             </div>
@@ -79,9 +78,6 @@ export default function ProjectsPage() {
             >
               <span className="flow-dot" />
               <div className="flow-card">
-                <span className="flow-step">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
                 <span className="flow-name">{project.title}</span>
                 <span className="flow-role">{project.category}</span>
               </div>
