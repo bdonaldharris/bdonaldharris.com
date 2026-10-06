@@ -170,7 +170,6 @@ export function SiteFooter() {
         </nav>
         <div className="footer-bottom-meta">
           <p>&copy; {year} B Donald Harris. All rights reserved.</p>
-          <p>NotableBIT &deg; BIT Voices Podcast &deg; BitVoices Network</p>
         </div>
       </div>
     </footer>
