@@ -1573,12 +1573,17 @@ p {
   padding-bottom: clamp(16px, 1.8vw, 22px);
 }
 
+.home-page .section.latest-podcast {
+  padding-bottom: clamp(16px, 2vw, 24px);
+}
+
 .home-page .section.closing-contact {
-  padding-block: clamp(34px, 5vw, 60px);
+  padding-top: clamp(18px, 2.4vw, 28px);
+  padding-bottom: clamp(16px, 2vw, 24px);
 }
 
 .home-page + .site-footer {
-  margin-top: clamp(20px, 2.4vw, 32px);
+  margin-top: clamp(12px, 1.6vw, 20px);
 }
 
 /* Ecosystem cards no longer sit beneath an eyebrow — drop the reserved gap. */
