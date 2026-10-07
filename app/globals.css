@@ -16,11 +16,22 @@
   --color-border-strong: rgba(154, 164, 184, 0.22);
   --color-surface-raised: rgba(22, 29, 45, 0.5);
   --color-surface-glass: rgba(17, 24, 39, 0.68);
+  --color-focus-ring: #7db7ff;
+  --color-link-hover: #7db7ff;
   --glow-warm: rgba(214, 169, 74, 0.16);
   --glow-cool: rgba(34, 211, 238, 0.12);
-  --font-body:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+
+  /* Shared rhythm and layout tokens. */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: clamp(2.5rem, 5vw, 5.25rem);
+  --text-label: 0.72rem;
+  --tracking-label: 0.14em;
+  --divider: 1px solid var(--color-border-subtle);
   --container: min(1120px, calc(100vw - 40px));
   --section-space: clamp(52px, 6vw, 84px);
 }
@@ -44,7 +55,7 @@ body {
     linear-gradient(180deg, var(--color-midnight-navy), var(--color-deep-black) 58%);
   background-attachment: fixed;
   color: var(--color-text-primary);
-  font-family: var(--font-body);
+  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -67,11 +78,11 @@ a {
 }
 
 a:hover {
-  color: var(--color-cyan-glow);
+  color: var(--color-link-hover);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-cyan-glow);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 4px;
 }
 
@@ -118,6 +129,7 @@ a:hover {
   position: relative;
   color: var(--color-text-primary);
   font-size: 0.95rem;
+  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
   font-weight: 800;
   letter-spacing: 0.01em;
   white-space: nowrap;
@@ -152,7 +164,8 @@ a:hover {
   justify-content: center;
   gap: clamp(14px, 2.4vw, 28px);
   color: var(--color-text-secondary);
-  font-size: 0.74rem;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: var(--text-label);
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -192,7 +205,8 @@ a:hover {
   justify-content: center;
   min-height: 44px;
   border-radius: 8px;
-  font-size: 0.78rem;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: var(--text-label);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -267,6 +281,7 @@ a:hover {
   position: relative;
   padding: 12px;
   color: var(--color-text-secondary);
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
   font-weight: 600;
 }
 
@@ -448,7 +463,8 @@ a:hover {
   gap: 10px;
   margin: 0;
   color: var(--color-cyan-glow);
-  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -478,6 +494,7 @@ p {
 h1,
 h2,
 h3 {
+  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
   line-height: 1.1;
   letter-spacing: -0.02em;
   text-wrap: balance;
@@ -506,6 +523,36 @@ p {
   font-size: clamp(1rem, 1vw, 1.0625rem);
   line-height: 1.75;
   text-wrap: pretty;
+}
+
+/* Utility text carries context without competing with the reading voice. */
+.card-meta,
+.card-footer,
+.text-link,
+.writing-back,
+.writing-entry-meta,
+.writing-tags,
+.writing-article-footer,
+.footer-motto,
+.footer-bottom-nav,
+.footer-bottom-meta {
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+}
+
+/* Serif is reserved for sustained reading and narrative context. */
+.about-page .page-hero p:not(.eyebrow),
+.about-page .pull-quote figcaption,
+.about-page .story-lead,
+.about-page .storyline p,
+.about-page .beliefs-intro-card p,
+.projects-page .page-hero p,
+.writing-article-deck,
+.writing-article-body,
+.writing-article-body p,
+.writing-article-body ul,
+.writing-article-body ol,
+.writing-article-body blockquote {
+  font-family: var(--font-serif, ui-serif, Georgia, serif);
 }
 
 .text-accent {
