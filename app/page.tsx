@@ -18,6 +18,10 @@ export default function HomePage() {
             build tools, platforms, and conversations that help Black builders
             lead with clarity, context, and ownership.
           </p>
+          <a className="home-hero-scroll" href="#about">
+            <span>Scroll to explore</span>
+            <span aria-hidden="true">↓</span>
+          </a>
         </div>
         <figure className="hero-portrait">
           <Image
@@ -36,22 +40,11 @@ export default function HomePage() {
           <h2 id="home-about-heading">A founder&apos;s body of work.</h2>
         </header>
 
-        <div className="section home-principles-panel">
-          <section className="home-thesis" aria-labelledby="home-thesis-heading">
-            <h3 id="home-thesis-heading">Builders still have to lead.</h3>
-            <p>
-              AI accelerates output. It cannot replace judgment, context,
-              accountability, or ownership.
-            </p>
-            <Link className="text-link" href="/essays">
-              Explore My Ideas
-            </Link>
-          </section>
-
-          <section className="home-credibility" aria-labelledby="home-credibility-heading">
-            <h3 id="home-credibility-heading">
+        <div className="home-about-narrative">
+          <div className="home-about-copy">
+            <p className="home-about-lead">
               Shaped by technology, leadership, and community.
-            </h3>
+            </p>
             <p>
               My perspective draws on decades in software engineering, ministry,
               leadership, founder work, and community building.
@@ -59,7 +52,16 @@ export default function HomePage() {
             <Link className="text-link" href="/about">
               Read My Story
             </Link>
-          </section>
+          </div>
+
+          <aside className="home-belief-rail" aria-labelledby="home-belief-heading">
+            <p className="eyebrow">What I believe</p>
+            <h3 id="home-belief-heading">Builders still have to lead.</h3>
+            <p>
+              AI accelerates output. It cannot replace judgment, context,
+              accountability, or ownership.
+            </p>
+          </aside>
         </div>
 
         <p className="home-projects-link">
