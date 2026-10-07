@@ -32,6 +32,7 @@
   --text-label: 0.72rem;
   --tracking-label: 0.14em;
   --divider: 1px solid var(--color-border-subtle);
+  --header-offset: 5rem;
   --container: min(1120px, calc(100vw - 40px));
   --section-space: clamp(52px, 6vw, 84px);
 }
@@ -44,6 +45,7 @@ html {
   background: var(--color-deep-black);
   color: var(--color-text-primary);
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-offset);
 }
 
 body {
@@ -190,7 +192,7 @@ a:hover {
 }
 
 .site-header a:focus-visible,
-.mobile-menu summary:focus-visible {
+.mobile-menu-toggle:focus-visible {
   outline: 2px solid var(--color-cyan-glow);
   outline-offset: 6px;
   border-radius: 6px;
@@ -243,20 +245,20 @@ a:hover {
   display: none;
 }
 
-.mobile-menu summary {
+.mobile-menu-toggle {
   display: grid;
   width: 44px;
   height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
   place-items: center;
   list-style: none;
   cursor: pointer;
 }
 
-.mobile-menu summary::-webkit-details-marker {
-  display: none;
-}
-
-.mobile-menu summary span {
+.mobile-menu-toggle span {
   display: block;
   width: 20px;
   height: 2px;
@@ -3476,6 +3478,7 @@ p {
   :root {
     --container: min(100vw - 32px, 680px);
     --section-space: clamp(40px, 8vw, 60px);
+    --header-offset: 4.25rem;
   }
 
   .site-header-inner {

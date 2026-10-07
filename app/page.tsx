@@ -6,7 +6,7 @@ import latestPodcast from "@/content/latest-podcast.json";
 
 export default function HomePage() {
   return (
-    <main className="page-shell home-page">
+    <main id="home" className="page-shell home-page">
       <section className="section home-hero">
         <div className="home-hero-copy">
           <p className="eyebrow">Founder • Builder • Technologist</p>
