@@ -924,6 +924,48 @@ p {
 
 /* ---------- Lean home page ---------- */
 
+/* The Home narrative is intentionally a sequence of quiet, addressable
+   chapters. Subsequent issue work fills each chapter without changing its
+   anchor or place in the overall reading order. */
+.home-section {
+  position: relative;
+  scroll-margin-top: var(--header-offset);
+}
+
+.home-section-heading {
+  display: grid;
+  gap: 12px;
+  width: var(--container);
+  margin: 0 auto;
+  padding-top: clamp(30px, 5vw, 58px);
+  border-top: var(--divider);
+}
+
+.home-section-heading .eyebrow {
+  margin: 0;
+}
+
+.home-section-heading h2 {
+  max-width: 18ch;
+  margin: 0;
+}
+
+.home-projects-link {
+  width: var(--container);
+  margin: 0 auto;
+  padding-bottom: clamp(20px, 3vw, 36px);
+}
+
+.home-speaking {
+  display: grid;
+  min-height: clamp(170px, 22vw, 280px);
+  align-content: center;
+}
+
+.home-speaking .home-section-heading {
+  padding-top: 0;
+}
+
 .home-principles-panel {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -951,7 +993,7 @@ p {
   text-align: center;
 }
 
-.home-thesis h2 {
+.home-thesis h3 {
   max-width: 18ch;
   font-size: clamp(1.65rem, 2.3vw, 2.15rem);
 }
@@ -990,7 +1032,7 @@ p {
   text-align: center;
 }
 
-.home-credibility h2 {
+.home-credibility h3 {
   max-width: 22ch;
   font-size: clamp(1.65rem, 2.3vw, 2.15rem);
 }
@@ -3716,6 +3758,10 @@ p {
 
   .home-page .home-principles-panel {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-section-heading h2 {
+    max-width: 100%;
   }
 
   .home-principles-panel .home-credibility {

@@ -30,35 +30,63 @@ export default function HomePage() {
         </figure>
       </section>
 
-      <div className="section home-principles-panel">
-        <section className="home-thesis" aria-labelledby="home-thesis-heading">
-          <h2 id="home-thesis-heading">Builders still have to lead.</h2>
-          <p>
-            AI accelerates output. It cannot replace judgment, context,
-            accountability, or ownership.
-          </p>
-          <Link className="text-link" href="/essays">
-            Explore My Ideas
+      <section id="about" className="home-section home-about" aria-labelledby="home-about-heading">
+        <header className="home-section-heading">
+          <p className="eyebrow">About</p>
+          <h2 id="home-about-heading">A founder&apos;s body of work.</h2>
+        </header>
+
+        <div className="section home-principles-panel">
+          <section className="home-thesis" aria-labelledby="home-thesis-heading">
+            <h3 id="home-thesis-heading">Builders still have to lead.</h3>
+            <p>
+              AI accelerates output. It cannot replace judgment, context,
+              accountability, or ownership.
+            </p>
+            <Link className="text-link" href="/essays">
+              Explore My Ideas
+            </Link>
+          </section>
+
+          <section className="home-credibility" aria-labelledby="home-credibility-heading">
+            <h3 id="home-credibility-heading">
+              Shaped by technology, leadership, and community.
+            </h3>
+            <p>
+              My perspective draws on decades in software engineering, ministry,
+              leadership, founder work, and community building.
+            </p>
+            <Link className="text-link" href="/about">
+              Read My Story
+            </Link>
+          </section>
+        </div>
+
+        <p className="home-projects-link">
+          <Link className="text-link" href="/projects">
+            Explore what I&apos;m building
           </Link>
-        </section>
+        </p>
+      </section>
 
-        <section className="home-credibility" aria-labelledby="home-credibility-heading">
-          <h2 id="home-credibility-heading">
-            Shaped by technology, leadership, and community.
-          </h2>
-          <p>
-            My perspective draws on decades in software engineering, ministry,
-            leadership, founder work, and community building.
-          </p>
-          <Link className="text-link" href="/about">
-            Read My Story
-          </Link>
-        </section>
-      </div>
+      <section id="media" className="home-section home-media" aria-labelledby="home-media-heading">
+        <header className="home-section-heading">
+          <p className="eyebrow">Media</p>
+          <h2 id="home-media-heading">Conversations for the work ahead.</h2>
+        </header>
+        <LatestPodcastFeature episode={latestPodcast} />
+      </section>
 
-      <LatestPodcastFeature episode={latestPodcast} />
+      <section id="speaking" className="section home-section home-speaking" aria-labelledby="home-speaking-heading">
+        <header className="home-section-heading">
+          <p className="eyebrow">Speaking</p>
+          <h2 id="home-speaking-heading">Speaking</h2>
+        </header>
+      </section>
 
-      <section className="section closing-contact">
+      <section id="contact" className="section closing-contact home-section" aria-labelledby="home-contact-heading">
+        <p className="eyebrow">Contact</p>
+        <h2 id="home-contact-heading" className="sr-only">Contact</h2>
         <Link className="button-primary" href="/contact">
           Contact Me
         </Link>
