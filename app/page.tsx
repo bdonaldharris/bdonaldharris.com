@@ -6,7 +6,7 @@ import latestPodcast from "@/content/latest-podcast.json";
 
 export default function HomePage() {
   return (
-    <main className="page-shell home-page">
+    <main id="home" className="page-shell home-page" data-home-nav-section>
       <section className="section home-hero">
         <div className="home-hero-copy">
           <p className="eyebrow">Founder • Builder • Technologist</p>
@@ -30,6 +30,7 @@ export default function HomePage() {
         </figure>
       </section>
 
+      <span id="about" className="home-nav-anchor" data-home-nav-section aria-hidden="true" />
       <div className="section home-principles-panel">
         <section className="home-thesis" aria-labelledby="home-thesis-heading">
           <h2 id="home-thesis-heading">Builders still have to lead.</h2>
@@ -56,8 +57,11 @@ export default function HomePage() {
         </section>
       </div>
 
+      <span id="media" className="home-nav-anchor" data-home-nav-section aria-hidden="true" />
       <LatestPodcastFeature episode={latestPodcast} />
 
+      <span id="speaking" className="home-nav-anchor" data-home-nav-section aria-hidden="true" />
+      <span id="contact" className="home-nav-anchor" data-home-nav-section aria-hidden="true" />
       <section className="section closing-contact">
         <Link className="button-primary" href="/contact">
           Contact Me
