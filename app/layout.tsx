@@ -1,28 +1,9 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Schibsted_Grotesk, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import "./theme-palette.css";
 import "./editorial-refinements.css";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
-
-const sans = Schibsted_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const serif = Source_Serif_4({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-});
-
-const mono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bdonaldharris.com"),
@@ -63,11 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      data-scroll-behavior="smooth"
-      className={`${sans.variable} ${serif.variable} ${mono.variable}`}
-    >
+    <html lang="en" data-scroll-behavior="smooth">
       <body suppressHydrationWarning>
         <SiteHeader />
         {children}
