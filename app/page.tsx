@@ -6,8 +6,8 @@ import latestPodcast from "@/content/latest-podcast.json";
 
 export default function HomePage() {
   return (
-    <main id="home" className="page-shell home-page" data-home-nav-section>
-      <section className="section home-hero">
+    <main className="page-shell home-page">
+      <section id="home" className="section home-hero" data-home-nav-section>
         <div className="home-hero-copy">
           <p className="eyebrow">Founder • Builder • Technologist</p>
           <h1>
@@ -30,43 +30,44 @@ export default function HomePage() {
         </figure>
       </section>
 
-      <span id="about" className="home-nav-anchor" data-home-nav-section aria-hidden="true" />
-      <div className="section home-principles-panel">
-        <section className="home-thesis" aria-labelledby="home-thesis-heading">
-          <h2 id="home-thesis-heading">Builders still have to lead.</h2>
-          <p>
-            AI accelerates output. It cannot replace judgment, context,
-            accountability, or ownership.
-          </p>
+      <section id="about" className="home-section home-about" data-home-nav-section>
+        <div className="home-section-inner home-about-content">
+          <p className="eyebrow">About</p>
+          <h2>Builders still have to lead.</h2>
+          <div className="home-about-copy">
+            <p>
+              AI accelerates output. It cannot replace judgment, context,
+              accountability, or ownership.
+            </p>
+            <p>
+              My perspective draws on decades in software engineering, ministry,
+              leadership, founder work, and community building.
+            </p>
+          </div>
           <Link className="text-link" href="/essays">
             Explore My Ideas
           </Link>
-        </section>
+        </div>
+      </section>
 
-        <section className="home-credibility" aria-labelledby="home-credibility-heading">
-          <h2 id="home-credibility-heading">
-            Shaped by technology, leadership, and community.
-          </h2>
-          <p>
-            My perspective draws on decades in software engineering, ministry,
-            leadership, founder work, and community building.
-          </p>
-          <Link className="text-link" href="/about">
-            Read My Story
+      <section id="media" className="home-section home-media" data-home-nav-section>
+        <LatestPodcastFeature episode={latestPodcast} />
+      </section>
+
+      <section id="speaking" className="home-section home-speaking" data-home-nav-section>
+        <div className="home-section-inner home-simple-section">
+          <p className="eyebrow">Speaking</p>
+          <p>For speaking, collaboration, or a thoughtful conversation, get in touch.</p>
+        </div>
+      </section>
+
+      <section id="contact" className="home-section home-contact" data-home-nav-section>
+        <div className="home-section-inner home-simple-section">
+          <p className="eyebrow">Contact</p>
+          <Link className="button-primary" href="/contact">
+            Contact Me
           </Link>
-        </section>
-      </div>
-
-      <span id="media" className="home-nav-anchor" data-home-nav-section aria-hidden="true" />
-      <LatestPodcastFeature episode={latestPodcast} />
-
-      <span id="speaking" className="home-nav-anchor" data-home-nav-section aria-hidden="true" />
-      <span id="contact" className="home-nav-anchor" data-home-nav-section aria-hidden="true" />
-      <section className="section closing-contact">
-        <Link className="button-primary" href="/contact">
-          Contact Me
-        </Link>
-        <p>For speaking, collaboration, or a thoughtful conversation, get in touch.</p>
+        </div>
       </section>
     </main>
   );
