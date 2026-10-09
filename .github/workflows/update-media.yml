@@ -1,0 +1,58 @@
+name: Update Home media
+
+on:
+  schedule:
+    # Preserve the existing Sunday schedule.
+    - cron: "17 15 * * 0"
+    - cron: "17 1 * * 1"
+  workflow_dispatch:
+    inputs:
+      podcast_playlist_id:
+        description: "Optional Podcast playlist ID override"
+        required: false
+        type: string
+      recent_videos_playlist_id:
+        description: "Optional Recent Videos playlist ID override"
+        required: false
+        type: string
+      shorts_playlist_id:
+        description: "Optional Shorts playlist ID override"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-home-media
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      YOUTUBE_PODCAST_PLAYLIST_ID: ${{ inputs.podcast_playlist_id || vars.YOUTUBE_PODCAST_PLAYLIST_ID }}
+      YOUTUBE_RECENT_VIDEOS_PLAYLIST_ID: ${{ inputs.recent_videos_playlist_id || vars.YOUTUBE_RECENT_VIDEOS_PLAYLIST_ID }}
+      YOUTUBE_SHORTS_PLAYLIST_ID: ${{ inputs.shorts_playlist_id || vars.YOUTUBE_SHORTS_PLAYLIST_ID }}
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+
+      - name: Update generated Media content
+        run: python3 scripts/update-media.py
+
+      - name: Commit generated Media content
+        run: |
+          if git diff --quiet -- content/media.json; then
+            echo "The Media artifact is already current."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/media.json
+          git commit -m "Update Home media"
+
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main

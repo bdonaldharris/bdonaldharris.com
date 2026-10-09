@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import homeHeroImage from "@/assets/originals/home-hero.png";
-import { LatestPodcastFeature } from "@/components/home/latest-podcast-feature";
+import { HomeMediaSection } from "@/components/home/home-media-section";
 import { homeAboutMarkers } from "@/content/about";
-import latestPodcast from "@/content/latest-podcast.json";
+import media from "@/content/media.json";
 
 export default function HomePage() {
   return (
@@ -91,7 +91,7 @@ export default function HomePage() {
       </section>
 
       <section id="media" className="home-section home-media" data-home-nav-section>
-        <LatestPodcastFeature episode={latestPodcast} />
+        <HomeMediaSection media={media} />
       </section>
 
       <section id="speaking" className="home-section home-speaking" data-home-nav-section>
