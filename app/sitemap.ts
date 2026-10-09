@@ -3,12 +3,8 @@ import { getPublishedEssays } from "@/lib/essays";
 
 const routes = [
   "",
-  "/about",
   "/essays",
   "/projects",
-  "/media",
-  "/speaking",
-  "/contact",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

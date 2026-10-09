@@ -33,7 +33,7 @@
 .yearSummary::after {
   content: "+";
   flex: none;
-  color: var(--color-cyan-glow);
+  color: var(--color-accent-blue);
   font-size: 1rem;
   font-weight: 500;
 }
@@ -102,20 +102,20 @@
 
 .rowLink:hover h3 span,
 .rowLink:focus-visible h3 span {
-  color: var(--color-cyan-glow);
+  color: var(--color-accent-blue);
 }
 
 .rowLink:hover,
 .rowLink:focus-visible {
-  background-color: rgba(34, 211, 238, 0.035);
+  background-color: rgba(125, 183, 255, 0.035);
   box-shadow:
-    inset 0 1px 0 rgba(34, 211, 238, 0.2),
-    inset 0 -1px 0 rgba(34, 211, 238, 0.2);
+    inset 0 1px 0 rgba(125, 183, 255, 0.2),
+    inset 0 -1px 0 rgba(125, 183, 255, 0.2);
 }
 
 .rowLink:hover .thumbnail,
 .rowLink:focus-visible .thumbnail {
-  border-color: rgba(34, 211, 238, 0.46);
+  border-color: rgba(125, 183, 255, 0.46);
 }
 
 .rowLink:hover .thumbnailImage,
@@ -124,7 +124,7 @@
 }
 
 .rowLink:focus-visible {
-  outline: 2px solid var(--color-cyan-glow);
+  outline: 2px solid var(--color-accent-blue);
   outline-offset: 4px;
   border-radius: 4px;
 }
@@ -146,8 +146,8 @@
 }
 
 .featured {
-  border-inline-start: 2px solid var(--color-soft-gold);
-  background: rgba(214, 169, 74, 0.18);
+  border-inline-start: 2px solid var(--color-accent-lavender);
+  background: rgba(183, 184, 232, 0.18);
 }
 
 .featured .rowLink {
@@ -158,31 +158,31 @@
   color: color-mix(
     in srgb,
     var(--color-text-primary) 86%,
-    var(--color-soft-gold) 14%
+    var(--color-accent-lavender) 14%
   );
 }
 
 .featured .rowLink:hover,
 .featured .rowLink:focus-visible {
-  background-color: rgba(214, 169, 74, 0.24);
+  background-color: rgba(183, 184, 232, 0.24);
   box-shadow:
-    inset 0 1px 0 rgba(214, 169, 74, 0.34),
-    inset 0 -1px 0 rgba(214, 169, 74, 0.34);
+    inset 0 1px 0 rgba(183, 184, 232, 0.34),
+    inset 0 -1px 0 rgba(183, 184, 232, 0.34);
 }
 
 .featured .rowLink:hover h3 span,
 .featured .rowLink:focus-visible h3 span {
-  color: var(--color-soft-gold);
+  color: var(--color-accent-lavender);
 }
 
 .featured .rowLink:hover .thumbnail,
 .featured .rowLink:focus-visible .thumbnail {
-  border-color: rgba(214, 169, 74, 0.62);
+  border-color: rgba(183, 184, 232, 0.62);
 }
 
 .featuredEyebrow {
   margin: 0;
-  color: var(--color-soft-gold);
+  color: var(--color-accent-lavender);
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -200,6 +200,7 @@
 .entry h3 {
   max-width: none;
   margin: 0;
+  font-family: "Bodoni Moda", "Iowan Old Style", Georgia, serif;
   font-size: clamp(1.18rem, 1.7vw, 1.5rem);
   line-height: 1.3;
 }
@@ -210,7 +211,7 @@
 }
 
 .entry h3 a:hover {
-  color: var(--color-cyan-glow);
+  color: var(--color-accent-blue);
 }
 
 .tags {
@@ -238,7 +239,7 @@
 }
 
 .archive[data-variant="sidebar"] .entry h3 span[aria-current="page"] {
-  color: var(--color-soft-gold);
+  color: var(--color-accent-lavender);
 }
 
 .archive[data-variant="sidebar"] .entry time {
