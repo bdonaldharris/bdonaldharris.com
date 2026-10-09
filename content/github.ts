@@ -8,6 +8,14 @@ export type CuratedRepository = {
 
 export const curatedRepositories: CuratedRepository[] = [
   {
+    name: "agentic-builder-engineering-system",
+    category: "Engineering System",
+    description:
+      "An evolving system of engineering practices, standards, roles, contracts, and workflows for responsible software construction with AI agents.",
+    technologies: ["AI Agents", "GitHub", "Markdown"],
+    href: "https://github.com/bdonaldharris/agentic-builder-engineering-system",
+  },
+  {
     name: "dotnet-project-creator",
     category: "Developer Tool",
     description:
