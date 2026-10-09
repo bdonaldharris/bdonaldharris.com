@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { GitHubContributionGraph } from "@/components/projects/github-contribution-graph";
+import { curatedRepositories } from "@/content/github";
 import { projects } from "@/content/projects";
+import { getGitHubContributionWeeks } from "@/lib/github-contributions";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -8,7 +11,9 @@ export const metadata: Metadata = {
     "Explore the connected body of work across NotableBIT, BIT Voices Podcast, BitVoices Network, and HindSite.",
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const contributionWeeks = await getGitHubContributionWeeks();
+
   return (
     <main className="page-shell projects-page">
       <section className="projects-layout" aria-labelledby="projects-title">
@@ -46,6 +51,34 @@ export default function ProjectsPage() {
               <p className="project-row-description">{project.description}</p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="github-section" aria-labelledby="github-title">
+        <div className="github-layout">
+          <div className="github-introduction">
+            <h2 id="github-title">Work Today</h2>
+          </div>
+
+          {contributionWeeks && <GitHubContributionGraph weeks={contributionWeeks} />}
+          <div
+            className={`github-repository-shelf${contributionWeeks ? "" : " github-repository-shelf-no-graph"}`}
+          >
+            {curatedRepositories.map((repository) => (
+              <article className="github-repository" key={repository.href}>
+                <h3>
+                  <a href={repository.href} target="_blank" rel="noopener noreferrer">
+                    {repository.name}
+                  </a>
+                  <span className="github-repository-category">{repository.category}</span>
+                </h3>
+                <p className="github-repository-description">{repository.description}</p>
+                <p className="github-repository-technologies">
+                  {repository.technologies.join(" · ")}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
     </main>

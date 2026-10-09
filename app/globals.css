@@ -542,6 +542,190 @@ a:hover {
   color: var(--color-accent-blue);
 }
 
+/* ---------- From GitHub ---------- */
+
+.github-section {
+  width: min(1160px, var(--container-wide));
+  margin-inline: auto;
+}
+
+.github-layout {
+  padding: var(--home-section-content-space) 0 var(--section-space);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.github-introduction h2 {
+  margin: 0;
+  font-family: "Bodoni Moda", "Iowan Old Style", Georgia, serif;
+  font-size: clamp(2.2rem, 3.8vw, 3.5rem);
+}
+
+.github-contribution-scroll {
+  width: 100%;
+  margin-top: clamp(24px, 3vw, 36px);
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.github-contribution-graph {
+  display: flex;
+  gap: 3px;
+  width: max-content;
+}
+
+.github-contribution-calendar {
+  width: max-content;
+}
+
+.github-contribution-months {
+  display: grid;
+  grid-template-columns: repeat(53, 12px);
+  gap: 3px;
+  margin-left: 28px;
+  min-height: 1.35rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  line-height: 1.2;
+}
+
+.github-contribution-grid-layout {
+  display: flex;
+  gap: 6px;
+}
+
+.github-contribution-weekdays {
+  display: grid;
+  grid-template-rows: repeat(7, 12px);
+  gap: 3px;
+  width: 22px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  line-height: 12px;
+}
+
+.github-contribution-week {
+  display: grid;
+  grid-template-rows: repeat(7, 12px);
+  gap: 3px;
+}
+
+.github-contribution-day {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: rgba(183, 184, 232, 0.1);
+}
+
+.github-contribution-day-first-quartile {
+  background: rgba(143, 145, 201, 0.36);
+}
+
+.github-contribution-day-second-quartile {
+  background: rgba(125, 183, 255, 0.46);
+}
+
+.github-contribution-day-third-quartile {
+  background: rgba(125, 183, 255, 0.68);
+}
+
+.github-contribution-day-fourth-quartile {
+  background: var(--color-accent-lavender);
+}
+
+.github-contribution-legend {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  width: var(--github-contribution-grid-width);
+  margin: 12px 0 0 28px;
+  padding: 0;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  line-height: 1;
+}
+
+.github-contribution-bottom {
+  --github-contribution-grid-width: 792px;
+
+  position: relative;
+}
+
+.github-contribution-attribution {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: calc(28px + var(--github-contribution-grid-width));
+  text-align: right;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.github-repository-shelf {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(24px, 3vw, 32px);
+  margin-top: clamp(36px, 4vw, 48px);
+}
+
+.github-repository-shelf-no-graph {
+  margin-top: clamp(28px, 3vw, 36px);
+}
+
+.github-repository {
+  max-width: 72ch;
+}
+
+.github-repository-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 7px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 999px;
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.github-repository h3 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 1.35vw, 1.28rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.github-repository-description {
+  margin: 7px 0 0;
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.github-repository-technologies {
+  margin: 7px 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.github-repository h3 a:hover {
+  color: var(--color-accent-blue);
+}
+
 /* ---------- Decorative motifs ---------- */
 
 .motif {
