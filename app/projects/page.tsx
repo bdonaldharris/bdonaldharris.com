@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ProjectCard } from "@/components/cards/project-card";
-import { ContentGrid } from "@/components/sections/content-grid";
 import { projects } from "@/content/projects";
 
 export const metadata: Metadata = {
@@ -13,45 +11,43 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <main className="page-shell projects-page">
-      <section className="section page-hero projects-hero" aria-labelledby="projects-hero-title">
-        <div className="page-hero-copy">
-          <h1 id="projects-hero-title">
-            One mission. Multiple vehicles. Built{" "}
-            <span className="text-accent">over time</span>.
-          </h1>
+      <section className="projects-layout" aria-labelledby="projects-title">
+        <div className="projects-introduction">
+          <h1 id="projects-title">What I’m building.</h1>
           <p>
-            A founder-led body of work spanning company, media, community, and
-            workflow intelligence — aligned vehicles serving a shared
-            builder-centered mission rather than disconnected ideas.
+            I build companies, media, communities, and tools around a shared
+            goal: helping Black builders participate in technology with greater
+            visibility, context, ownership, and opportunity.
           </p>
         </div>
-        <div className="projects-hero-image" aria-hidden="true">
-          <Image
-            src="/images/projects-hero.webp"
-            alt=""
-            width={1536}
-            height={1024}
-            priority
-            sizes="(max-width: 860px) 0px, 46vw"
-          />
-        </div>
-      </section>
 
-      <section className="section" aria-labelledby="built-in-sequence">
-        <div className="projects-section-heading">
-          <h2 id="built-in-sequence">Built in sequence</h2>
-          <p>
-            Each project has its own role, but the work points toward clarity,
-            context, ownership, and durable pathways for Black builders.
-          </p>
-        </div>
-        <ContentGrid variant="four">
+        <div className="projects-list-rows">
           {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} showLogo />
+            <article className="project-row" key={project.id}>
+              <a
+                className="project-row-identity"
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  className="project-row-logo"
+                  src={project.logo}
+                  alt=""
+                  width={56}
+                  height={56}
+                  sizes="56px"
+                />
+                <div>
+                  <p className="project-row-category">{project.category}</p>
+                  <h2>{project.title}</h2>
+                </div>
+              </a>
+              <p className="project-row-description">{project.description}</p>
+            </article>
           ))}
-        </ContentGrid>
+        </div>
       </section>
-
     </main>
   );
 }

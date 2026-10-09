@@ -465,73 +465,81 @@ a:hover {
   width: min(100%, 340px);
 }
 
-/* Projects page hero (image on the right) */
-.projects-hero {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
-  gap: clamp(28px, 4vw, 52px);
+/* ---------- Projects page ---------- */
+
+.projects-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 3fr) minmax(0, 7fr);
+  gap: clamp(40px, 5vw, 72px);
+  align-items: start;
+  width: min(1160px, var(--container-wide));
+  margin-inline: auto;
+  padding-block: clamp(48px, 5vw, 72px) clamp(48px, 5vw, 72px);
+}
+
+.projects-introduction h1 {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+}
+
+.projects-introduction p {
+  max-width: 38ch;
+  margin: 18px 0 0;
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 38fr) minmax(0, 62fr);
+  gap: clamp(24px, 3vw, 36px);
   align-items: center;
-  padding-bottom: clamp(40px, 5vw, 64px);
+  margin-bottom: clamp(40px, 4vw, 56px);
 }
 
-/* Pull "Built in sequence" closer to the hero (Projects only) */
-.projects-hero + .section {
-  padding-top: clamp(8px, 1.5vw, 18px);
+.project-row:last-child {
+  margin-bottom: 0;
 }
 
-/* Confident, editorial headline — smaller than the global hero scale */
-.projects-hero h1 {
-  max-width: 16ch;
-  font-size: clamp(2rem, 3.4vw, 3rem);
-  line-height: 1.12;
+.project-row-identity {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
 }
 
-/* Projects section headings: stacked single-column rows */
-.projects-section-heading {
-  margin-bottom: clamp(28px, 4vw, 44px);
+.project-row-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 4px;
 }
 
-.projects-section-heading h2 {
+.project-row-category {
   margin: 0;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.45;
+  text-transform: uppercase;
 }
 
-.projects-section-heading p {
-  margin: 14px 0 0;
-  /* Wide enough to stay on one line on desktop; wraps naturally below */
-  max-width: none;
+.project-row-identity h2 {
+  margin: 6px 0 0;
+  font-family: var(--font-body);
+  font-size: clamp(1.2rem, 1.5vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-.projects-hero-image {
-  position: relative;
-  align-self: stretch;
-  min-height: clamp(330px, 37vw, 500px);
-  overflow: hidden;
-  border-radius: 18px;
-  background: var(--color-deep-black);
+.project-row-description {
+  max-width: 52ch;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
 }
 
-.projects-hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center right;
-}
-
-/* Blend the image edges into the page so it reads integrated, not boxed */
-.projects-hero-image::after {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  content: "";
-  background:
-    linear-gradient(
-      90deg,
-      var(--color-deep-black) 0%,
-      rgba(16, 17, 23, 0.28) 22%,
-      transparent 50%
-    ),
-    linear-gradient(0deg, var(--color-deep-black) 0%, transparent 20%),
-    linear-gradient(180deg, rgba(16, 17, 23, 0.55) 0%, transparent 18%);
+.project-row:hover .project-row-identity h2 {
+  color: var(--color-accent-blue);
 }
 
 /* ---------- Decorative motifs ---------- */
@@ -3250,14 +3258,6 @@ p {
   }
 }
 
-/* ---------- Projects page ---------- */
-
-/* Close the final Projects section into the footer without changing the
-   project cards themselves. */
-.projects-page > .section:last-child {
-  padding-bottom: clamp(20px, 2.6vw, 38px);
-}
-
 .projects-page + .site-footer {
   margin-top: clamp(14px, 2vw, 26px);
 }
@@ -4498,6 +4498,18 @@ p {
   }
 }
 
+@media (max-width: 860px) {
+  .projects-layout {
+    grid-template-columns: 1fr;
+    gap: clamp(40px, 6vw, 56px);
+  }
+
+  .project-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
 @media (max-width: 640px) {
   .speaking-organizer-cta {
     grid-template-columns: 1fr;
@@ -4533,13 +4545,6 @@ p {
     grid-template-columns: minmax(132px, 0.68fr) minmax(0, 1fr);
   }
 
-  .projects-hero {
-    grid-template-columns: 1fr;
-  }
-
-  .projects-hero-image {
-    display: none;
-  }
 }
 
 @media (max-width: 540px) {
