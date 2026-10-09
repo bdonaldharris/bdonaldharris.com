@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import homeHeroImage from "@/assets/originals/home-hero.png";
+import { ContactForm } from "@/app/contact/contact-form";
 import { HomeMediaSection } from "@/components/home/home-media-section";
 import { homeAboutMarkers } from "@/content/about";
 import media from "@/content/media.json";
@@ -102,11 +103,11 @@ export default function HomePage() {
       </section>
 
       <section id="contact" className="home-section home-contact" data-home-nav-section>
-        <div className="home-section-inner home-simple-section">
-          <p className="eyebrow">Contact</p>
-          <Link className="button-primary" href="/contact">
-            Contact Me
-          </Link>
+        <div className="home-section-band">
+          <div className="home-section-band-inner">CONTACT</div>
+        </div>
+        <div className="home-contact-content">
+          <ContactForm />
         </div>
       </section>
     </main>
