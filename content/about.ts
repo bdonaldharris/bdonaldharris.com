@@ -24,11 +24,11 @@ export const aboutStorySections = [
 export const homeAboutMarkers = [
   {
     title: "Origins / Systems",
-    body: "Technology became the place where I noticed patterns, tested ideas, and learned how things actually fit together. That curiosity still shapes how I approach every new problem.",
+    body: "I started writing code at 9. Computers became a safe place for me—somewhere I naturally fit, where curiosity, patterns, and systems made sense. I found a home there, and that early sense of belonging went on to shape much of my life.",
   },
   {
     title: "Engineering",
-    body: "More than two decades in software engineering made building an enduring craft. The work is turning complexity into systems people can rely on.",
+    body: "More than two decades in software engineering—across full-stack and back-end systems, .NET/C#, and enterprise platforms—taught me how complexity accumulates, how systems behave under pressure, and how much the choices we make matter to the people who rely on what we build.",
   },
   {
     title: "Ministry / Leadership / Teaching",
@@ -39,7 +39,7 @@ export const homeAboutMarkers = [
     body: "NotableBIT, BIT Voices Podcast, BitVoices Network, and HindSite build platforms, conversations, and pathways around clarity, context, agency, ownership, and community.",
   },
   {
-    title: "Late Diagnosis / Clarity",
-    body: "A late diagnosis gave language to lifelong patterns—sharpening how I understand systems, sensory load, communication, focus, workflow design, and the way I have always processed the world.",
+    title: "Late Autism Diagnosis / Clarity",
+    body: "As a late-diagnosed Autistic, I finally had language for lifelong patterns in how I process systems, sensory load, communication, focus, and workflow. The diagnosis gave me clearer context for how I have always understood and moved through the world.",
   },
 ];
