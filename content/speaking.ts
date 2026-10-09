@@ -7,7 +7,7 @@ export const speakingTopics: SpeakingTopic[] = [
   {
     title: "AI and the Future of Black Builders",
     description:
-      "How AI is reshaping careers, ownership, hiring, and builder opportunity.",
+      "How AI is reshaping Black careers, ownership, hiring, and builder opportunity.",
   },
   {
     title: "Consumers to Builders in the AI-Powered Economy",

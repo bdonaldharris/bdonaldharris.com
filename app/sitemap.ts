@@ -5,7 +5,6 @@ const routes = [
   "",
   "/essays",
   "/projects",
-  "/speaking",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

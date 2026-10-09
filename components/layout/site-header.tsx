@@ -257,7 +257,7 @@ export function SiteHeader() {
                   const active = isHomeActive && activeSection === item.section;
 
                   return (
-                    <Link
+                    <a
                       key={item.href}
                       href={item.href}
                       aria-current={active ? "page" : undefined}
@@ -265,7 +265,7 @@ export function SiteHeader() {
                       onClick={() => closeDesktopHomeMenu()}
                     >
                       {item.label}
-                    </Link>
+                    </a>
                   );
                 })}
               </div>
@@ -340,7 +340,7 @@ export function SiteHeader() {
                       const active = isHomeActive && activeSection === item.section;
 
                       return (
-                        <Link
+                        <a
                           key={item.href}
                           href={item.href}
                           aria-current={active ? "page" : undefined}
@@ -348,7 +348,7 @@ export function SiteHeader() {
                           onClick={() => closeMobileMenu()}
                         >
                           {item.label}
-                        </Link>
+                        </a>
                       );
                     })}
                   </div>

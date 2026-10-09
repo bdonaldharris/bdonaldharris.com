@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useRef, useState, type RefObject } from "react";
 
 const inquiryTypes = [
   "Speaking invitation",
@@ -19,6 +20,7 @@ export function ContactForm() {
   // Synchronous guard: state updates are async, so a rapid double-submit can
   // slip past `status` before React re-renders. A ref blocks it immediately.
   const submittingRef = useRef(false);
+  const inquiryTypeRef = useRef<HTMLSelectElement>(null);
 
   const isSubmitting = status === "submitting";
 
@@ -111,7 +113,13 @@ export function ContactForm() {
 
         <div className="form-field">
           <label htmlFor="inquiry-type">Inquiry type</label>
-          <select id="inquiry-type" name="inquiryType" required defaultValue="">
+          <select
+            ref={inquiryTypeRef}
+            id="inquiry-type"
+            name="inquiryType"
+            required
+            defaultValue=""
+          >
             <option value="" disabled>
               Select an inquiry type
             </option>
@@ -195,6 +203,26 @@ export function ContactForm() {
           <span className="form-feedback-error">{errorMessage}</span>
         )}
       </p>
+
+      <Suspense fallback={null}>
+        <InquiryTypePreselection selectRef={inquiryTypeRef} />
+      </Suspense>
     </form>
   );
+}
+
+function InquiryTypePreselection({
+  selectRef,
+}: {
+  selectRef: RefObject<HTMLSelectElement | null>;
+}) {
+  const searchParams = useSearchParams();
+  const inquiry = searchParams.get("inquiry");
+
+  useEffect(() => {
+    if (!selectRef.current) return;
+    selectRef.current.value = inquiry && inquiryTypes.includes(inquiry) ? inquiry : "";
+  }, [inquiry, selectRef]);
+
+  return null;
 }

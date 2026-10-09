@@ -44,7 +44,7 @@ html {
   background: var(--color-deep-black);
   color: var(--color-text-primary);
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-height) + 16px);
+  scroll-padding-top: var(--header-height);
 }
 
 body {
@@ -339,12 +339,6 @@ a:hover {
   border: 1px solid var(--color-border-subtle);
   border-radius: 10px;
   background: rgba(16, 17, 23, 0.97);
-}
-
-.home-nav-anchor {
-  display: block;
-  height: 1px;
-  scroll-margin-top: calc(var(--header-height) + 16px);
 }
 
 .mobile-menu nav a {
@@ -1117,7 +1111,6 @@ p {
 .home-section {
   width: 100%;
   border-top: 1px solid var(--color-border-subtle);
-  scroll-margin-top: calc(var(--header-height) + 16px);
 }
 
 .home-section-inner {
@@ -1295,6 +1288,132 @@ p {
   background:
     radial-gradient(82% 110% at 0% 100%, rgba(125, 183, 255, 0.065), transparent 62%),
     rgba(23, 22, 43, 0.34);
+}
+
+.home-speaking-content {
+  display: grid;
+  gap: clamp(28px, 3vw, 40px);
+}
+
+.home-speaking-content .speaking-thesis-card {
+  width: min(100%, 760px);
+  margin-inline: auto;
+}
+
+.home-speaking-content .speaking-organizer-panel {
+  width: min(100%, 1000px);
+  margin-inline: auto;
+}
+
+.home-speaking-content .speaking-organizer-group {
+  text-align: center;
+}
+
+.home-speaking-content .speaking-organizer-tags {
+  justify-content: center;
+}
+
+.home-speaking-topic-list {
+  display: grid;
+}
+
+.home-speaking-topic-row {
+  display: grid;
+  gap: 6px;
+  text-align: center;
+}
+
+.home-speaking-topic-row + .home-speaking-topic-row {
+  padding-top: 16px;
+}
+
+.home-speaking-topic-row p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--color-text-secondary);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.speaking-organizer-cta-row {
+  padding-top: 20px;
+  border-top: 1px solid rgba(154, 164, 184, 0.12);
+}
+
+.speaking-organizer-cta {
+  display: grid;
+  grid-template-columns: 44fr 12fr 44fr;
+  position: relative;
+  width: min(100%, 760px);
+  min-height: 190px;
+  margin-inline: auto;
+  padding: clamp(24px, 3vw, 36px);
+  align-items: center;
+  border: 1px solid rgba(143, 145, 201, 0.42);
+  border-radius: 20px;
+  background:
+    linear-gradient(135deg, rgba(111, 118, 205, 0.24), rgba(30, 35, 77, 0.84) 48%, rgba(17, 24, 56, 0.92)),
+    var(--color-midnight-navy);
+  box-shadow:
+    inset 0 1px 0 rgba(244, 239, 230, 0.16),
+    0 18px 42px rgba(4, 8, 25, 0.32);
+  color: var(--color-text-primary);
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.speaking-organizer-cta:hover,
+.speaking-organizer-cta:focus-visible {
+  border-color: rgba(125, 183, 255, 0.68);
+  background:
+    linear-gradient(135deg, rgba(125, 183, 255, 0.25), rgba(43, 48, 104, 0.9) 48%, rgba(19, 28, 67, 0.96)),
+    var(--color-midnight-navy);
+  transform: translateY(-1px);
+}
+
+.speaking-organizer-cta:focus-visible {
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 4px;
+}
+
+.speaking-organizer-cta-title {
+  grid-column: 1;
+  justify-self: center;
+  width: 78%;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.speaking-organizer-cta-microphone {
+  display: grid;
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 50%;
+  width: 12%;
+  place-items: center;
+  color: var(--color-accent-lavender);
+  filter: drop-shadow(0 0 18px rgba(125, 183, 255, 0.42));
+  transform: translateX(-50%);
+}
+
+.speaking-organizer-cta-microphone svg {
+  width: min(100%, 92px);
+  height: 100%;
+}
+
+.speaking-organizer-cta-copy {
+  grid-column: 3;
+  justify-self: center;
+  max-width: 27ch;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .home-contact {
@@ -4380,6 +4499,32 @@ p {
 }
 
 @media (max-width: 640px) {
+  .speaking-organizer-cta {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    min-height: 0;
+  }
+
+  .speaking-organizer-cta-title {
+    grid-column: auto;
+    width: 100%;
+  }
+
+  .speaking-organizer-cta-microphone {
+    position: static;
+    width: auto;
+    transform: none;
+  }
+
+  .speaking-organizer-cta-microphone svg {
+    width: 72px;
+    height: 96px;
+  }
+
+  .speaking-organizer-cta-copy {
+    grid-column: auto;
+  }
+
   .media-rail {
     grid-template-columns: 1fr;
   }

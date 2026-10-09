@@ -3,6 +3,7 @@ import Link from "next/link";
 import homeHeroImage from "@/assets/originals/home-hero.png";
 import { ContactForm } from "@/app/contact/contact-form";
 import { HomeMediaSection } from "@/components/home/home-media-section";
+import { HomeSpeakingSection } from "@/components/home/home-speaking-section";
 import { homeAboutMarkers } from "@/content/about";
 import media from "@/content/media.json";
 
@@ -96,10 +97,7 @@ export default function HomePage() {
       </section>
 
       <section id="speaking" className="home-section home-speaking" data-home-nav-section>
-        <div className="home-section-inner home-simple-section">
-          <p className="eyebrow">Speaking</p>
-          <p>For speaking, collaboration, or a thoughtful conversation, get in touch.</p>
-        </div>
+        <HomeSpeakingSection />
       </section>
 
       <section id="contact" className="home-section home-contact" data-home-nav-section>
