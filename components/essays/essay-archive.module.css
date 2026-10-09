@@ -200,6 +200,7 @@
 .entry h3 {
   max-width: none;
   margin: 0;
+  font-family: "Bodoni Moda", "Iowan Old Style", Georgia, serif;
   font-size: clamp(1.18rem, 1.7vw, 1.5rem);
   line-height: 1.3;
 }
