@@ -57,7 +57,7 @@ export default async function ProjectsPage() {
       <section className="github-section" aria-labelledby="github-title">
         <div className="github-layout">
           <div className="github-introduction">
-            <h2 id="github-title">Work Today</h2>
+            <h2 id="github-title">The Workbench</h2>
           </div>
 
           {contributionWeeks && <GitHubContributionGraph weeks={contributionWeeks} />}
