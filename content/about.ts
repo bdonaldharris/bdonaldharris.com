@@ -21,10 +21,25 @@ export const aboutStorySections = [
   },
 ];
 
-export const beliefStatements = [
-  "Builders need context, not just tools.",
-  "Community is culture before it is features.",
-  "Visibility matters, but ownership is the deeper work.",
-  "AI should amplify human understanding, not replace it.",
-  "Purpose and execution belong together.",
+export const homeAboutMarkers = [
+  {
+    title: "Origins / Systems",
+    body: "Technology became the place where I noticed patterns, tested ideas, and learned how things actually fit together. That curiosity still shapes how I approach every new problem.",
+  },
+  {
+    title: "Engineering",
+    body: "More than two decades in software engineering made building an enduring craft. The work is turning complexity into systems people can rely on.",
+  },
+  {
+    title: "Ministry / Leadership / Teaching",
+    body: "Nearly three decades of ministry and leadership shaped how I think about responsibility, trust, communication, teaching, and purpose. That formation still guides how I lead.",
+  },
+  {
+    title: "Founder / Community",
+    body: "NotableBIT, BIT Voices Podcast, BitVoices Network, and HindSite build platforms, conversations, and pathways around clarity, context, agency, ownership, and community.",
+  },
+  {
+    title: "Late Diagnosis / Clarity",
+    body: "A late diagnosis gave language to lifelong patterns—sharpening how I understand systems, sensory load, communication, focus, workflow design, and the way I have always processed the world.",
+  },
 ];

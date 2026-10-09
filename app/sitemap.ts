@@ -3,7 +3,6 @@ import { getPublishedEssays } from "@/lib/essays";
 
 const routes = [
   "",
-  "/about",
   "/essays",
   "/projects",
   "/media",

@@ -2,12 +2,8 @@ import Link from "next/link";
 
 const siteLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/essays", label: "Essays" },
   { href: "/projects", label: "Projects" },
-  { href: "/media", label: "Media" },
-  { href: "/speaking", label: "Speaking" },
-  { href: "/contact", label: "Contact" },
 ];
 
 const ecosystemLinks = [
