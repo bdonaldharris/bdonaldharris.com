@@ -62,12 +62,6 @@ function SocialIcon({ name }: { name: SocialIconName }) {
           <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" />
         </svg>
       );
-    case "youtube":
-      return (
-        <svg {...common} fill="currentColor">
-          <path d="M23.5 6.5a3 3 0 0 0-2.11-2.12C19.5 3.87 12 3.87 12 3.87s-7.5 0-9.39.51A3 3 0 0 0 .5 6.5C0 8.4 0 12 0 12s0 3.6.5 5.5a3 3 0 0 0 2.11 2.12c1.89.51 9.39.51 9.39.51s7.5 0 9.39-.51A3 3 0 0 0 23.5 17.5C24 15.6 24 12 24 12s0-3.6-.5-5.5zM9.6 15.6V8.4l6.25 3.6-6.25 3.6z" />
-        </svg>
-      );
     case "x":
       return (
         <svg {...common} fill="currentColor">
