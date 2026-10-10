@@ -17,9 +17,9 @@ const socialLinks = [
   { href: "mailto:founder@bdonaldharris.com", label: "Email", icon: "email" },
   { href: "https://www.facebook.com/bdonaldharris", label: "Facebook", icon: "facebook" },
   { href: "https://github.com/bdonaldharris", label: "GitHub", icon: "github" },
-  { href: "https://www.instagram.com/notablebit/", label: "Instagram", icon: "instagram" },
+  { href: "https://www.instagram.com/bdonaldharris", label: "Instagram", icon: "instagram" },
   { href: "https://www.linkedin.com/in/briandharris/", label: "LinkedIn", icon: "linkedin" },
-  { href: "https://x.com/home", label: "X", icon: "x" },
+  { href: "https://x.com/apostleBDHarris", label: "X", icon: "x" },
   { href: "https://www.youtube.com/@notablebit", label: "YouTube", icon: "youtube" },
 ] as const;
 
