@@ -4116,9 +4116,10 @@ p {
 .footer-social {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 6px;
   padding: 0;
-  margin: -2px 0 -8px -8px;
+  margin: -2px -8px -8px 0;
   list-style: none;
 }
 
@@ -4258,6 +4259,11 @@ p {
   .footer-main {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .footer-social {
+    justify-content: flex-start;
+    margin: -2px 0 -8px -8px;
   }
 
   .footer-bottom {
