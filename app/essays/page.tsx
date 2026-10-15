@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { EssayArchive } from "@/components/essays/essay-archive";
-import { ideaLanes } from "@/content/ideas";
 import { getPublishedEssays } from "@/lib/essays";
 
 const pageDescription =
@@ -63,26 +62,6 @@ export default async function EssaysPage() {
           />
         </section>
       )}
-
-      <section className="section ideas-lanes-section">
-        <header className="ideas-section-head">
-          <h2>Recurring Themes</h2>
-          <p>
-            The recurring themes underneath the work — what I keep writing,
-            building, and speaking toward.
-          </p>
-        </header>
-        <ul className="idea-lanes">
-          {ideaLanes.map((lane) => (
-            <li key={lane.title}>
-              <div className="idea-lane-copy">
-                <h3>{lane.title}</h3>
-                <p>{lane.description}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
     </main>
   );
 }
