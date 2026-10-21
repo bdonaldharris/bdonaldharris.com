@@ -107,7 +107,11 @@ def main() -> int:
             read_feed(args.podcast_playlist_id, args.podcast_feed_file), format="landscape", limit=1, previous=previous
         )
         if not featured:
-            raise ValueError("The Podcast playlist did not contain any episodes.")
+            raise ValueError(
+                "The Podcast playlist did not contain any episodes. "
+                f"Check that YOUTUBE_PODCAST_PLAYLIST_ID ({args.podcast_playlist_id!r}) is the full, public playlist ID "
+                "(YouTube playlist IDs are typically 34 characters, e.g. PL...)."
+            )
         recent_videos = parse_entries(
             read_feed(args.recent_videos_playlist_id, args.recent_videos_feed_file), format="landscape", limit=4, previous=previous
         )
