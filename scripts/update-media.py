@@ -44,11 +44,46 @@ def read_feed(playlist_id: str, feed_file: Path | None) -> bytes:
         return response.read()
 
 
+def extract_entry(renderer: dict) -> tuple[str, str]:
+    # Legacy playlist markup used a flat playlistVideoRenderer; YouTube now
+    # renders regular entries as lockupViewModel and Shorts as
+    # shortsLockupViewModel. Support all three so the scraper keeps working
+    # across markup changes.
+    if "title" in renderer and "videoId" in renderer:
+        video_id = renderer.get("videoId", "")
+        title = "".join(run.get("text", "") for run in renderer.get("title", {}).get("runs", [])).strip()
+        return video_id, title
+
+    if "overlayMetadata" in renderer:
+        video_id = (
+            renderer.get("onTap", {})
+            .get("innertubeCommand", {})
+            .get("reelWatchEndpoint", {})
+            .get("videoId", "")
+        )
+        title = renderer.get("overlayMetadata", {}).get("primaryText", {}).get("content", "").strip()
+        return video_id, title
+
+    video_id = renderer.get("contentId", "")
+    title = (
+        renderer.get("metadata", {})
+        .get("lockupMetadataViewModel", {})
+        .get("title", {})
+        .get("content", "")
+        .strip()
+    )
+    return video_id, title
+
+
 def find_renderers(node: object) -> list[dict]:
     found: list[dict] = []
     if isinstance(node, dict):
         if "playlistVideoRenderer" in node:
             found.append(node["playlistVideoRenderer"])
+        elif "shortsLockupViewModel" in node:
+            found.append(node["shortsLockupViewModel"])
+        elif node.get("contentType") == "LOCKUP_CONTENT_TYPE_VIDEO":
+            found.append(node)
         else:
             for value in node.values():
                 found.extend(find_renderers(value))
@@ -67,8 +102,7 @@ def parse_entries(page: bytes, *, format: str, limit: int, previous: dict[str, d
     items: list[dict[str, str]] = []
 
     for renderer in find_renderers(data)[:limit]:
-        video_id = renderer.get("videoId", "")
-        title = "".join(run.get("text", "") for run in renderer.get("title", {}).get("runs", [])).strip()
+        video_id, title = extract_entry(renderer)
 
         if not video_id or not title:
             raise ValueError("A playlist entry is missing required video data.")
